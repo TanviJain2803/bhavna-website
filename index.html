@@ -108,9 +108,10 @@ nav.scrolled .menu-btn{color:var(--ink)}
 .orbit-item--video{width:1920px;height:1080px;box-shadow:none;will-change:auto}
 .orbit-item--video video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover}
 
-/* Fixed Mobile Video Size Issue (Only squish images, not the video wrapper) */
+/* Fixed Mobile Video Size Issue & Remove Logo on Mobile */
 @media(max-width:760px){
   .orbit-item:not(.orbit-item--video){width:120px;height:84px}
+  #hero-logo { display: none !important; }
 }
 
 #hero-symbol-top{position:absolute;top:22px;left:50%;width:40px;z-index:6;transform:translateX(-50%);opacity:.9;pointer-events:none}
@@ -374,12 +375,21 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   html{scroll-behavior:auto}
 }
 </style>
+<script>
+// Force page to start at the top on load, clear hash links, and prevent scroll restoration
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+if (window.location.hash) {
+  window.history.replaceState('', document.title, window.location.pathname + window.location.search);
+}
+window.scrollTo(0, 0);
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav" class="scrolled">
   <div class="bar">
     <a class="brand" href="#">
@@ -396,25 +406,19 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div id="hero-bg"></div>
 
-  <!-- centre logo: fades in, rotates throughout, grows to frame the tribute -->
   <img id="hero-logo" src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="">
 
-  <!-- orbit ring: video tile + image tiles, built by JS -->
   <div id="orbit-ring"></div>
 
-  <!-- small symbol, top centre -->
   <img id="hero-symbol-top" src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="">
 
-  <!-- Phase A: headline over the full-screen video -->
   <div class="hero-layer" id="hero-lead">
     <h1>Translating <em>intent</em> into compassionate action.</h1>
   </div>
 
-  <!-- Phase C: count reveals word-by-word, then the guided paragraph all at once -->
   <div class="hero-layer" id="hero-count">
     <h2 class="rt-count">12 Intentions. 12 Initiatives.</h2>
   </div>
@@ -422,7 +426,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
     <p>Guided by the Bhavnas of Jain philosophy, we turn reflection into action — easing suffering, empowering communities, and protecting the environment.</p>
   </div>
 
-  <!-- Phase D: tagline word-by-word, no images, logo rotating behind -->
   <div class="hero-layer" id="hero-tagline">
     <h2 class="rt-tag-dev dev">भाव से बदलाव</h2>
     <div class="tag-lower">
@@ -431,7 +434,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
     </div>
   </div>
 
-  <!-- Phase E: logo grows to frame the tribute -->
   <div class="hero-layer" id="hero-tribute">
     <p class="eyebrow">In loving tribute</p>
     <h3>Shanti &amp; Pawan Jain</h3>
@@ -442,7 +444,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
     <p class="tr-text">Our grandparents practised seva as a daily habit, not an occasion. This foundation carries their names so their intention never stops moving.</p>
   </div>
 
-  <!-- Phase F: logo swipes up, Nirjara flagship promo appears (new colour scheme) -->
   <div class="hero-layer" id="hero-nirjara">
     <p class="eyebrow">Active Initiative · निर्जरा</p>
     <h2>Nirjara —<br><em>shedding what binds.</em></h2>
@@ -458,7 +459,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   <div class="scroll-prompt-hero" id="scrollPromptHero">↓ Scroll for more</div>
 </section>
 
-<!-- DUAL PATHWAY -->
 <section id="pathways">
   <div class="pathways-inner">
     <div class="path-card">
@@ -476,7 +476,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- MISSION -->
 <section class="section" id="mission-detail">
   <div class="wrap two-col">
     <div class="reveal">
@@ -503,7 +502,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 
 <div class="divider"></div>
 
-<!-- 12 BHAVNAS -->
 <section class="section" id="bhavnas">
   <div class="wrap">
     <div style="max-width:680px;margin:0 auto 64px;text-align:center">
@@ -528,10 +526,8 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- NIRJARA -->
 <section id="nirjara">
 
-  <!-- NIRJARA COVER VIDEO -->
   <div id="nirjara-cover">
     <video autoplay muted loop playsinline preload="auto">
       <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781346284/14211520-hd_1920_1080_30fps_ckuixr.mp4" type="video/mp4">
@@ -562,7 +558,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
       </div>
       <p class="n-foot">*Indicative — MoSJE national survey 2019, GATS-2, WHO. Verify before public launch.</p>
       
-      <!-- NIRJARA APP FEATURE -->
       <div class="app-feature reveal">
         <div class="app-text">
           <p class="eyebrow">Digital Support</p>
@@ -585,7 +580,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- GALLERY -->
 <section class="section" id="gallery">
   <div class="wrap">
     <p class="eyebrow">In the Field</p>
@@ -609,7 +603,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- PARTNER / CSR -->
 <section class="section" id="partner">
   <div class="wrap">
     <div style="max-width:640px;margin-bottom:56px">
@@ -643,7 +636,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 
 <div class="divider"></div>
 
-<!-- TEAM -->
 <section class="section" id="team">
   <div class="wrap">
     <div style="text-align:center;max-width:580px;margin:0 auto">
@@ -662,7 +654,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- DONATE + VOLUNTEER -->
 <section class="section" id="act">
   <div class="wrap">
     <div style="max-width:600px;margin-bottom:50px">
@@ -709,7 +700,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- SPONSORS / AFFILIATES -->
 <section class="section" id="sponsors">
   <div class="wrap">
     <p class="eyebrow">Sponsors &amp; Affiliates</p>
@@ -729,7 +719,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 
 <div class="divider"></div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div>
@@ -762,6 +751,11 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 </footer>
 
 <script>
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+  ScrollTrigger.refresh();
+});
+
 const THEMES={dusk:{vars:{'--primary':'#C8703A','--secondary':'#B8892E','--peach':'#DFA07A','--sage':'#8BBD96','--sage-deep':'#5E9070','--gold':'#A08B5A'},pal:['#C8703A','#B8892E','#DFA07A','#8BBD96','#5E9070','#A08B5A']}};
 let T=THEMES.dusk;
 const BHAVNAS=[
@@ -807,7 +801,6 @@ document.querySelector('.brand').addEventListener('click', (e) => {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   
-  // Close menu if it was open
   if (navLinks.classList.contains('open')) {
     navLinks.classList.remove('open');
     nav.classList.remove('menu-open');
@@ -820,7 +813,6 @@ function lerp(a,b,t){return a+(b-a)*t;}
 /* ── HERO — GSAP ScrollTrigger multi-phase cinematic ── */
 gsap.registerPlugin(ScrollTrigger);
 
-/* GSAP config added to fix iOS Safari pinning white gap issues */
 ScrollTrigger.config({ ignoreMobileResize: true });
 
 const HERO_IMAGES=[
@@ -838,7 +830,7 @@ const HERO_VIDEO='https://res.cloudinary.com/dnkxclcd8/video/upload/v1781350096/
 const CREAM='#FFE2C7';
 
 const ring=document.getElementById('orbit-ring');
-const items=[];                 // 0 = video tile, 1..9 = images
+const items=[];
 const N=HERO_IMAGES.length+1;
 const baseAng=[];
 for(let k=0;k<N;k++) baseAng.push(k*(360/N)-90);
@@ -857,7 +849,6 @@ for(let k=0;k<N;k++){
 const videoTile=items[0];
 const imageTiles=items.slice(1);
 
-/* word splitting */
 function splitWords(sel){
   const el=document.querySelector(sel);
   el.innerHTML=el.textContent.trim().split(/\s+/).map(w=>'<span class="rw">'+w+'</span>').join(' ');
@@ -872,42 +863,33 @@ gsap.set('#hero-logo',{xPercent:-50,yPercent:-50});
 
 const isM=()=>window.innerWidth<760;
 
-/* animation state proxies driven by the scrubbed timeline */
-const orbit={a:0};       // orbit angle (deg): 0 -> 720 across two circles
-const intro={v:1};       // 1 = video full-frame centre, 0 = joined into ring
-const imagesIn={v:0};    // image tiles fade-in factor
-
-/* Base large container sizes to keep video crisp and scale down instead of up */
 function videoCoverScale(){
-  // Add a slight 1.05x buffer to ensure mobile address bars don't cause visible background clipping
   return Math.max(window.innerWidth/1920, window.innerHeight/1080) * 1.05;
 }
 
-/* place tiles each frame: positions move around the centre, images stay upright,
-   scale/opacity/blur vary by front<->back depth for a 3D-layered feel */
 function layout(){
   const rx=Math.min(window.innerWidth*0.44,720);
-  const ry=Math.min(window.innerHeight*0.42,440)*0.72;   // larger oval keeps centre text clear
+  const ry=Math.min(window.innerHeight*0.42,440)*0.72;
   for(let k=0;k<items.length;k++){
     const el=items[k];
     const ang=(baseAng[k]+orbit.a)*Math.PI/180;
-    const depth=(Math.sin(ang)+1)/2;                      // 0 back .. 1 front
+    const depth=(Math.sin(ang)+1)/2;
     let x=Math.cos(ang)*rx, y=Math.sin(ang)*ry;
     let sc=0.66+depth*0.52;
     let op=0.42+depth*0.58;
     let z=Math.round(depth*100);
     let bl=(1-depth)*1.8;
-    if(k===0){                                            // video: fills screen, then recedes into ring
+    if(k===0){
       const t=1-intro.v;
       x=lerp(0,x,t); y=lerp(0,y,t);
-      const targetW = isM() ? 280 : 320; // Increased mobile tile size
+      const targetW = isM() ? 280 : 320;
       const targetScale = (targetW / 1920) * sc * 0.66;
       sc = lerp(videoCoverScale(), targetScale, t);
       op=lerp(1,op,t);
       z=Math.round(lerp(240,z,t));
       bl=lerp(0,bl,t);
       el.style.filter='blur('+bl.toFixed(2)+'px)';
-      el.style.borderRadius=(t*24)+'px';                   // scaled up border radius to match downscaling
+      el.style.borderRadius=(t*24)+'px';
       gsap.set(el,{x:x,y:y,scale:sc,zIndex:z,autoAlpha:op,rotation:0,xPercent:-50,yPercent:-50});
     }else{
       el.style.filter='blur('+bl.toFixed(2)+'px)';
@@ -938,7 +920,6 @@ if(reduceMotion){
     scrollTrigger:{
       trigger:'#hero',
       start:'top top',
-      // Increased the overall end value dramatically to allow for the new "Holds" 
       end:()=>'+='+(isM()?6500:8000), 
       scrub:0.8,
       pin:true,
@@ -946,56 +927,41 @@ if(reduceMotion){
       invalidateOnRefresh:true
     }
   });
-  tl.eventCallback('onUpdate',layout);   // reposition the field every scrubbed frame
+  tl.eventCallback('onUpdate',layout);
 
-  /* Phase A (0–1): video recedes from full-frame into the ring; images fade in */
   tl.to(intro,{v:0,duration:1,ease:'power1.inOut'},0)
     .to(imagesIn,{v:1,duration:0.8,ease:'power1.out'},0.4)
     .to('#hero-lead',{autoAlpha:0,yPercent:-6,duration:0.4},0.25)
     .to('#scrollPromptHero',{autoAlpha:0,duration:0.2},0.1)
     .to('#hero-symbol-top',{autoAlpha:0,duration:0.2},0.05);
 
-  /* Phases B+C Rotation Base */
   tl.to(orbit,{a:720,duration:6.0},1.0)
     .to('#hero-logo',{autoAlpha:0.4,duration:0.5},1.0)
     .to('#hero-logo',{rotation:520,duration:11.0},1.0); 
 
-  /* Phase B (1–2): first circle — background white -> cream, no text */
   tl.to('#hero-bg',{backgroundColor:CREAM,duration:2.0},1.0);
 
-  /* Phase C (2–3.7): second circle — count word-by-word, then guided all at once */
   tl.set('#hero-count',{autoAlpha:1},2.0)
     .to(countWords,{opacity:1,duration:1.2,stagger:{each:0.09}},2.1)
     .fromTo('#hero-guided',{autoAlpha:0,y:14},{autoAlpha:1,y:0,duration:0.5,ease:'power1.out'},3.7)
-    
-    /* HOLD: Keeps Phase C on screen longer without moving */
     .to({}, {duration: 3.0}, 4.2); 
 
-  /* Phase D (7.2–8.7): images leave; tagline word-by-word; en + button below logo */
   tl.to(ring,{autoAlpha:0,duration:0.55,ease:'power1.in'},7.2)
     .to(['#hero-count','#hero-guided'],{autoAlpha:0,duration:0.4},7.2)
     .set('#hero-tagline',{autoAlpha:1},7.7)
     .to(tagWordsDev,{opacity:1,duration:1.0,stagger:{each:0.16}},7.7)
     .to(tagWordsEn,{opacity:1,duration:0.5,stagger:{each:0.14}},8.7)
-    
-    /* HOLD: Keeps Phase D Tagline on screen longer */
     .to({}, {duration: 2.5}, 9.2);
 
-  /* Phase E (11.7–12.3): logo grows to frame the tribute */
   tl.to('#hero-tagline',{autoAlpha:0,duration:0.4},11.7)
     .to('#hero-logo',{scale:()=>isM()?2.0:2.5,autoAlpha:0.28,duration:1.2,ease:'power1.inOut'},11.7)
     .fromTo('#hero-tribute',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:0.7,ease:'power1.out'},12.3)
-    
-    /* HOLD: Keeps Phase E Tribute on screen longer */
     .to({}, {duration: 1.2}, 13.0); 
 
-  /* Phase F (14.2–14.9): logo swipes UP & out; Nirjara flagship promo appears */
   tl.to('#hero-tribute',{autoAlpha:0,y:-20,duration:0.5},14.2)
     .to('#hero-logo',{y:()=>-window.innerHeight*0.95,autoAlpha:0,duration:0.9,ease:'power2.in'},14.2)
     .fromTo('#hero-nirjara',{autoAlpha:0,y:26},{autoAlpha:1,y:0,duration:0.8,ease:'power1.out'},14.9);
 }
-
-window.addEventListener('load',()=>ScrollTrigger.refresh());
 
 /* WHEEL */
 const wheel=document.getElementById('wheel');
