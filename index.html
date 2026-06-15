@@ -29,7 +29,7 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.015em}
 .dev{font-family:var(--dev)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
-@media(max-width:640px){.wrap{padding:0 20px}}
+@media(max-width:640px){.wrap{padding:0 24px}} /* Increased mobile margins */
 .eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--primary);font-weight:600;font-family:var(--body)}
 .section{padding:120px 0}
 @media(max-width:768px){.section{padding:80px 0}}
@@ -53,7 +53,7 @@ nav.scrolled .links a.btn:hover{background:var(--primary);color:#fff}
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,backdrop-filter .4s,border-color .4s}
 nav .bar{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:0 auto;padding:11px 40px}
-@media(max-width:640px){nav .bar{padding:9px 20px}}
+@media(max-width:640px){nav .bar{padding:9px 24px}}
 nav .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
 nav .brand img{height:34px;width:34px;object-fit:contain}
 nav .brand .nm{font-family:var(--display);font-size:1.12rem;color:var(--ink);white-space:nowrap;font-weight:500;transition:color .3s}
@@ -67,15 +67,26 @@ nav.scrolled .links a:hover{color:var(--primary)}
 nav .links .btn{padding:10px 22px}
 .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink);font-size:1.5rem}
 nav.scrolled .menu-btn{color:var(--ink)}
+
+/* Fixed Mobile Nav Ghosting Issue */
 @media(max-width:840px){
-  nav .links{position:fixed;inset:0;background:rgba(14,16,15,.97);flex-direction:column;justify-content:center;gap:26px;transform:translateY(-100%);transition:transform .4s ease}
-  nav .links.open{transform:translateY(0)}
+  nav .links{
+    position:fixed;inset:0;background:rgba(14,16,15,.97);
+    flex-direction:column;justify-content:center;gap:26px;
+    transform:translateY(-120%); /* higher push to avoid ios address bar bleed */
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition:transform .4s ease, opacity .4s ease, visibility .4s ease;
+  }
+  nav .links.open{
+    transform:translateY(0);
+    opacity: 1; visibility: visible; pointer-events: auto;
+  }
   nav .links a{font-size:1.1rem;color:#fff !important;text-shadow:none}
   .menu-btn{display:block;z-index:110;position:relative}
 }
 
 /* ── HERO (GSAP scrubbed, multi-phase) ── */
-#hero{position:relative;height:100vh;height:100dvh;width:100%;overflow:hidden;background:#ffffff}
+#hero{position:relative;height:100vh;width:100%;overflow:hidden;background:#ffffff} /* Removed 100dvh to fix white gap on scroll */
 #hero-bg{position:absolute;inset:0;background:#ffffff;z-index:0;will-change:background-color}
 
 /* centre rotating / growing logo */
@@ -84,12 +95,13 @@ nav.scrolled .menu-btn{color:var(--ink)}
 /* orbit ring of images + the video tile (3D depth via JS) */
 #orbit-ring{position:absolute;top:50%;left:50%;width:0;height:0;z-index:3;pointer-events:none}
 .orbit-item{position:absolute;left:0;top:0;width:212px;height:148px;overflow:hidden;border-radius:4px;background-size:cover;background-position:center;box-shadow:0 24px 60px rgba(0,0,0,.28);backface-visibility:hidden;will-change:transform,opacity,filter}
+
 .orbit-item--video{width:1920px;height:1080px;box-shadow:none;will-change:auto}
 .orbit-item--video video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover}
 
-/* Mobile image ring sizing - minor images no longer hidden */
+/* Fixed Mobile Video Size Issue (Only squish images, not the video wrapper) */
 @media(max-width:760px){
-  .orbit-item{width:120px;height:84px}
+  .orbit-item:not(.orbit-item--video){width:120px;height:84px}
 }
 
 #hero-symbol-top{position:absolute;top:22px;left:50%;width:40px;z-index:6;transform:translateX(-50%);opacity:.9;pointer-events:none}
@@ -103,7 +115,6 @@ nav.scrolled .menu-btn{color:var(--ink)}
 #hero-count .rt-count{font-family:var(--display);font-weight:500;color:var(--ink);font-size:clamp(2rem,5.4vw,4.6rem);line-height:1.06;letter-spacing:-.015em}
 #hero-guided p{font-family:var(--body);font-weight:300;color:var(--ink);font-size:clamp(1rem,1.9vw,1.45rem);line-height:1.65;max-width:34ch;margin:0 auto}
 
-/* Prevent text clipping/overlap on small mobile screens */
 #hero-count{padding-bottom:22vh}
 #hero-guided{padding-top:20vh}
 @media(max-width:760px){
@@ -171,7 +182,7 @@ body.rm .rw{opacity:1}
 @media(max-width:900px){.two-col{grid-template-columns:1fr;gap:46px}}
 .mission-image{border-radius:var(--r);overflow:hidden;position:relative}
 .mission-image-inner{width:100%;aspect-ratio:4/5;background:linear-gradient(160deg,#D9CEB8,#BFB398);display:flex;align-items:center;justify-content:center;color:rgba(18,18,18,.4);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
-.mission-image::after{content:"absolute;inset:0;border:1px solid rgba(18,18,18,.08)"}
+.mission-image::after{content:"";position:absolute;inset:0;border:1px solid rgba(18,18,18,.08)}
 
 .stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(18,18,18,.08);border-radius:var(--r);overflow:hidden;margin-top:70px}
 .stat-strip div{background:var(--paper);padding:40px 30px;text-align:center;border-right:1px solid rgba(18,18,18,.08)}
@@ -220,7 +231,7 @@ body.rm .rw{opacity:1}
 #nirjara-cover video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;z-index:0}
 #nirjara-cover::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(14,16,15,.35) 0%,rgba(14,16,15,.55) 55%,var(--night) 100%)}
 #nirjara-cover .cover-caption{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;padding:0 40px 44px}
-@media(max-width:640px){#nirjara-cover .cover-caption{padding:0 20px 32px}}
+@media(max-width:640px){#nirjara-cover .cover-caption{padding:0 24px 32px}}
 #nirjara-cover .cover-caption .eyebrow{color:#FFE2C7}
 #nirjara-cover .cover-caption h2{color:#fff;font-size:clamp(2rem,4.5vw,3.5rem);margin-top:8px;text-shadow:0 2px 30px rgba(0,0,0,.7)}
 #nirjara .section-head{max-width:700px;margin-bottom:70px}
@@ -330,8 +341,8 @@ select option{color:var(--ink);background:var(--paper)}
 /* ── FOOTER ── */
 footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-size:.85rem}
 .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:var(--maxw);margin:0 auto;padding:0 40px;margin-bottom:54px}
-@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:36px;padding:0 20px}}
-@media(max-width:480px){.footer-top{grid-template-columns:1fr;padding:0 20px}}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:36px;padding:0 24px}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr;padding:0 24px}}
 .footer-brand-logo{height:56px;width:56px;margin-bottom:16px;object-fit:contain}
 .footer-dev{font-family:var(--dev);font-size:1.5rem;color:#fff;margin-bottom:10px}
 .footer-sub{font-size:.82rem;line-height:1.7;max-width:30ch}
@@ -339,7 +350,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 .footer-col a{display:block;text-decoration:none;margin-bottom:9px;color:rgba(244,244,240,.55);transition:color .2s;font-size:.85rem}
 .footer-col a:hover{color:var(--secondary)}
 .footer-base{max-width:var(--maxw);margin:0 auto;padding:24px 40px 0;border-top:1px solid rgba(255,255,255,.05);font-size:.74rem;color:rgba(244,244,240,.3)}
-@media(max-width:640px){.footer-base{padding:24px 20px 0}}
+@media(max-width:640px){.footer-base{padding:24px 24px 0}}
 
 /* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
@@ -359,6 +370,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav" class="scrolled">
   <div class="bar">
     <a class="brand" href="#hero">
@@ -375,19 +387,25 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div id="hero-bg"></div>
 
+  <!-- centre logo: fades in, rotates throughout, grows to frame the tribute -->
   <img id="hero-logo" src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="">
 
+  <!-- orbit ring: video tile + image tiles, built by JS -->
   <div id="orbit-ring"></div>
 
+  <!-- small symbol, top centre -->
   <img id="hero-symbol-top" src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="">
 
+  <!-- Phase A: headline over the full-screen video -->
   <div class="hero-layer" id="hero-lead">
     <h1>Translating <em>intent</em> into compassionate action.</h1>
   </div>
 
+  <!-- Phase C: count reveals word-by-word, then the guided paragraph all at once -->
   <div class="hero-layer" id="hero-count">
     <h2 class="rt-count">12 Intentions. 12 Initiatives.</h2>
   </div>
@@ -395,6 +413,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
     <p>Guided by the Bhavnas of Jain philosophy, we turn reflection into action — easing suffering, empowering communities, and protecting the environment.</p>
   </div>
 
+  <!-- Phase D: tagline word-by-word, no images, logo rotating behind -->
   <div class="hero-layer" id="hero-tagline">
     <h2 class="rt-tag-dev dev">भाव से बदलाव</h2>
     <div class="tag-lower">
@@ -403,6 +422,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
     </div>
   </div>
 
+  <!-- Phase E: logo grows to frame the tribute -->
   <div class="hero-layer" id="hero-tribute">
     <p class="eyebrow">In loving tribute</p>
     <h3>Shanti &amp; Pawan Jain</h3>
@@ -413,6 +433,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
     <p class="tr-text">Our grandparents practised seva as a daily habit, not an occasion. This foundation carries their names so their intention never stops moving.</p>
   </div>
 
+  <!-- Phase F: logo swipes up, Nirjara flagship promo appears (new colour scheme) -->
   <div class="hero-layer" id="hero-nirjara">
     <p class="eyebrow">Active Initiative · निर्जरा</p>
     <h2>Nirjara —<br><em>shedding what binds.</em></h2>
@@ -428,6 +449,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   <div class="scroll-prompt-hero" id="scrollPromptHero">↓ Scroll for more</div>
 </section>
 
+<!-- DUAL PATHWAY -->
 <section id="pathways">
   <div class="pathways-inner">
     <div class="path-card">
@@ -445,6 +467,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
+<!-- MISSION -->
 <section class="section" id="mission-detail">
   <div class="wrap two-col">
     <div class="reveal">
@@ -471,6 +494,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 
 <div class="divider"></div>
 
+<!-- 12 BHAVNAS -->
 <section class="section" id="bhavnas">
   <div class="wrap">
     <div style="max-width:680px;margin:0 auto 64px;text-align:center">
@@ -495,8 +519,10 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
+<!-- NIRJARA -->
 <section id="nirjara">
 
+  <!-- NIRJARA COVER VIDEO -->
   <div id="nirjara-cover">
     <video autoplay muted loop playsinline preload="auto">
       <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781346284/14211520-hd_1920_1080_30fps_ckuixr.mp4" type="video/mp4">
@@ -527,6 +553,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
       </div>
       <p class="n-foot">*Indicative — MoSJE national survey 2019, GATS-2, WHO. Verify before public launch.</p>
       
+      <!-- NIRJARA APP FEATURE -->
       <div class="app-feature reveal">
         <div class="app-text">
           <p class="eyebrow">Digital Support</p>
@@ -549,6 +576,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
+<!-- GALLERY -->
 <section class="section" id="gallery">
   <div class="wrap">
     <p class="eyebrow">In the Field</p>
@@ -572,6 +600,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
+<!-- PARTNER / CSR -->
 <section class="section" id="partner">
   <div class="wrap">
     <div style="max-width:640px;margin-bottom:56px">
@@ -605,6 +634,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 
 <div class="divider"></div>
 
+<!-- TEAM -->
 <section class="section" id="team">
   <div class="wrap">
     <div style="text-align:center;max-width:580px;margin:0 auto">
@@ -623,6 +653,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
+<!-- DONATE + VOLUNTEER -->
 <section class="section" id="act">
   <div class="wrap">
     <div style="max-width:600px;margin-bottom:50px">
@@ -669,6 +700,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
+<!-- SPONSORS / AFFILIATES -->
 <section class="section" id="sponsors">
   <div class="wrap">
     <p class="eyebrow">Sponsors &amp; Affiliates</p>
@@ -688,6 +720,7 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 
 <div class="divider"></div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div>
@@ -749,6 +782,9 @@ function lerp(a,b,t){return a+(b-a)*t;}
 
 /* ── HERO — GSAP ScrollTrigger multi-phase cinematic ── */
 gsap.registerPlugin(ScrollTrigger);
+
+/* GSAP config added to fix iOS Safari pinning white gap issues */
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 const HERO_IMAGES=[
   'https://res.cloudinary.com/dnkxclcd8/image/upload/v1781509910/Screen_Shot_2026-06-15_at_12.51.31_AM_iehlor.png',
