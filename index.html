@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhavna Foundation — From Bhav to Badlaav</title>
+<meta name="description" content="Bhavna Foundation turns the 12 Bhavnas of Jain philosophy into 12 social initiatives. Active now: Nirjara — recovery support for alcohol and tobacco dependence. CSR partners welcome.">
+<link rel="icon" href="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&family=Kurale&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F4F0; --paper-soft:#EAEAE5;
+  --ink:#121212; --ink-soft:#3D3D3D;
+  --night:#0E100F; --night-2:#191C18;
+  --primary:#C8703A; --peach:#DFA07A; --secondary:#B8892E;
+  --sage:#8BBD96; --sage-deep:#5E9070; --gold:#A08B5A;
+  --cream:#FFE2C7;
+  --primary-ink:#fff; --secondary-ink:#0E100F;
+  --display:'Fraunces',Georgia,serif;
+  --body:'Manrope',system-ui,sans-serif;
+  --dev:'Kurale',serif;
+  --maxw:1200px; --r:4px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.015em}
+.dev{font-family:var(--dev)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+@media(max-width:640px){.wrap{padding:0 20px}}
+.eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--primary);font-weight:600;font-family:var(--body)}
+.section{padding:120px 0}
+@media(max-width:768px){.section{padding:80px 0}}
+.lede{font-size:1.1rem;color:var(--ink-soft);max-width:62ch;font-weight:300;line-height:1.75}
+
+/* ── BUTTONS ── */
+.btn{display:inline-block;padding:12px 28px;border-radius:2px;font-family:var(--body);font-weight:400;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .3s;border:1px solid transparent;text-align:center;cursor:pointer}
+.btn-coral{background:var(--primary);color:#fff}
+.btn-coral:hover{background:transparent;border-color:var(--primary);color:var(--primary)}
+nav.scrolled .links a.btn{border-color:var(--primary);color:var(--secondary)}
+nav.scrolled .links a.btn:hover{background:var(--primary);color:#fff}
+.btn-gold{background:var(--secondary);color:var(--secondary-ink)}
+.btn-gold:hover{background:transparent;border-color:var(--secondary);color:var(--secondary)}
+.btn-outline{border-color:var(--ink);color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:var(--paper)}
+.btn-outline-light{border-color:rgba(244,244,240,.5);color:var(--paper)}
+.btn-outline-light:hover{background:var(--paper);color:var(--ink)}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:480px){.cta-row{flex-direction:column}.cta-row .btn{text-align:center}}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,backdrop-filter .4s,border-color .4s}
+nav .bar{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:0 auto;padding:11px 40px}
+@media(max-width:640px){nav .bar{padding:9px 20px}}
+nav .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+nav .brand img{height:34px;width:34px;object-fit:contain}
+nav .brand .nm{font-family:var(--display);font-size:1.12rem;color:var(--ink);white-space:nowrap;font-weight:500;transition:color .3s}
+nav.scrolled{background:rgba(255,247,240,.72);backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid rgba(18,18,18,.06)}
+nav.scrolled .brand .nm{color:var(--ink)}
+nav .links{display:flex;gap:28px;align-items:center}
+nav .links a{font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink-soft);transition:color .25s}
+nav .links a:hover{color:var(--primary)}
+nav.scrolled .links a{color:var(--ink-soft)}
+nav.scrolled .links a:hover{color:var(--primary)}
+nav .links .btn{padding:10px 22px}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink);font-size:1.5rem}
+nav.scrolled .menu-btn{color:var(--ink)}
+@media(max-width:840px){
+  nav .links{position:fixed;inset:0;background:rgba(14,16,15,.97);flex-direction:column;justify-content:center;gap:26px;transform:translateY(-100%);transition:transform .4s ease}
+  nav .links.open{transform:translateY(0)}
+  nav .links a{font-size:1.1rem;color:#fff !important;text-shadow:none}
+  .menu-btn{display:block;z-index:110;position:relative}
+}
+
+/* ── HERO (GSAP scrubbed, multi-phase) ── */
+#hero{position:relative;height:100vh;width:100%;overflow:hidden;background:#ffffff}
+#hero-bg{position:absolute;inset:0;background:#ffffff;z-index:0;will-change:background-color}
+
+/* centre rotating / growing logo */
+#hero-logo{position:absolute;top:50%;left:50%;width:min(42vmin,420px);z-index:2;opacity:0;pointer-events:none}
+
+/* orbit ring of images + the video tile (3D depth via JS) */
+#orbit-ring{position:absolute;top:50%;left:50%;width:0;height:0;z-index:3;pointer-events:none}
+.orbit-item{position:absolute;left:0;top:0;width:212px;height:148px;overflow:hidden;border-radius:4px;background-size:cover;background-position:center;box-shadow:0 24px 60px rgba(0,0,0,.28);backface-visibility:hidden;will-change:transform,opacity,filter}
+.orbit-item--video{width:1920px;height:1080px;box-shadow:none;will-change:auto}
+.orbit-item--video video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover}
+@media(max-width:760px){.orbit-item{width:150px;height:104px}.orbit-item.minor{display:none}}
+
+#hero-symbol-top{position:absolute;top:22px;left:50%;width:40px;z-index:6;transform:translateX(-50%);opacity:.9;pointer-events:none}
+
+/* shared text layers */
+.hero-layer{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 6vw;z-index:5;pointer-events:none;opacity:0;visibility:hidden}
+#hero-lead{opacity:1;visibility:visible}
+#hero-lead h1{font-family:var(--display);font-weight:400;color:var(--ink);font-size:clamp(2.4rem,6vw,5.4rem);line-height:1.08;letter-spacing:-.01em;max-width:17ch;text-shadow:0 2px 26px rgba(255,255,255,.6)}
+#hero-lead h1 em{font-style:italic;color:var(--primary)}
+
+#hero-count .rt-count{font-family:var(--display);font-weight:500;color:var(--ink);font-size:clamp(2rem,5.4vw,4.6rem);line-height:1.06;letter-spacing:-.015em}
+#hero-guided p{font-family:var(--body);font-weight:300;color:var(--ink);font-size:clamp(1rem,1.9vw,1.45rem);line-height:1.65;max-width:34ch;margin:0 auto}
+#hero-count{padding-bottom:22vh}
+#hero-guided{padding-top:20vh}
+
+/* tagline: elegant, lighter weight */
+#hero-tagline .rt-tag-dev{font-family:var(--dev);font-weight:400;color:var(--ink);font-size:clamp(2.4rem,7vw,5.6rem);line-height:1.08;letter-spacing:.01em}
+#hero-tagline .rt-tag-dev .rw{margin:0 .12em}
+#hero-tagline .tag-lower{margin-top:42vh;display:flex;flex-direction:column;align-items:center;gap:20px}
+#hero-tagline .rt-tag-en{font-family:var(--display);font-style:italic;font-weight:400;color:var(--primary);font-size:clamp(1.3rem,3.2vw,2.4rem)}
+#hero-tagline .tag-lower .btn{pointer-events:auto}
+
+#hero-tribute{gap:0}
+#hero-tribute .eyebrow{color:var(--primary)}
+#hero-tribute h3{font-family:var(--display);font-weight:500;color:var(--ink);font-size:clamp(1.6rem,3.4vw,2.6rem);margin:8px 0 0}
+#hero-tribute .tr-text{font-family:var(--body);font-weight:300;color:var(--ink-soft);font-size:.98rem;line-height:1.7;max-width:32ch;margin:22px auto 0}
+#hero-tribute .tribute-frames{margin:24px auto 0}
+
+/* nirjara promo scene inside hero (revealed when logo swipes up) */
+#hero-nirjara .eyebrow{color:var(--primary);letter-spacing:.22em}
+#hero-nirjara h2{font-family:var(--display);font-weight:400;color:var(--ink);font-size:clamp(2.4rem,6vw,5rem);line-height:1.04;margin:14px 0 0}
+#hero-nirjara h2 em{font-style:italic;color:var(--secondary)}
+#hero-nirjara .n-sub{font-family:var(--body);font-weight:300;color:var(--ink-soft);font-size:clamp(1rem,1.8vw,1.3rem);margin:22px 0 4px}
+#hero-nirjara .n-dev{font-family:var(--dev);color:var(--secondary);font-size:clamp(1.1rem,2.4vw,1.6rem)}
+#hero-nirjara .cta-row{margin-top:30px;justify-content:center;pointer-events:auto}
+
+.rw{display:inline-block;opacity:.12}
+.scroll-prompt-hero{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:6;color:rgba(20,20,20,.5);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;font-family:var(--body)}
+
+/* reduced-motion: stack everything statically */
+body.rm #hero{height:auto;overflow:visible;padding:130px 0 70px;background:var(--cream)}
+body.rm .hero-layer{position:static;opacity:1;visibility:visible;transform:none;margin:46px auto;padding:0 6vw}
+body.rm #hero-tagline .tag-lower{margin-top:24px}
+body.rm #hero-lead h1{color:var(--ink);text-shadow:none}
+body.rm #orbit-ring,body.rm #hero-logo,body.rm #hero-symbol-top,body.rm #scrollPromptHero{display:none}
+body.rm .rw{opacity:1}
+
+.tribute-frames{display:flex;gap:20px;justify-content:center;margin:26px 0 20px;flex-wrap:wrap}
+.frame{width:140px}
+.frame .ph{width:140px;height:175px;border-radius:72px 72px var(--r) var(--r);background:linear-gradient(160deg,#2a3028,#1a1f18);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;color:rgba(244,244,240,.45);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;text-align:center}
+.frame figcaption{margin-top:8px;color:#fff;font-family:var(--display);font-size:.95rem}
+.frame figcaption span{display:block;font-family:var(--body);font-size:.7rem;color:rgba(244,244,240,.55);letter-spacing:.14em;text-transform:uppercase}
+@media(max-width:480px){.frame{width:110px}.frame .ph{width:110px;height:140px}}
+
+/* ── DUAL PATHWAY ── */
+#pathways{background:var(--night-2);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.pathways-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:var(--maxw);margin:0 auto}
+@media(max-width:768px){.pathways-inner{grid-template-columns:1fr}}
+.path-card{padding:70px 50px;border-right:1px solid rgba(255,255,255,.05);transition:background .3s}
+.path-card:last-child{border-right:none}
+.path-card:hover{background:rgba(255,255,255,.025)}
+@media(max-width:768px){.path-card{padding:50px 30px;border-right:none;border-bottom:1px solid rgba(255,255,255,.05)}}
+.path-card .eyebrow{color:var(--secondary);margin-bottom:18px}
+.path-card h3{color:#fff;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:16px;line-height:1.15}
+.path-card p{color:rgba(244,244,240,.62);font-size:.97rem;font-weight:300;line-height:1.75;margin-bottom:32px;max-width:44ch}
+
+/* ── MISSION ── */
+#mission-detail{background:var(--paper)}
+.two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:center}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:46px}}
+.mission-image{border-radius:var(--r);overflow:hidden;position:relative}
+.mission-image-inner{width:100%;aspect-ratio:4/5;background:linear-gradient(160deg,#D9CEB8,#BFB398);display:flex;align-items:center;justify-content:center;color:rgba(18,18,18,.4);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+.mission-image::after{content:"absolute;inset:0;border:1px solid rgba(18,18,18,.08)"}
+
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(18,18,18,.08);border-radius:var(--r);overflow:hidden;margin-top:70px}
+.stat-strip div{background:var(--paper);padding:40px 30px;text-align:center;border-right:1px solid rgba(18,18,18,.08)}
+.stat-strip div:last-child{border-right:none}
+.stat-strip b{font-family:var(--display);font-size:3.5rem;color:var(--primary);display:block;font-weight:400;line-height:1.05}
+.stat-strip span{font-size:.82rem;color:var(--ink-soft);display:block;margin-top:8px;font-weight:400;line-height:1.5;letter-spacing:.01em}
+@media(max-width:640px){.stat-strip{grid-template-columns:1fr}.stat-strip div{border-right:none;border-bottom:1px solid rgba(18,18,18,.08)}.stat-strip div:last-child{border-bottom:none}}
+
+/* ── BHAVNA WHEEL ── */
+#bhavnas{background:var(--paper-soft)}
+.wheel-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+@media(max-width:900px){.wheel-layout{grid-template-columns:1fr;gap:40px}}
+#wheel{width:100%;max-width:480px;margin:0 auto;display:block;cursor:pointer}
+#wheel path.seg{transition:opacity .25s;opacity:.42}
+#wheel path.seg:hover{opacity:.8}
+#wheel path.seg.active{opacity:1}
+#wheel text{font-family:var(--body);font-size:9px;font-weight:500;letter-spacing:.04em;fill:var(--ink);pointer-events:none}
+.wheel-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
+.wheel-nav button{width:42px;height:42px;border-radius:50%;border:1px solid rgba(18,18,18,.15);background:transparent;font-size:1rem;cursor:pointer;color:var(--ink);transition:all .22s;font-family:var(--body)}
+.wheel-nav button:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.wheel-nav .cur-label{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;min-width:140px;text-align:center;font-family:var(--body)}
+
+.bhavna-panel{background:var(--paper);border:1px solid rgba(18,18,18,.07);border-radius:var(--r);padding:50px;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.bhavna-panel:active{cursor:grabbing}
+@keyframes slideFromRight{from{opacity:0;transform:translateX(46px)}to{opacity:1;transform:none}}
+@keyframes slideFromLeft{from{opacity:0;transform:translateX(-46px)}to{opacity:1;transform:none}}
+.bhavna-panel.anim-next{animation:slideFromRight .38s cubic-bezier(.16,1,.3,1)}
+.bhavna-panel.anim-prev{animation:slideFromLeft .38s cubic-bezier(.16,1,.3,1)}
+.swipe-hint{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-top:14px;opacity:.7;font-family:var(--body)}
+@media(min-width:901px){.swipe-hint .touch-only{display:none}}
+@media(max-width:640px){.bhavna-panel{padding:30px 22px}}
+.bhavna-panel .num{font-family:var(--body);color:var(--gold);font-size:.78rem;letter-spacing:.2em;font-weight:600}
+.bhavna-panel h3{font-size:2.8rem;margin:10px 0 4px;color:var(--ink);font-weight:400}
+.bhavna-panel .devname{font-family:var(--dev);font-size:1.4rem;color:var(--primary)}
+.bhavna-panel .meaning{margin:20px 0 0;color:var(--ink-soft);font-size:1.05rem;font-weight:300;line-height:1.7}
+.bhavna-panel .initiative-block{margin-top:28px;padding-top:24px;border-top:1px solid rgba(18,18,18,.07)}
+.bhavna-panel .live-badge{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:4px 11px;border-radius:2px;margin-bottom:10px}
+.live-badge.live{background:rgba(200,112,58,.1);color:var(--primary)}
+.live-badge.soon{background:rgba(94,144,112,.1);color:var(--sage-deep)}
+.bhavna-panel .initiative-label{font-size:1rem;color:var(--ink);font-weight:500}
+
+/* ── NIRJARA ── */
+#nirjara{background:var(--night);color:#fff;position:relative;overflow:hidden}
+/* Nirjara cover video band */
+#nirjara-cover{position:relative;height:46vh;min-height:320px;overflow:hidden;display:flex;align-items:flex-end}
+#nirjara-cover video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;z-index:0}
+#nirjara-cover::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(14,16,15,.35) 0%,rgba(14,16,15,.55) 55%,var(--night) 100%)}
+#nirjara-cover .cover-caption{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;padding:0 40px 44px}
+@media(max-width:640px){#nirjara-cover .cover-caption{padding:0 20px 32px}}
+#nirjara-cover .cover-caption .eyebrow{color:#FFE2C7}
+#nirjara-cover .cover-caption h2{color:#fff;font-size:clamp(2rem,4.5vw,3.5rem);margin-top:8px;text-shadow:0 2px 30px rgba(0,0,0,.7)}
+#nirjara .section-head{max-width:700px;margin-bottom:70px}
+#nirjara .eyebrow{color:#FFE2C7}
+#nirjara h2{color:#fff;font-size:clamp(2rem,4.5vw,3.5rem);margin:12px 0 18px}
+#nirjara .lede{color:rgba(244,244,240,.7)}
+.nirjara-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);overflow:hidden}
+@media(max-width:768px){.nirjara-grid{grid-template-columns:1fr}}
+.n-card{background:var(--night-2);padding:46px 36px}
+@media(max-width:640px){.n-card{padding:30px 22px}}
+.n-card .ic{font-size:1.6rem;margin-bottom:22px;display:block}
+.n-card h4{font-family:var(--display);font-size:1.3rem;font-weight:500;color:#fff;margin-bottom:12px}
+.n-card p{font-size:.93rem;color:rgba(244,244,240,.62);font-weight:300;line-height:1.7}
+.n-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:var(--r);overflow:hidden;margin-top:50px}
+@media(max-width:640px){.n-stat-row{grid-template-columns:1fr}}
+.n-stat{background:var(--night-2);padding:36px 28px}
+.n-stat b{font-family:var(--display);font-size:2.5rem;color:#FFE2C7;display:block;font-weight:400;line-height:1}
+.n-stat span{font-size:.82rem;color:rgba(244,244,240,.55);display:block;margin-top:8px;line-height:1.5;max-width:22ch}
+.n-foot{font-size:.7rem;color:rgba(244,244,240,.35);margin-top:22px;line-height:1.6}
+
+/* APP FEATURE */
+.app-feature{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;background:var(--night-2);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:50px;margin-top:40px;overflow:hidden}
+@media(max-width:768px){.app-feature{grid-template-columns:1fr;gap:30px;padding:30px 20px}}
+.app-text h3{font-family:var(--display);font-size:2rem;color:#fff;margin-bottom:16px;line-height:1.15}
+.app-text p{font-size:.97rem;color:rgba(244,244,240,.62);font-weight:300;line-height:1.75;margin-bottom:20px}
+.app-video-wrapper{position:relative;width:100%;max-width:280px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);border:4px solid rgba(255,255,255,.05)}
+.app-video-wrapper video{width:100%;height:auto;display:block}
+
+/* ── GALLERY ── */
+#gallery{background:var(--paper);overflow:hidden}
+/* horizontal scroll rail — bigger tiles, swipe sideways */
+.g-rail{display:flex;gap:18px;margin-top:50px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:18px;scrollbar-width:thin;scrollbar-color:var(--primary) transparent}
+.g-rail::-webkit-scrollbar{height:8px}
+.g-rail::-webkit-scrollbar-track{background:rgba(18,18,18,.06);border-radius:8px}
+.g-rail::-webkit-scrollbar-thumb{background:var(--primary);border-radius:8px}
+.g-tile{flex:0 0 auto;width:440px;height:300px;border-radius:var(--r);overflow:hidden;position:relative;display:flex;align-items:flex-end;scroll-snap-align:start}
+.g-tile.wide{width:620px}
+@media(max-width:640px){.g-tile{width:300px;height:230px}.g-tile.wide{width:300px}}
+.g-tile .bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.4rem;transition:transform .5s ease}
+.g-tile video.bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.g-tile:hover .bg,.g-tile:hover video.bgvid{transform:scale(1.06)}
+.g-tile .cap{position:relative;width:100%;padding:14px 18px;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6));z-index:2}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--ink);z-index:2}
+.g-note{font-size:.78rem;color:var(--ink-soft);margin-top:14px;font-weight:300}
+.g-swipe-hint{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-top:8px;font-family:var(--body)}
+
+/* ── PARTNER ── */
+#partner{background:var(--paper-soft)}
+.partner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:50px}
+@media(max-width:900px){.partner-grid{grid-template-columns:1fr}}
+.p-card{border-radius:var(--r);padding:44px 36px;border:1px solid transparent;background:var(--paper);transition:all .3s;position:relative;overflow:hidden}
+.p-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--stripe)}
+.p-card:hover{border-color:rgba(18,18,18,.08);box-shadow:0 20px 50px rgba(18,18,18,.07)}
+.p-card h4{font-family:var(--display);font-size:1.4rem;margin-bottom:14px;font-weight:500}
+.p-card p{font-size:.92rem;color:var(--ink-soft);font-weight:300;line-height:1.7;margin-bottom:18px}
+.p-card ul{margin-left:18px;font-size:.88rem;color:var(--ink-soft);font-weight:300}
+.p-card li{margin-bottom:5px;line-height:1.5}
+.compliance-note{margin-top:50px;border:1px solid rgba(160,139,90,.3);border-radius:var(--r);padding:30px 36px;font-size:.9rem;color:var(--ink-soft);font-weight:300;line-height:1.7;background:var(--paper)}
+.compliance-note strong{color:var(--ink)}
+
+/* ── TEAM ── */
+#team{background:var(--paper)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:54px}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.team-grid{grid-template-columns:1fr}}
+.t-card{text-align:center}
+.t-card .av{width:120px;height:120px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.8rem;color:#fff;overflow:hidden}
+.t-card h4{font-family:var(--display);font-weight:400;font-size:1.2rem;margin-bottom:4px;color:var(--ink)}
+.t-card span{font-size:.78rem;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;font-weight:400}
+
+/* ── ACT (Donate + Volunteer) ── */
+#act{background:var(--night)}
+.act-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:900px){.act-grid{grid-template-columns:1fr}}
+.act-card{background:var(--night-2);border:1px solid rgba(255,255,255,.05);border-radius:var(--r);padding:clamp(28px,5vw,54px)}
+.act-card h3{font-family:var(--display);font-size:2rem;color:#fff;font-weight:400;margin-bottom:14px}
+.act-card .sub-text{color:rgba(244,244,240,.6);font-size:.93rem;font-weight:300;margin-bottom:26px;line-height:1.7}
+.tiers{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tiers button{background:transparent;border:1px solid rgba(244,244,240,.2);color:rgba(244,244,240,.85);padding:10px 16px;border-radius:var(--r);cursor:pointer;font-family:var(--body);font-weight:500;font-size:.84rem;transition:all .25s}
+.tiers button.sel,.tiers button:hover{background:var(--secondary);border-color:var(--secondary);color:var(--secondary-ink)}
+#tier-note{font-size:.82rem;color:var(--sage);margin-bottom:22px;min-height:1.4em;font-weight:300}
+#donate-btn{display:block;width:100%;text-align:center}
+input,select,textarea{width:100%;padding:13px 16px;border-radius:var(--r);border:1px solid rgba(244,244,240,.15);background:rgba(244,244,240,.05);color:#fff;font-family:var(--body);font-size:.9rem;margin-bottom:12px;transition:border-color .25s}
+input::placeholder,textarea::placeholder{color:rgba(244,244,240,.4)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--secondary)}
+select option{color:var(--ink);background:var(--paper)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+.form-submit{display:block;width:100%;border:none;cursor:pointer}
+.form-ok{display:none;margin-top:14px;background:rgba(94,144,112,.12);border:1px solid var(--sage-deep);color:var(--sage);padding:14px 16px;border-radius:var(--r);font-size:.88rem;line-height:1.6}
+
+/* ── SPONSORS / AFFILIATES ── */
+#sponsors{background:var(--paper-soft);text-align:center}
+#sponsors .lede{margin:14px auto 0}
+.sponsor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:54px}
+@media(max-width:900px){.sponsor-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.sponsor-grid{grid-template-columns:1fr}}
+.sponsor-slot{aspect-ratio:3/2;border:1px dashed rgba(18,18,18,.18);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:rgba(18,18,18,.4);background:var(--paper);transition:border-color .3s,color .3s}
+.sponsor-slot:hover{border-color:var(--primary);color:var(--primary)}
+.sponsor-slot .plus{font-size:1.6rem;font-weight:300;line-height:1}
+.sponsor-slot .lbl{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;font-family:var(--body)}
+.sponsor-cta{margin-top:44px}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(160,139,90,.3),transparent);max-width:var(--maxw);margin:0 auto}
+
+/* ── FOOTER ── */
+footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-size:.85rem}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:var(--maxw);margin:0 auto;padding:0 40px;margin-bottom:54px}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:36px;padding:0 20px}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr;padding:0 20px}}
+.footer-brand-logo{height:56px;width:56px;margin-bottom:16px;object-fit:contain}
+.footer-dev{font-family:var(--dev);font-size:1.5rem;color:#fff;margin-bottom:10px}
+.footer-sub{font-size:.82rem;line-height:1.7;max-width:30ch}
+.footer-col h5{font-family:var(--body);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,244,240,.4);font-weight:600;margin-bottom:16px}
+.footer-col a{display:block;text-decoration:none;margin-bottom:9px;color:rgba(244,244,240,.55);transition:color .2s;font-size:.85rem}
+.footer-col a:hover{color:var(--secondary)}
+.footer-base{max-width:var(--maxw);margin:0 auto;padding:24px 40px 0;border-top:1px solid rgba(255,255,255,.05);font-size:.74rem;color:rgba(244,244,240,.3)}
+@media(max-width:640px){.footer-base{padding:24px 20px 0}}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+.scroll-prompt{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:15;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(244,244,240,.6);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;font-family:var(--body);transition:opacity .5s}
+.scroll-prompt::after{content:"";width:1px;height:38px;background:linear-gradient(var(--secondary),transparent);animation:drip 2s ease infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="scrolled">
+  <div class="bar">
+    <a class="brand" href="#hero">
+      <img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="Bhavna Foundation symbol">
+      <span class="nm">Bhavna Foundation</span>
+    </a>
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="links" id="navLinks">
+      <a href="#mission-detail">Mission</a>
+      <a href="#bhavnas">12 Bhavnas</a>
+      <a href="#nirjara">Nirjara</a>
+      <a href="#partner">CSR</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div id="hero-bg"></div>
+
+  <!-- centre logo: fades in, rotates throughout, grows to frame the tribute -->
+  <img id="hero-logo" src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="">
+
+  <!-- orbit ring: video tile + image tiles, built by JS -->
+  <div id="orbit-ring"></div>
+
+  <!-- small symbol, top centre -->
+  <img id="hero-symbol-top" src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="">
+
+  <!-- Phase A: headline over the full-screen video -->
+  <div class="hero-layer" id="hero-lead">
+    <h1>Translating <em>intent</em> into compassionate action.</h1>
+  </div>
+
+  <!-- Phase C: count reveals word-by-word, then the guided paragraph all at once -->
+  <div class="hero-layer" id="hero-count">
+    <h2 class="rt-count">12 Intentions. 12 Initiatives.</h2>
+  </div>
+  <div class="hero-layer" id="hero-guided">
+    <p>Guided by the Bhavnas of Jain philosophy, we turn reflection into action — easing suffering, empowering communities, and protecting the environment.</p>
+  </div>
+
+  <!-- Phase D: tagline word-by-word, no images, logo rotating behind -->
+  <div class="hero-layer" id="hero-tagline">
+    <h2 class="rt-tag-dev dev">भाव से बदलाव</h2>
+    <div class="tag-lower">
+      <p class="rt-tag-en">Intent-first change</p>
+      <a class="btn btn-outline" href="#bhavnas">Learn more about the 12 Bhavnas</a>
+    </div>
+  </div>
+
+  <!-- Phase E: logo grows to frame the tribute -->
+  <div class="hero-layer" id="hero-tribute">
+    <p class="eyebrow">In loving tribute</p>
+    <h3>Shanti &amp; Pawan Jain</h3>
+    <div class="tribute-frames">
+      <figure class="frame"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781515756/c77f6f86-e79f-434a-a351-94490d265a58_nnlxgf.jpg" alt="Shanti Jain" style="width:130px;height:165px;border-radius:66px 66px var(--r) var(--r);object-fit:cover;border:1px solid var(--gold)"><figcaption>Shanti Jain</figcaption></figure>
+      <figure class="frame"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781349905/21dda113-3fe6-430a-8bf9-dbdeae0d9b4b_evpuqr.jpg" alt="Pawan Jain" style="width:130px;height:165px;border-radius:66px 66px var(--r) var(--r);object-fit:cover;border:1px solid var(--gold)"><figcaption>Pawan Jain</figcaption></figure>
+    </div>
+    <p class="tr-text">Our grandparents practised seva as a daily habit, not an occasion. This foundation carries their names so their intention never stops moving.</p>
+  </div>
+
+  <!-- Phase F: logo swipes up, Nirjara flagship promo appears (new colour scheme) -->
+  <div class="hero-layer" id="hero-nirjara">
+    <p class="eyebrow">Active Initiative · निर्जरा</p>
+    <h2>Nirjara —<br><em>shedding what binds.</em></h2>
+    <p class="n-sub">Recovery support for alcohol and tobacco dependence.</p>
+    <p class="n-dev dev">भाव से बदलाव</p>
+    <div class="cta-row">
+      <a class="btn btn-coral" href="#act">Donate</a>
+      <a class="btn btn-gold" href="#partner">Partner via CSR</a>
+      <a class="btn btn-outline" href="#nirjara">Explore Nirjara</a>
+    </div>
+  </div>
+
+  <div class="scroll-prompt-hero" id="scrollPromptHero">↓ Scroll for more</div>
+</section>
+
+<!-- DUAL PATHWAY -->
+<section id="pathways">
+  <div class="pathways-inner">
+    <div class="path-card">
+      <p class="eyebrow">For Corporates</p>
+      <h3>Deploy CSR Capital</h3>
+      <p>Direct your Schedule VII funds to Nirjara — a vetted, measurable de-addiction programme with transparent reporting for your ESG and compliance teams.</p>
+      <a href="#partner" class="btn btn-gold">Explore Partnerships</a>
+    </div>
+    <div class="path-card">
+      <p class="eyebrow">For NGOs &amp; Volunteers</p>
+      <h3>Scale Your Impact</h3>
+      <p>Join our network to connect with partners funding de-addiction, mental health, education, and environment initiatives across India.</p>
+      <a href="#act" class="btn btn-outline-light">Apply to Network</a>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section" id="mission-detail">
+  <div class="wrap two-col">
+    <div class="reveal">
+      <p class="eyebrow">Who we are</p>
+      <h2>A philosophy<br>you can volunteer for.</h2>
+      <p class="lede" style="margin-top:20px">Inspired by Jain philosophy's twelve Bhavnas (twelve types of intentions), we aim to design twelve social initiatives to benefit healthcare, natural disaster relief, education, etc. Starting with the ninth Bhavna, Nirjara, we are launching a withdrawal aid program for people addicted to alcohol and tobacco.</p>
+      <div style="margin-top:32px" class="cta-row">
+        <a class="btn btn-outline" href="#bhavnas">The 12 Bhavnas</a>
+        <a class="btn btn-coral" href="#nirjara">Nirjara →</a>
+      </div>
+    </div>
+    <div class="mission-image reveal">
+      <div class="mission-image-inner">[ Photo placeholder — community / hands ]</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stat-strip reveal">
+      <div><b>12</b><span>Bhavnas mapped<br>to social initiatives</span></div>
+      <div><b>1</b><span>Flagship live — Nirjara,<br>de-addiction &amp; recovery</span></div>
+      <div><b>100%</b><span>Transparency in every<br>rupee of CSR deployment</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 12 BHAVNAS -->
+<section class="section" id="bhavnas">
+  <div class="wrap">
+    <div style="max-width:680px;margin:0 auto 64px;text-align:center">
+      <p class="eyebrow">The Framework</p>
+      <h2>The Twelve Bhavnas</h2>
+      <p class="lede" style="margin:14px auto 0">Twelve contemplations that dissolve attachment and awaken compassion — each a design brief for social good.</p>
+    </div>
+    <div class="wheel-layout">
+      <div class="reveal">
+        <svg id="wheel" viewBox="-115 -115 230 230" role="listbox" aria-label="12 Bhavnas" tabindex="0"></svg>
+        <div class="wheel-nav">
+          <button id="wPrev">←</button>
+          <div class="cur-label" id="wCur">09 · Nirjara</div>
+          <button id="wNext">→</button>
+        </div>
+      </div>
+      <div>
+        <div class="bhavna-panel reveal" id="bhavnaPanel" aria-live="polite"></div>
+        <p class="swipe-hint"><span class="touch-only">Swipe ← → · </span>drag, arrows, or tap a segment</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NIRJARA -->
+<section id="nirjara">
+
+  <!-- NIRJARA COVER VIDEO -->
+  <div id="nirjara-cover">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781346284/14211520-hd_1920_1080_30fps_ckuixr.mp4" type="video/mp4">
+    </video>
+    <div class="cover-caption">
+      <img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="" style="width:48px;height:48px;object-fit:contain;margin-bottom:14px;opacity:.95">
+      <p class="eyebrow">Active Initiative · 09 of 12</p>
+      <h2>Nirjara <span class="dev" style="font-size:.65em;color:#FFE2C7">निर्जरा</span></h2>
+    </div>
+  </div>
+
+  <div class="section wrap" style="padding-top:80px">
+    <div class="section-head reveal">
+      <p class="eyebrow">The shedding of what binds</p>
+      <p class="lede">In Jain thought, Nirjara is the deliberate shedding of accumulated karma. Recovery from alcohol and tobacco is exactly that — the patient, courageous release of a dependence, one day at a time, with a community that refuses to look away.</p>
+    </div>
+    <div class="nirjara-grid reveal">
+      <div class="n-card"><span class="ic">🪔</span><h4>Awareness &amp; Outreach</h4><p>Community camps and school or workplace sessions with local health workers — reducing stigma so people seek help before crisis.</p></div>
+      <div class="n-card"><span class="ic">🤝</span><h4>Recovery Circles</h4><p>Trained counsellors and peer-support circles — confidential, judgement-free, rooted in nonviolence toward oneself.</p></div>
+      <div class="n-card"><span class="ic">🌱</span><h4>Family Follow-through</h4><p>Support for spouses, parents and children, with structured follow-ups for a full year after the programme.</p></div>
+    </div>
+    
+    <div class="n-stat-row reveal">
+      <div class="n-stat"><b>~16 cr</b><span>people in India consume alcohol; ~5.7 cr affected by harmful use*</span></div>
+      <div class="n-stat"><b>~27 cr</b><span>tobacco users — among the highest burdens in the world*</span></div>
+      <div class="n-stat"><b>13 lakh+</b><span>lives lost to tobacco-related illness every year in India*</span></div>
+    </div>
+    <p class="n-foot">*Indicative — MoSJE national survey 2019, GATS-2, WHO. Verify before public launch.</p>
+    
+    <!-- NIRJARA APP FEATURE -->
+    <div class="app-feature reveal">
+      <div class="app-text">
+        <p class="eyebrow">Digital Support</p>
+        <h3>Tracking Recovery,<br>Day by Day.</h3>
+        <p>Recovery is a daily decision. As part of the Nirjara initiative, we distribute homeopathy support kits alongside an easy-to-use mobile application.</p>
+        <p>The app allows individuals to check in daily, track their smoke-free and alcohol-free streaks, and visualize their progress to build lasting, positive momentum away from dependence.</p>
+      </div>
+      <div class="app-video-wrapper">
+        <video autoplay muted loop playsinline>
+          <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781514603/Screen_Recording_2026-06-15_at_2.07.13_AM_uhj0pa.mov" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="cta-row reveal" style="margin-top:44px">
+      <a class="btn btn-gold" href="#partner">Fund Nirjara via CSR</a>
+      <a class="btn btn-outline-light" href="#act">Volunteer with Nirjara</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="wrap">
+    <p class="eyebrow">In the Field</p>
+    <h2>Moments from the work.</h2>
+    <div class="g-rail">
+      <div class="g-tile wide">
+        <video class="bgvid" autoplay muted loop playsinline preload="metadata">
+          <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781346284/14211520-hd_1920_1080_30fps_ckuixr.mp4" type="video/mp4">
+        </video>
+        <div class="cap">Nirjara — programme film</div>
+      </div>
+      <div class="g-tile" style="background:linear-gradient(150deg,#1e2b1f,#2e3f2e)"><div class="bg">🪔</div><div class="cap">Awareness camp</div></div>
+      <div class="g-tile" style="background:linear-gradient(150deg,#2a2418,#3d3420)"><div class="bg">🤝</div><div class="cap">Recovery circle</div></div>
+      <div class="g-tile" style="background:linear-gradient(150deg,#1a2418,#263628)"><div class="bg">🌱</div><div class="cap">Family support</div></div>
+      <div class="g-tile" style="background:linear-gradient(150deg,#28201a,#3a2e22)"><div class="bg">🏥</div><div class="cap">Health screening</div></div>
+      <div class="g-tile wide" style="background:linear-gradient(150deg,#1a1c18,#282c22)"><div class="bg">🎬</div><div class="play-btn">▶</div><div class="cap">Volunteer stories (video placeholder)</div></div>
+      <div class="g-tile" style="background:linear-gradient(150deg,#2a1e1a,#3c2c22)"><div class="bg">🌳</div><div class="cap">Community drive</div></div>
+    </div>
+    <p class="g-swipe-hint">← Scroll sideways to explore →</p>
+    <p class="g-note">Prototype placeholders — replace remaining tiles with real photography and short films as the programme grows.</p>
+  </div>
+</section>
+
+<!-- PARTNER / CSR -->
+<section class="section" id="partner">
+  <div class="wrap">
+    <div style="max-width:640px;margin-bottom:56px">
+      <p class="eyebrow">For Companies &amp; Fellow NGOs</p>
+      <h2>Partner with us.</h2>
+      <p class="lede">Nirjara is built as a credible, measurable home for CSR investment in preventive healthcare — and an open platform for NGOs in de-addiction and mental health to collaborate, not compete.</p>
+    </div>
+    <div class="partner-grid">
+      <div class="p-card reveal" style="--stripe:var(--primary)">
+        <h4>CSR Programme Funding</h4>
+        <p>Adopt Nirjara for a district, a year, or a cohort — with transparent unit costs and quarterly impact reporting.</p>
+        <ul><li>Named cohort or district programmes</li><li>Quarterly impact &amp; utilisation reports</li><li>Site visits &amp; employee engagement days</li></ul>
+      </div>
+      <div class="p-card reveal" style="--stripe:var(--secondary)">
+        <h4>Employee Volunteering</h4>
+        <p>Bring your teams into the work — awareness drives, mentorship, and payroll giving with corporate matching.</p>
+        <ul><li>Structured volunteering calendars</li><li>Workplace tobacco-cessation drives</li><li>Matched payroll giving</li></ul>
+      </div>
+      <div class="p-card reveal" style="--stripe:var(--sage-deep)">
+        <h4>NGO Collaboration</h4>
+        <p>Share referral pathways, counsellor training, and community networks instead of duplicating them.</p>
+        <ul><li>Referral &amp; follow-up partnerships</li><li>Shared counsellor training</li><li>Joint grant applications</li></ul>
+      </div>
+    </div>
+    <div class="compliance-note reveal">
+      <strong>CSR eligibility:</strong> De-addiction and preventive healthcare align with Schedule VII of the Companies Act, 2013. Registration, 12A/80G and CSR-1 details will appear here on completion. Partners should verify alignment with their CSR counsel.
+      <div style="margin-top:18px"><a class="btn btn-coral" href="mailto:partnerships@bhavnafoundation.org?subject=CSR%20Partnership">Request the partnership deck →</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TEAM -->
+<section class="section" id="team">
+  <div class="wrap">
+    <div style="text-align:center;max-width:580px;margin:0 auto">
+      <p class="eyebrow">Our Team</p>
+      <h2>Hands in the circle.</h2>
+      <p class="lede" style="margin:12px auto 0">A small founding team carrying a family's intention forward.</p>
+    </div>
+    <div class="team-grid">
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--primary),var(--peach));"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781349640/IMG_0276_bsckn0.jpg" alt="Tanvi Jain" style="width:100%;height:100%;object-fit:cover;"></div><h4>Tanvi Jain</h4><span>Founder &amp; Co-Director</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--secondary),var(--gold))">दि</div><h4>Divyansh Jain</h4><span>Co-Director</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--sage-deep),var(--sage))">मे</div><h4>Dr. Medhavi Jain</h4><span>Co-Director &amp; Clinical Advisor</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--primary),var(--peach));"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781515757/cf1fcdff-f1e5-4013-ab0b-b837cf10c5a8_tkowbm.jpg" alt="Nidhi Jain" style="width:100%;height:100%;object-fit:cover;"></div><h4>Nidhi Jain</h4><span>Partnership Advisor</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--secondary),var(--gold));"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781515757/c391dfcc-1a49-4b18-b4f1-e37efc204c03_yj6qqr.jpg" alt="Babita Jain" style="width:100%;height:100%;object-fit:cover;"></div><h4>Babita Jain</h4><span>Financial Advisor</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--sage-deep),var(--sage))">अ</div><h4>Ankush Jain</h4><span>Religious Advisor</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE + VOLUNTEER -->
+<section class="section" id="act">
+  <div class="wrap">
+    <div style="max-width:600px;margin-bottom:50px">
+      <p class="eyebrow" style="color:var(--secondary)">Act Today</p>
+      <h2 style="color:#fff" class="dev">भाव से बदलाव</h2>
+      <p style="color:#fff;font-family:var(--body);font-size:1.05rem;font-weight:300;margin-top:8px">From intention to change — give money, time, or skill.</p>
+    </div>
+    <div class="act-grid">
+      <div class="act-card reveal">
+        <h3>Donate</h3>
+        <p class="sub-text">Funds counselling, outreach camps and family support under Nirjara. (Prototype — Razorpay &amp; 80G receipts to be connected.)</p>
+        <div class="tiers" id="tiers">
+          <button data-amt="500">₹500</button>
+          <button data-amt="1100" class="sel">₹1,100</button>
+          <button data-amt="2100">₹2,100</button>
+          <button data-amt="5100">₹5,100</button>
+          <button data-amt="custom">Custom</button>
+        </div>
+        <p id="tier-note">₹1,100 supports one month of recovery-circle sessions for one participant.</p>
+        <a class="btn btn-gold" id="donate-btn" href="#" onclick="alert('Prototype: connects to Razorpay when the foundation\'s account is live.');return false">Donate ₹1,100</a>
+      </div>
+      <div class="act-card reveal">
+        <h3>Volunteer</h3>
+        <p class="sub-text">Counsellors, doctors, designers, translators, mentors — every skill has a place.</p>
+        <form id="vol-form" novalidate>
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Full name" required>
+            <input type="tel" name="phone" placeholder="Phone">
+          </div>
+          <input type="email" name="email" placeholder="Email" required>
+          <select name="interest">
+            <option value="">Area of interest…</option>
+            <option>Nirjara — counselling &amp; peer support</option>
+            <option>Nirjara — outreach &amp; awareness camps</option>
+            <option>Healthcare camps</option>
+            <option>Design, content &amp; translation</option>
+            <option>Fundraising &amp; CSR liaison</option>
+          </select>
+          <button type="submit" class="btn btn-coral form-submit">Join as a volunteer</button>
+          <p class="form-ok" id="form-ok">🙏 Thank you — we'll be in touch. You can also write directly to volunteer@bhavnafoundation.org.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS / AFFILIATES -->
+<section class="section" id="sponsors">
+  <div class="wrap">
+    <p class="eyebrow">Sponsors &amp; Affiliates</p>
+    <h2>Building this circle together.</h2>
+    <p class="lede">Bhavna Foundation is at its founding stage. As CSR partners, healthcare allies, and fellow NGOs join Nirjara, their logos will appear here. The first seats are open.</p>
+    <div class="sponsor-grid reveal">
+      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl">Your logo here</span></div>
+      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl">CSR partner</span></div>
+      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl">NGO affiliate</span></div>
+      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl">Healthcare ally</span></div>
+    </div>
+    <div class="cta-row sponsor-cta" style="justify-content:center">
+      <a class="btn btn-coral" href="mailto:partnerships@bhavnafoundation.org?subject=Becoming%20a%20Sponsor%20%2F%20Affiliate">Become a sponsor or affiliate</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <img class="footer-brand-logo" src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="Bhavna Foundation">
+      <div class="footer-dev">भाव से बदलाव</div>
+      <p class="footer-sub">Bhaav se badlav — intent-first change, turning reflection into action. In tribute to Shanti &amp; Pawan Jain.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Foundation</h5>
+      <a href="#mission-detail">Mission</a>
+      <a href="#bhavnas">12 Bhavnas</a>
+      <a href="#team">Team</a>
+    </div>
+    <div class="footer-col">
+      <h5>Work</h5>
+      <a href="#nirjara">Nirjara</a>
+      <a href="#partner">CSR Partners</a>
+      <a href="#gallery">In the Field</a>
+      <a href="#sponsors">Sponsors &amp; Affiliates</a>
+    </div>
+    <div class="footer-col">
+      <h5>Get involved</h5>
+      <a href="#act">Donate</a>
+      <a href="#act">Volunteer</a>
+      <a href="mailto:hello@bhavnafoundation.org">hello@bhavnafoundation.org</a>
+      <a href="mailto:partnerships@bhavnafoundation.org">partnerships@</a>
+    </div>
+  </div>
+  <div class="footer-base">© 2026 Shanti Pawan Bhavna Foundation · Prototype — registration no., 12A/80G &amp; CSR-1 to be added · Built with absolute nonviolence 🕊️</div>
+</footer>
+
+<script>
+const THEMES={dusk:{vars:{'--primary':'#C8703A','--secondary':'#B8892E','--peach':'#DFA07A','--sage':'#8BBD96','--sage-deep':'#5E9070','--gold':'#A08B5A'},pal:['#C8703A','#B8892E','#DFA07A','#8BBD96','#5E9070','#A08B5A']}};
+let T=THEMES.dusk;
+const BHAVNAS=[
+  {n:'Anitya',d:'अनित्य',m:'Impermanence — everything changes; nothing material lasts.',i:'Dignified elder care & hospice support',live:false,em:'🍂'},
+  {n:'Asharana',d:'अशरण',m:'No external refuge — true shelter is found within.',i:'Crisis shelter & emergency relief',live:false,em:'🏠'},
+  {n:'Samsara',d:'संसार',m:'The endless cycle of wandering through births.',i:'Breaking poverty cycles through education',live:false,em:'🔄'},
+  {n:'Ekatva',d:'एकत्व',m:'Solitariness — each soul walks its journey alone.',i:'Mental-health companionship for the isolated',live:false,em:'🧘'},
+  {n:'Anyatva',d:'अन्यत्व',m:'Otherness — the self is distinct from the body it inhabits.',i:'Preventive health screening camps',live:false,em:'🪞'},
+  {n:'Ashuchi',d:'अशुचि',m:'Impurity of the body — care for it without attachment.',i:'Sanitation, hygiene & clean water',live:false,em:'💧'},
+  {n:'Asrava',d:'आस्रव',m:'Influx — how harmful tendencies flow into a life.',i:'School awareness & prevention education',live:false,em:'🌊'},
+  {n:'Samvara',d:'संवर',m:'Stoppage — closing channels through which harm enters.',i:'Youth tobacco & alcohol prevention',live:false,em:'🛡️'},
+  {n:'Nirjara',d:'निर्जरा',m:'Shedding — the deliberate release of what binds us.',i:'De-addiction & recovery: alcohol, tobacco, nicotine',live:true,em:'🕊️'},
+  {n:'Loka',d:'लोक',m:'Contemplation of the universe — our place in a shared world.',i:'Environment, water bodies & tree planting',live:false,em:'🌍'},
+  {n:'Bodhidurlabha',d:'बोधिदुर्लभ',m:'The rarity of right knowledge — wisdom is hard-won.',i:'Scholarships & community libraries',live:false,em:'📖'},
+  {n:'Dharma',d:'धर्म',m:'The true path — living the teaching, not merely knowing it.',i:'Volunteer corps & seva culture',live:false,em:'🪔'},
+];
+const TIER_NOTES={'500':'₹500 funds one community outreach awareness session.','1100':'₹1,100 supports one month of recovery-circle sessions for one participant.','2100':'₹2,100 covers counselling + family support for a full month.','5100':'₹5,100 sponsors a participant through an entire quarter.','custom':'Every rupee turns intention into action.'};
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* NAV */
+const nav=document.getElementById('nav');
+const navLinks=document.getElementById('navLinks');
+document.getElementById('menuBtn').addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+function lerp(a,b,t){return a+(b-a)*t;}
+
+/* ── HERO — GSAP ScrollTrigger multi-phase cinematic ── */
+gsap.registerPlugin(ScrollTrigger);
+
+const HERO_IMAGES=[
+  'https://res.cloudinary.com/dnkxclcd8/image/upload/v1781509910/Screen_Shot_2026-06-15_at_12.51.31_AM_iehlor.png',
+  'https://res.cloudinary.com/dnkxclcd8/image/upload/v1781509906/pexels-tkirkgoz-11961216_z3hesf.jpg',
+  'https://res.cloudinary.com/dnkxclcd8/image/upload/v1781509906/pexels-kelly-19063418_nysp7r.jpg',
+  'https://res.cloudinary.com/dnkxclcd8/image/upload/v1781509905/pexels-ahmed-akacha-3313934-6757989_e1qty2.jpg',
+  'https://res.cloudinary.com/dnkxclcd8/image/upload/v1781509905/pexels-kosyginl-28141441_jgcdgj.jpg',
+  'https://res.cloudinary.com/dnkxclcd8/image/upload/v1781509904/pexels-harshad-pendse-2158718535-35558791_wz2vy4.jpg',
+  'https://res.cloudinary.com/dnkxclcd8/image/upload/v1781509904/pexels-shamshir-lall-125804305-37826758_nh5m1j.jpg',
+  'https://res.cloudinary.com/dnkxclcd8/image/upload/v1781509904/pexels-sayan-mondal-1178632643-21826918_yazgoh.jpg',
+  'https://res.cloudinary.com/dnkxclcd8/image/upload/v1781509904/pexels-aasif-pathan-321950386-16118310_salzye.jpg'
+];
+const HERO_VIDEO='https://res.cloudinary.com/dnkxclcd8/video/upload/v1781350096/download_qjpczy.mp4';
+const CREAM='#FFE2C7';
+
+const ring=document.getElementById('orbit-ring');
+const items=[];                 // 0 = video tile, 1..9 = images
+const N=HERO_IMAGES.length+1;
+const baseAng=[];
+for(let k=0;k<N;k++) baseAng.push(k*(360/N)-90);
+for(let k=0;k<N;k++){
+  const el=document.createElement('div');
+  el.className='orbit-item'+(k%3===2?' minor':'');
+  if(k===0){
+    el.classList.add('orbit-item--video');
+    el.innerHTML='<video autoplay muted loop playsinline preload="auto"><source src="'+HERO_VIDEO+'" type="video/mp4"></video>';
+  }else{
+    el.style.backgroundImage='url('+HERO_IMAGES[k-1]+')';
+  }
+  ring.appendChild(el);
+  items.push(el);
+}
+const videoTile=items[0];
+const imageTiles=items.slice(1);
+
+/* word splitting */
+function splitWords(sel){
+  const el=document.querySelector(sel);
+  el.innerHTML=el.textContent.trim().split(/\s+/).map(w=>'<span class="rw">'+w+'</span>').join(' ');
+  return el.querySelectorAll('.rw');
+}
+const countWords=splitWords('#hero-count .rt-count');
+const tagWordsDev=splitWords('#hero-tagline .rt-tag-dev');
+const tagWordsEn=splitWords('#hero-tagline .rt-tag-en');
+const tagWords=[...tagWordsDev,...tagWordsEn];
+
+gsap.set('#hero-logo',{xPercent:-50,yPercent:-50});
+
+const isM=()=>window.innerWidth<760;
+
+/* animation state proxies driven by the scrubbed timeline */
+const orbit={a:0};       // orbit angle (deg): 0 -> 720 across two circles
+const intro={v:1};       // 1 = video full-frame centre, 0 = joined into ring
+const imagesIn={v:0};    // image tiles fade-in factor
+
+/* Base large container sizes to keep video crisp and scale down instead of up */
+function videoCoverScale(){
+  return Math.max(window.innerWidth/1920, window.innerHeight/1080);
+}
+
+/* place tiles each frame: positions move around the centre, images stay upright,
+   scale/opacity/blur vary by front<->back depth for a 3D-layered feel */
+function layout(){
+  const rx=Math.min(window.innerWidth*0.44,720);
+  const ry=Math.min(window.innerHeight*0.42,440)*0.72;   // larger oval keeps centre text clear
+  for(let k=0;k<items.length;k++){
+    const el=items[k];
+    const ang=(baseAng[k]+orbit.a)*Math.PI/180;
+    const depth=(Math.sin(ang)+1)/2;                      // 0 back .. 1 front
+    let x=Math.cos(ang)*rx, y=Math.sin(ang)*ry;
+    let sc=0.66+depth*0.52;
+    let op=0.42+depth*0.58;
+    let z=Math.round(depth*100);
+    let bl=(1-depth)*1.8;
+    if(k===0){                                            // video: fills screen, then recedes into ring
+      const t=1-intro.v;
+      x=lerp(0,x,t); y=lerp(0,y,t);
+      const targetW = isM() ? 230 : 320;
+      const targetScale = (targetW / 1920) * sc * 0.66;
+      sc = lerp(videoCoverScale(), targetScale, t);
+      op=lerp(1,op,t);
+      z=Math.round(lerp(240,z,t));
+      bl=lerp(0,bl,t);
+      el.style.filter='blur('+bl.toFixed(2)+'px)';
+      el.style.borderRadius=(t*24)+'px';                   // scaled up border radius to match downscaling
+      gsap.set(el,{x:x,y:y,scale:sc,zIndex:z,autoAlpha:op,rotation:0,xPercent:-50,yPercent:-50});
+    }else{
+      el.style.filter='blur('+bl.toFixed(2)+'px)';
+      gsap.set(el,{x:x,y:y,scale:sc,zIndex:z,autoAlpha:op*imagesIn.v,rotation:0,xPercent:-50,yPercent:-50});
+    }
+  }
+}
+
+function initStates(){
+  orbit.a=0; intro.v=1; imagesIn.v=0;
+  gsap.set(ring,{autoAlpha:1,scale:1});
+  gsap.set('#hero-logo',{autoAlpha:0,scale:1,rotation:0,x:0,y:0});
+  gsap.set(['#hero-count','#hero-guided','#hero-tagline','#hero-tribute','#hero-nirjara'],{autoAlpha:0});
+  gsap.set([countWords,tagWords],{opacity:.12});
+  layout();
+}
+
+if(reduceMotion){
+  document.body.classList.add('rm');
+  gsap.set([countWords,tagWords],{opacity:1});
+  imagesIn.v=1; intro.v=0; layout();
+}else{
+  initStates();
+  ScrollTrigger.addEventListener('refreshInit',initStates);
+
+  const tl=gsap.timeline({
+    defaults:{ease:'none'},
+    scrollTrigger:{
+      trigger:'#hero',
+      start:'top top',
+      end:()=>'+='+(isM()?4400:5600),
+      scrub:0.8,
+      pin:true,
+      anticipatePin:1,
+      invalidateOnRefresh:true
+    }
+  });
+  tl.eventCallback('onUpdate',layout);   // reposition the field every scrubbed frame
+
+  /* Phase A (0–1): video recedes from full-frame into the ring; images fade in */
+  tl.to(intro,{v:0,duration:1,ease:'power1.inOut'},0)
+    .to(imagesIn,{v:1,duration:0.8,ease:'power1.out'},0.4)
+    .to('#hero-lead',{autoAlpha:0,yPercent:-6,duration:0.4},0.25)
+    .to('#scrollPromptHero',{autoAlpha:0,duration:0.2},0.1)
+    .to('#hero-symbol-top',{autoAlpha:0,duration:0.2},0.05);
+
+  /* Phases B+C (1–6.5): the field circles TWICE; positions move, orientation stays upright */
+  tl.to(orbit,{a:720,duration:5.5},1.0)
+    .to('#hero-logo',{autoAlpha:0.4,duration:0.5},1.0)
+    .to('#hero-logo',{rotation:520,duration:9.0},1.0);   // keeps turning through D & E
+
+  /* Phase B (1–2): first circle — background white -> cream, no text */
+  tl.to('#hero-bg',{backgroundColor:CREAM,duration:2.0},1.0);
+
+  /* Phase C (2–6.5): second circle — count word-by-word, then guided all at once (adjusted to appear earlier & stay longer) */
+  tl.set('#hero-count',{autoAlpha:1},2.0)
+    .to(countWords,{opacity:1,duration:1.2,stagger:{each:0.09}},2.1)
+    .fromTo('#hero-guided',{autoAlpha:0,y:14},{autoAlpha:1,y:0,duration:0.5,ease:'power1.out'},3.7);
+
+  /* Phase D (6.5–8.6): images leave; tagline word-by-word; en + button below logo */
+  tl.to(ring,{autoAlpha:0,duration:0.55,ease:'power1.in'},6.5)
+    .to(['#hero-count','#hero-guided'],{autoAlpha:0,duration:0.4},6.5)
+    .set('#hero-tagline',{autoAlpha:1},7.0)
+    .to(tagWordsDev,{opacity:1,duration:1.0,stagger:{each:0.16}},7.0)
+    .to(tagWordsEn,{opacity:1,duration:0.5,stagger:{each:0.14}},8.0);
+
+  /* Phase E (8.6–10.2): logo grows to frame the tribute */
+  tl.to('#hero-tagline',{autoAlpha:0,duration:0.4},8.6)
+    .to('#hero-logo',{scale:()=>isM()?2.0:2.5,autoAlpha:0.28,duration:1.2,ease:'power1.inOut'},8.6)
+    .fromTo('#hero-tribute',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:0.7,ease:'power1.out'},9.2);
+
+  /* Phase F (10.2–12): logo swipes UP & out; Nirjara flagship promo appears */
+  tl.to('#hero-tribute',{autoAlpha:0,y:-20,duration:0.5},10.2)
+    .to('#hero-logo',{y:()=>-window.innerHeight*0.95,autoAlpha:0,duration:0.9,ease:'power2.in'},10.2)
+    .fromTo('#hero-nirjara',{autoAlpha:0,y:26},{autoAlpha:1,y:0,duration:0.8,ease:'power1.out'},10.9);
+}
+
+window.addEventListener('load',()=>ScrollTrigger.refresh());
+
+/* WHEEL */
+const wheel=document.getElementById('wheel');
+const panel=document.getElementById('bhavnaPanel');
+const wCur=document.getElementById('wCur');
+let activeB=8;
+function rebuildWheel(){
+  wheel.innerHTML='';
+  const Ro=100,Ri=62,per=30,gap=3;
+  for(let i=0;i<12;i++){
+    const a0=(i*per-90+gap/2)*Math.PI/180,a1=((i+1)*per-90-gap/2)*Math.PI/180;
+    const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d',`M ${Ro*Math.cos(a0)} ${Ro*Math.sin(a0)} A ${Ro} ${Ro} 0 0 1 ${Ro*Math.cos(a1)} ${Ro*Math.sin(a1)} L ${Ri*Math.cos(a1)} ${Ri*Math.sin(a1)} A ${Ri} ${Ri} 0 0 0 ${Ri*Math.cos(a0)} ${Ri*Math.sin(a0)} Z`);
+    path.setAttribute('class','seg');path.setAttribute('fill',T.pal[i%T.pal.length]);
+    path.dataset.i=i;path.setAttribute('role','option');path.setAttribute('aria-label',BHAVNAS[i].n);
+    path.addEventListener('click',()=>setActive(i));
+    wheel.appendChild(path);
+    const mid=((i+.5)*per-90)*Math.PI/180,Rt=(Ro+Ri)/2;
+    const txt=document.createElementNS('http://www.w3.org/2000/svg','text');
+    txt.setAttribute('x',Rt*Math.cos(mid));txt.setAttribute('y',Rt*Math.sin(mid)+3);
+    txt.setAttribute('text-anchor','middle');txt.textContent=String(i+1).padStart(2,'0');
+    wheel.appendChild(txt);
+  }
+  const c1=document.createElementNS('http://www.w3.org/2000/svg','text');
+  c1.setAttribute('x',0);c1.setAttribute('y',2);c1.setAttribute('text-anchor','middle');
+  c1.setAttribute('style','font-family:Kurale,serif;font-size:14px;fill:#121212;letter-spacing:0');
+  c1.textContent='भावना';wheel.appendChild(c1);
+  const c2=document.createElementNS('http://www.w3.org/2000/svg','text');
+  c2.setAttribute('x',0);c2.setAttribute('y',18);c2.setAttribute('text-anchor','middle');
+  c2.setAttribute('style','font-size:7px;fill:#777;font-family:Inter,sans-serif;letter-spacing:.05em');
+  c2.textContent='12 BHAVNAS';wheel.appendChild(c2);
+  setActive(activeB);
+}
+function setActive(i,dir=0){
+  activeB=i;
+  if(dir!==0){panel.classList.remove('anim-next','anim-prev');void panel.offsetWidth;panel.classList.add(dir>0?'anim-next':'anim-prev');}
+  wheel.querySelectorAll('.seg').forEach(s=>s.classList.toggle('active',+s.dataset.i===i));
+  const b=BHAVNAS[i];
+  wCur.textContent=`${String(i+1).padStart(2,'0')} · ${b.n}`;
+  panel.innerHTML=`<div class="num">${String(i+1).padStart(2,'0')} / 12</div><h3>${b.n}</h3><div class="devname">${b.d}</div><p class="meaning">${b.m}</p><div class="initiative-block"><span class="live-badge ${b.live?'live':'soon'}">${b.live?'● Active now':'In design'}</span><p class="initiative-label">${b.i}</p>${b.live?`<div style="margin-top:20px"><a class="btn btn-coral" href="#nirjara" style="font-size:.78rem;padding:10px 22px">Explore Nirjara →</a></div>`:''}</div>`;
+}
+rebuildWheel();
+document.getElementById('wPrev').addEventListener('click',()=>setActive((activeB+11)%12,-1));
+document.getElementById('wNext').addEventListener('click',()=>setActive((activeB+1)%12,1));
+wheel.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();setActive((activeB+1)%12,1);}
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();setActive((activeB+11)%12,-1);}
+});
+function addSwipe(el){
+  let sx=0,sy=0,tracking=false;
+  el.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;tracking=true;},{passive:true});
+  el.addEventListener('pointerup',e=>{
+    if(!tracking)return;tracking=false;
+    const dx=e.clientX-sx,dy=e.clientY-sy;
+    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.4){if(dx<0)setActive((activeB+1)%12,1);else setActive((activeB+11)%12,-1);}
+  },{passive:true});
+  el.addEventListener('pointercancel',()=>{tracking=false;},{passive:true});
+}
+addSwipe(panel);addSwipe(wheel);
+
+/* REVEALS */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* DONATE + VOLUNTEER */
+document.querySelectorAll('#tiers button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#tiers button').forEach(x=>x.classList.remove('sel'));
+  b.classList.add('sel');
+  document.getElementById('tier-note').textContent=TIER_NOTES[b.dataset.amt];
+  document.getElementById('donate-btn').textContent=b.dataset.amt==='custom'?'Donate':'Donate ₹'+(+b.dataset.amt).toLocaleString('en-IN');
+}));
+document.getElementById('vol-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target;
+  if(!f.name.value.trim()||!f.email.value.trim()){f.reportValidity();return;}
+  document.getElementById('form-ok').style.display='block';
+  f.querySelector('.form-submit').disabled=true;
+});
+</script>
+</body></html>
