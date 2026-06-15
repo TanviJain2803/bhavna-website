@@ -75,7 +75,7 @@ nav.scrolled .menu-btn{color:var(--ink)}
 }
 
 /* ── HERO (GSAP scrubbed, multi-phase) ── */
-#hero{position:relative;height:100vh;width:100%;overflow:hidden;background:#ffffff}
+#hero{position:relative;height:100vh;height:100dvh;width:100%;overflow:hidden;background:#ffffff}
 #hero-bg{position:absolute;inset:0;background:#ffffff;z-index:0;will-change:background-color}
 
 /* centre rotating / growing logo */
@@ -86,7 +86,11 @@ nav.scrolled .menu-btn{color:var(--ink)}
 .orbit-item{position:absolute;left:0;top:0;width:212px;height:148px;overflow:hidden;border-radius:4px;background-size:cover;background-position:center;box-shadow:0 24px 60px rgba(0,0,0,.28);backface-visibility:hidden;will-change:transform,opacity,filter}
 .orbit-item--video{width:1920px;height:1080px;box-shadow:none;will-change:auto}
 .orbit-item--video video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover}
-@media(max-width:760px){.orbit-item{width:150px;height:104px}.orbit-item.minor{display:none}}
+
+/* Mobile image ring sizing - minor images no longer hidden */
+@media(max-width:760px){
+  .orbit-item{width:120px;height:84px}
+}
 
 #hero-symbol-top{position:absolute;top:22px;left:50%;width:40px;z-index:6;transform:translateX(-50%);opacity:.9;pointer-events:none}
 
@@ -98,8 +102,14 @@ nav.scrolled .menu-btn{color:var(--ink)}
 
 #hero-count .rt-count{font-family:var(--display);font-weight:500;color:var(--ink);font-size:clamp(2rem,5.4vw,4.6rem);line-height:1.06;letter-spacing:-.015em}
 #hero-guided p{font-family:var(--body);font-weight:300;color:var(--ink);font-size:clamp(1rem,1.9vw,1.45rem);line-height:1.65;max-width:34ch;margin:0 auto}
+
+/* Prevent text clipping/overlap on small mobile screens */
 #hero-count{padding-bottom:22vh}
 #hero-guided{padding-top:20vh}
+@media(max-width:760px){
+  #hero-count{padding-bottom:12vh}
+  #hero-guided{padding-top:12vh}
+}
 
 /* tagline: elegant, lighter weight */
 #hero-tagline .rt-tag-dev{font-family:var(--dev);font-weight:400;color:var(--ink);font-size:clamp(2.4rem,7vw,5.6rem);line-height:1.08;letter-spacing:.01em}
@@ -107,6 +117,9 @@ nav.scrolled .menu-btn{color:var(--ink)}
 #hero-tagline .tag-lower{margin-top:42vh;display:flex;flex-direction:column;align-items:center;gap:20px}
 #hero-tagline .rt-tag-en{font-family:var(--display);font-style:italic;font-weight:400;color:var(--primary);font-size:clamp(1.3rem,3.2vw,2.4rem)}
 #hero-tagline .tag-lower .btn{pointer-events:auto}
+@media(max-width:760px){
+  #hero-tagline .tag-lower{margin-top:28vh}
+}
 
 #hero-tribute{gap:0}
 #hero-tribute .eyebrow{color:var(--primary)}
@@ -230,7 +243,7 @@ body.rm .rw{opacity:1}
 
 /* APP FEATURE */
 .app-feature{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;background:var(--night-2);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:50px;margin-top:40px;overflow:hidden}
-@media(max-width:768px){.app-feature{grid-template-columns:1fr;gap:30px;padding:30px 20px}}
+@media(max-width:768px){.app-feature{grid-template-columns:1fr;gap:30px;padding:30px 24px}}
 .app-text h3{font-family:var(--display);font-size:2rem;color:#fff;margin-bottom:16px;line-height:1.15}
 .app-text p{font-size:.97rem;color:rgba(244,244,240,.62);font-weight:300;line-height:1.75;margin-bottom:20px}
 .app-video-wrapper{position:relative;width:100%;max-width:280px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);border:4px solid rgba(255,255,255,.05)}
@@ -346,7 +359,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav" class="scrolled">
   <div class="bar">
     <a class="brand" href="#hero">
@@ -363,25 +375,19 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div id="hero-bg"></div>
 
-  <!-- centre logo: fades in, rotates throughout, grows to frame the tribute -->
   <img id="hero-logo" src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="">
 
-  <!-- orbit ring: video tile + image tiles, built by JS -->
   <div id="orbit-ring"></div>
 
-  <!-- small symbol, top centre -->
   <img id="hero-symbol-top" src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="">
 
-  <!-- Phase A: headline over the full-screen video -->
   <div class="hero-layer" id="hero-lead">
     <h1>Translating <em>intent</em> into compassionate action.</h1>
   </div>
 
-  <!-- Phase C: count reveals word-by-word, then the guided paragraph all at once -->
   <div class="hero-layer" id="hero-count">
     <h2 class="rt-count">12 Intentions. 12 Initiatives.</h2>
   </div>
@@ -389,7 +395,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
     <p>Guided by the Bhavnas of Jain philosophy, we turn reflection into action — easing suffering, empowering communities, and protecting the environment.</p>
   </div>
 
-  <!-- Phase D: tagline word-by-word, no images, logo rotating behind -->
   <div class="hero-layer" id="hero-tagline">
     <h2 class="rt-tag-dev dev">भाव से बदलाव</h2>
     <div class="tag-lower">
@@ -398,7 +403,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
     </div>
   </div>
 
-  <!-- Phase E: logo grows to frame the tribute -->
   <div class="hero-layer" id="hero-tribute">
     <p class="eyebrow">In loving tribute</p>
     <h3>Shanti &amp; Pawan Jain</h3>
@@ -409,7 +413,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
     <p class="tr-text">Our grandparents practised seva as a daily habit, not an occasion. This foundation carries their names so their intention never stops moving.</p>
   </div>
 
-  <!-- Phase F: logo swipes up, Nirjara flagship promo appears (new colour scheme) -->
   <div class="hero-layer" id="hero-nirjara">
     <p class="eyebrow">Active Initiative · निर्जरा</p>
     <h2>Nirjara —<br><em>shedding what binds.</em></h2>
@@ -425,7 +428,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   <div class="scroll-prompt-hero" id="scrollPromptHero">↓ Scroll for more</div>
 </section>
 
-<!-- DUAL PATHWAY -->
 <section id="pathways">
   <div class="pathways-inner">
     <div class="path-card">
@@ -443,7 +445,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- MISSION -->
 <section class="section" id="mission-detail">
   <div class="wrap two-col">
     <div class="reveal">
@@ -470,7 +471,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 
 <div class="divider"></div>
 
-<!-- 12 BHAVNAS -->
 <section class="section" id="bhavnas">
   <div class="wrap">
     <div style="max-width:680px;margin:0 auto 64px;text-align:center">
@@ -495,10 +495,8 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- NIRJARA -->
 <section id="nirjara">
 
-  <!-- NIRJARA COVER VIDEO -->
   <div id="nirjara-cover">
     <video autoplay muted loop playsinline preload="auto">
       <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781346284/14211520-hd_1920_1080_30fps_ckuixr.mp4" type="video/mp4">
@@ -510,47 +508,47 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
     </div>
   </div>
 
-  <div class="section wrap" style="padding-top:80px">
-    <div class="section-head reveal">
-      <p class="eyebrow">The shedding of what binds</p>
-      <p class="lede">In Jain thought, Nirjara is the deliberate shedding of accumulated karma. Recovery from alcohol and tobacco is exactly that — the patient, courageous release of a dependence, one day at a time, with a community that refuses to look away.</p>
-    </div>
-    <div class="nirjara-grid reveal">
-      <div class="n-card"><span class="ic">🪔</span><h4>Awareness &amp; Outreach</h4><p>Community camps and school or workplace sessions with local health workers — reducing stigma so people seek help before crisis.</p></div>
-      <div class="n-card"><span class="ic">🤝</span><h4>Recovery Circles</h4><p>Trained counsellors and peer-support circles — confidential, judgement-free, rooted in nonviolence toward oneself.</p></div>
-      <div class="n-card"><span class="ic">🌱</span><h4>Family Follow-through</h4><p>Support for spouses, parents and children, with structured follow-ups for a full year after the programme.</p></div>
-    </div>
-    
-    <div class="n-stat-row reveal">
-      <div class="n-stat"><b>~16 cr</b><span>people in India consume alcohol; ~5.7 cr affected by harmful use*</span></div>
-      <div class="n-stat"><b>~27 cr</b><span>tobacco users — among the highest burdens in the world*</span></div>
-      <div class="n-stat"><b>13 lakh+</b><span>lives lost to tobacco-related illness every year in India*</span></div>
-    </div>
-    <p class="n-foot">*Indicative — MoSJE national survey 2019, GATS-2, WHO. Verify before public launch.</p>
-    
-    <!-- NIRJARA APP FEATURE -->
-    <div class="app-feature reveal">
-      <div class="app-text">
-        <p class="eyebrow">Digital Support</p>
-        <h3>Tracking Recovery,<br>Day by Day.</h3>
-        <p>Recovery is a daily decision. As part of the Nirjara initiative, we distribute homeopathy support kits alongside an easy-to-use mobile application.</p>
-        <p>The app allows individuals to check in daily, track their smoke-free and alcohol-free streaks, and visualize their progress to build lasting, positive momentum away from dependence.</p>
+  <div class="section" style="padding-top:80px">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">The shedding of what binds</p>
+        <p class="lede">In Jain thought, Nirjara is the deliberate shedding of accumulated karma. Recovery from alcohol and tobacco is exactly that — the patient, courageous release of a dependence, one day at a time, with a community that refuses to look away.</p>
       </div>
-      <div class="app-video-wrapper">
-        <video autoplay muted loop playsinline>
-          <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781514603/Screen_Recording_2026-06-15_at_2.07.13_AM_uhj0pa.mov" type="video/mp4">
-        </video>
+      <div class="nirjara-grid reveal">
+        <div class="n-card"><span class="ic">🪔</span><h4>Awareness &amp; Outreach</h4><p>Community camps and school or workplace sessions with local health workers — reducing stigma so people seek help before crisis.</p></div>
+        <div class="n-card"><span class="ic">🤝</span><h4>Recovery Circles</h4><p>Trained counsellors and peer-support circles — confidential, judgement-free, rooted in nonviolence toward oneself.</p></div>
+        <div class="n-card"><span class="ic">🌱</span><h4>Family Follow-through</h4><p>Support for spouses, parents and children, with structured follow-ups for a full year after the programme.</p></div>
       </div>
-    </div>
+      
+      <div class="n-stat-row reveal">
+        <div class="n-stat"><b>~16 cr</b><span>people in India consume alcohol; ~5.7 cr affected by harmful use*</span></div>
+        <div class="n-stat"><b>~27 cr</b><span>tobacco users — among the highest burdens in the world*</span></div>
+        <div class="n-stat"><b>13 lakh+</b><span>lives lost to tobacco-related illness every year in India*</span></div>
+      </div>
+      <p class="n-foot">*Indicative — MoSJE national survey 2019, GATS-2, WHO. Verify before public launch.</p>
+      
+      <div class="app-feature reveal">
+        <div class="app-text">
+          <p class="eyebrow">Digital Support</p>
+          <h3>Tracking Recovery,<br>Day by Day.</h3>
+          <p>Recovery is a daily decision. As part of the Nirjara initiative, we distribute homeopathy support kits alongside an easy-to-use mobile application.</p>
+          <p>The app allows individuals to check in daily, track their smoke-free and alcohol-free streaks, and visualize their progress to build lasting, positive momentum away from dependence.</p>
+        </div>
+        <div class="app-video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781514603/Screen_Recording_2026-06-15_at_2.07.13_AM_uhj0pa.mov" type="video/mp4">
+          </video>
+        </div>
+      </div>
 
-    <div class="cta-row reveal" style="margin-top:44px">
-      <a class="btn btn-gold" href="#partner">Fund Nirjara via CSR</a>
-      <a class="btn btn-outline-light" href="#act">Volunteer with Nirjara</a>
+      <div class="cta-row reveal" style="margin-top:44px">
+        <a class="btn btn-gold" href="#partner">Fund Nirjara via CSR</a>
+        <a class="btn btn-outline-light" href="#act">Volunteer with Nirjara</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
 <section class="section" id="gallery">
   <div class="wrap">
     <p class="eyebrow">In the Field</p>
@@ -574,7 +572,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- PARTNER / CSR -->
 <section class="section" id="partner">
   <div class="wrap">
     <div style="max-width:640px;margin-bottom:56px">
@@ -608,7 +605,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 
 <div class="divider"></div>
 
-<!-- TEAM -->
 <section class="section" id="team">
   <div class="wrap">
     <div style="text-align:center;max-width:580px;margin:0 auto">
@@ -627,7 +623,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- DONATE + VOLUNTEER -->
 <section class="section" id="act">
   <div class="wrap">
     <div style="max-width:600px;margin-bottom:50px">
@@ -674,7 +669,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   </div>
 </section>
 
-<!-- SPONSORS / AFFILIATES -->
 <section class="section" id="sponsors">
   <div class="wrap">
     <p class="eyebrow">Sponsors &amp; Affiliates</p>
@@ -694,7 +688,6 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
 
 <div class="divider"></div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div>
@@ -778,7 +771,7 @@ const baseAng=[];
 for(let k=0;k<N;k++) baseAng.push(k*(360/N)-90);
 for(let k=0;k<N;k++){
   const el=document.createElement('div');
-  el.className='orbit-item'+(k%3===2?' minor':'');
+  el.className='orbit-item';
   if(k===0){
     el.classList.add('orbit-item--video');
     el.innerHTML='<video autoplay muted loop playsinline preload="auto"><source src="'+HERO_VIDEO+'" type="video/mp4"></video>';
@@ -813,7 +806,8 @@ const imagesIn={v:0};    // image tiles fade-in factor
 
 /* Base large container sizes to keep video crisp and scale down instead of up */
 function videoCoverScale(){
-  return Math.max(window.innerWidth/1920, window.innerHeight/1080);
+  // Add a slight 1.05x buffer to ensure mobile address bars don't cause visible background clipping
+  return Math.max(window.innerWidth/1920, window.innerHeight/1080) * 1.05;
 }
 
 /* place tiles each frame: positions move around the centre, images stay upright,
@@ -833,7 +827,7 @@ function layout(){
     if(k===0){                                            // video: fills screen, then recedes into ring
       const t=1-intro.v;
       x=lerp(0,x,t); y=lerp(0,y,t);
-      const targetW = isM() ? 230 : 320;
+      const targetW = isM() ? 280 : 320; // Increased mobile tile size
       const targetScale = (targetW / 1920) * sc * 0.66;
       sc = lerp(videoCoverScale(), targetScale, t);
       op=lerp(1,op,t);
