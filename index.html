@@ -6,7 +6,7 @@
 <link rel="icon" href="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png">
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&family=Kurale&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&family=Kurale&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#F4F4F0; --paper-soft:#EAEAE5;
@@ -35,6 +35,13 @@ h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.015em}
 @media(max-width:768px){.section{padding:80px 0}}
 .lede{font-size:1.1rem;color:var(--ink-soft);max-width:62ch;font-weight:300;line-height:1.75}
 
+/* ── Hindi typography ── */
+body.lang-hi{font-family:'Noto Sans Devanagari','Manrope',system-ui,sans-serif}
+body.lang-hi h1,body.lang-hi h2,body.lang-hi h3,body.lang-hi h4{font-family:'Noto Serif Devanagari',var(--display);letter-spacing:0}
+body.lang-hi .dev,body.lang-hi #hero-tagline .rt-tag-dev,body.lang-hi .footer-dev{font-family:var(--dev)}
+body.lang-hi .eyebrow,body.lang-hi .btn,body.lang-hi nav .links a,body.lang-hi .lang-toggle,body.lang-hi .lbl,body.lang-hi .t-card span,body.lang-hi .wheel-nav .cur-label,body.lang-hi .swipe-hint,body.lang-hi .g-swipe-hint,body.lang-hi .footer-col h5{font-family:'Noto Sans Devanagari',var(--body)}
+body.lang-hi .eyebrow{letter-spacing:.12em}
+
 /* ── BUTTONS ── */
 .btn{display:inline-block;padding:12px 28px;border-radius:2px;font-family:var(--body);font-weight:400;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .3s;border:1px solid transparent;text-align:center;cursor:pointer}
 .btn-coral{background:var(--primary);color:#fff}
@@ -57,14 +64,20 @@ nav .bar{display:flex;align-items:center;justify-content:space-between;max-width
 nav .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
 nav .brand img{height:34px;width:34px;object-fit:contain}
 nav .brand .nm{font-family:var(--display);font-size:1.12rem;color:var(--ink);white-space:nowrap;font-weight:500;transition:color .3s}
+body.lang-hi nav .brand .nm{font-family:'Noto Serif Devanagari',var(--display)}
 nav.scrolled{background:rgba(255,247,240,.72);backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid rgba(18,18,18,.06)}
 nav.scrolled .brand .nm{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:22px}
+@media(max-width:840px){.nav-right{gap:14px}}
 nav .links{display:flex;gap:28px;align-items:center}
 nav .links a{font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink-soft);transition:color .25s}
 nav .links a:hover{color:var(--primary)}
 nav.scrolled .links a{color:var(--ink-soft)}
 nav.scrolled .links a:hover{color:var(--primary)}
 nav .links .btn{padding:10px 22px}
+/* language toggle */
+.lang-toggle{background:transparent;border:1px solid rgba(18,18,18,.28);color:var(--ink);font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:7px 14px;border-radius:40px;cursor:pointer;transition:all .25s;white-space:nowrap;line-height:1}
+.lang-toggle:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink);font-size:1.5rem}
 nav.scrolled .menu-btn{color:var(--ink)}
 
@@ -77,7 +90,7 @@ nav.scrolled .menu-btn{color:var(--ink)}
     transform:translateY(-10px);
     opacity:0; visibility:hidden; pointer-events:none;
     transition:transform .4s cubic-bezier(.16,1,.3,1), opacity .4s, visibility .4s;
-    z-index:90; 
+    z-index:90;
   }
   nav .links.open{
     transform:translateY(0);
@@ -85,17 +98,18 @@ nav.scrolled .menu-btn{color:var(--ink)}
   }
   nav .links a{font-size:1.8rem; color:#fff !important; font-family:var(--display); text-transform:none; letter-spacing:0; font-weight:400;}
   nav .links a.btn{border-color:var(--primary) !important; color:var(--primary) !important;}
-  
+
   nav .bar{position:relative; z-index:100;}
   .menu-btn{display:block; z-index:110; position:relative; color:var(--ink); font-size:1.6rem; transition:color .3s;}
-  
+
   nav.menu-open{ background: transparent !important; backdrop-filter: none !important; border-bottom: transparent !important; }
   nav.scrolled.menu-open .brand .nm, nav.menu-open .brand .nm { color: #fff !important; }
   nav.scrolled.menu-open .menu-btn, nav.menu-open .menu-btn { color: #fff !important; }
+  nav.menu-open .lang-toggle{ color:#fff !important; border-color:rgba(255,255,255,.4) !important; }
 }
 
 /* ── HERO (GSAP scrubbed, multi-phase) ── */
-#hero{position:relative;height:100vh;width:100%;overflow:hidden;background:#ffffff} 
+#hero{position:relative;height:100vh;width:100%;overflow:hidden;background:#ffffff}
 #hero-bg{position:absolute;inset:0;background:#ffffff;z-index:0;will-change:background-color}
 
 /* centre rotating / growing logo */
@@ -120,10 +134,13 @@ nav.scrolled .menu-btn{color:var(--ink)}
 .hero-layer{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 6vw;z-index:5;pointer-events:none;opacity:0;visibility:hidden}
 #hero-lead{opacity:1;visibility:visible}
 #hero-lead h1{font-family:var(--display);font-weight:400;color:var(--ink);font-size:clamp(2.4rem,6vw,5.4rem);line-height:1.08;letter-spacing:-.01em;max-width:17ch;text-shadow:0 2px 26px rgba(255,255,255,.6)}
+body.lang-hi #hero-lead h1{font-family:'Noto Serif Devanagari',var(--display)}
 #hero-lead h1 em{font-style:italic;color:var(--primary)}
 
 #hero-count .rt-count{font-family:var(--display);font-weight:500;color:var(--ink);font-size:clamp(2rem,5.4vw,4.6rem);line-height:1.06;letter-spacing:-.015em}
+body.lang-hi #hero-count .rt-count{font-family:'Noto Serif Devanagari',var(--display)}
 #hero-guided p{font-family:var(--body);font-weight:300;color:var(--ink);font-size:clamp(1rem,1.9vw,1.45rem);line-height:1.65;max-width:34ch;margin:0 auto}
+body.lang-hi #hero-guided p{font-family:'Noto Sans Devanagari',var(--body)}
 
 #hero-count{padding-bottom:22vh}
 #hero-guided{padding-top:20vh}
@@ -137,6 +154,7 @@ nav.scrolled .menu-btn{color:var(--ink)}
 #hero-tagline .rt-tag-dev .rw{margin:0 .12em}
 #hero-tagline .tag-lower{margin-top:42vh;display:flex;flex-direction:column;align-items:center;gap:20px}
 #hero-tagline .rt-tag-en{font-family:var(--display);font-style:italic;font-weight:400;color:var(--primary);font-size:clamp(1.3rem,3.2vw,2.4rem)}
+body.lang-hi #hero-tagline .rt-tag-en{font-family:'Noto Serif Devanagari',var(--display);font-style:normal}
 #hero-tagline .tag-lower .btn{pointer-events:auto}
 @media(max-width:760px){
   #hero-tagline .tag-lower{margin-top:28vh}
@@ -227,6 +245,7 @@ body.rm .rw{opacity:1}
 .bhavna-panel .num{font-family:var(--body);color:var(--gold);font-size:.78rem;letter-spacing:.2em;font-weight:600}
 .bhavna-panel h3{font-size:2.8rem;margin:10px 0 4px;color:var(--ink);font-weight:400}
 .bhavna-panel .devname{font-family:var(--dev);font-size:1.4rem;color:var(--primary)}
+body.lang-hi .bhavna-panel .devname{font-family:var(--body);font-style:italic;font-size:1.05rem}
 .bhavna-panel .meaning{margin:20px 0 0;color:var(--ink-soft);font-size:1.05rem;font-weight:300;line-height:1.7}
 .bhavna-panel .initiative-block{margin-top:28px;padding-top:24px;border-top:1px solid rgba(18,18,18,.07)}
 .bhavna-panel .live-badge{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:4px 11px;border-radius:2px;margin-bottom:10px}
@@ -394,14 +413,17 @@ window.scrollTo(0, 0);
   <div class="bar">
     <a class="brand" href="#">
       <img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="Bhavna Foundation symbol">
-      <span class="nm">Bhavna Foundation</span>
+      <span class="nm" data-hi="भावना फ़ाउंडेशन">Bhavna Foundation</span>
     </a>
-    <button class="menu-btn" id="menuBtn">☰</button>
-    <div class="links" id="navLinks">
-      <a href="#mission-detail">Mission</a>
-      <a href="#bhavnas">12 Bhavnas</a>
-      <a href="#nirjara">Nirjara</a>
-      <a href="#partner">CSR</a>
+    <div class="nav-right">
+      <div class="links" id="navLinks">
+        <a href="#mission-detail" data-hi="मिशन">Mission</a>
+        <a href="#bhavnas" data-hi="12 भावनाएँ">12 Bhavnas</a>
+        <a href="#nirjara" data-hi="निर्जरा">Nirjara</a>
+        <a href="#partner" data-hi="सीएसआर">CSR</a>
+      </div>
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">हिंदी</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
     </div>
   </div>
 </nav>
@@ -435,13 +457,13 @@ window.scrollTo(0, 0);
   </div>
 
   <div class="hero-layer" id="hero-tribute">
-    <p class="eyebrow">In loving tribute</p>
-    <h3>Shanti &amp; Pawan Jain</h3>
+    <p class="eyebrow" data-hi="स्नेहपूर्ण श्रद्धांजलि">In loving tribute</p>
+    <h3 data-hi="शांति और पवन जैन">Shanti &amp; Pawan Jain</h3>
     <div class="tribute-frames">
-      <figure class="frame"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781515756/c77f6f86-e79f-434a-a351-94490d265a58_nnlxgf.jpg" alt="Shanti Jain" style="width:130px;height:165px;border-radius:66px 66px var(--r) var(--r);object-fit:cover;border:1px solid var(--gold)"><figcaption>Shanti Jain</figcaption></figure>
-      <figure class="frame"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781349905/21dda113-3fe6-430a-8bf9-dbdeae0d9b4b_evpuqr.jpg" alt="Pawan Jain" style="width:130px;height:165px;border-radius:66px 66px var(--r) var(--r);object-fit:cover;border:1px solid var(--gold)"><figcaption>Pawan Jain</figcaption></figure>
+      <figure class="frame"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781515756/c77f6f86-e79f-434a-a351-94490d265a58_nnlxgf.jpg" alt="Shanti Jain" style="width:130px;height:165px;border-radius:66px 66px var(--r) var(--r);object-fit:cover;border:1px solid var(--gold)"><figcaption data-hi="शांति जैन">Shanti Jain</figcaption></figure>
+      <figure class="frame"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781349905/21dda113-3fe6-430a-8bf9-dbdeae0d9b4b_evpuqr.jpg" alt="Pawan Jain" style="width:130px;height:165px;border-radius:66px 66px var(--r) var(--r);object-fit:cover;border:1px solid var(--gold)"><figcaption data-hi="पवन जैन">Pawan Jain</figcaption></figure>
     </div>
-    <p class="tr-text">Our grandparents practised seva as a daily habit, not an occasion. This foundation carries their names so their intention never stops moving.</p>
+    <p class="tr-text" data-hi="हमारे दादा-दादी ने सेवा को किसी अवसर की नहीं, दैनिक आदत की तरह अपनाया। यह फ़ाउंडेशन उनके नाम धारण करता है ताकि उनका संकल्प कभी न रुके।">Our grandparents practised seva as a daily habit, not an occasion. This foundation carries their names so their intention never stops moving.</p>
   </div>
 
   <div class="hero-layer" id="hero-nirjara">
@@ -450,28 +472,28 @@ window.scrollTo(0, 0);
     <p class="n-sub">Recovery support for alcohol and tobacco dependence.</p>
     <p class="n-dev dev">भाव से बदलाव</p>
     <div class="cta-row">
-      <a class="btn btn-coral" href="#act">Donate</a>
-      <a class="btn btn-gold" href="#partner">Partner via CSR</a>
-      <a class="btn btn-outline" href="#nirjara">Explore Nirjara</a>
+      <a class="btn btn-coral" href="#act" data-hi="दान करें">Donate</a>
+      <a class="btn btn-gold" href="#partner" data-hi="सीएसआर से साझेदारी">Partner via CSR</a>
+      <a class="btn btn-outline" href="#nirjara" data-hi="निर्जरा देखें">Explore Nirjara</a>
     </div>
   </div>
 
-  <div class="scroll-prompt-hero" id="scrollPromptHero">↓ Scroll for more</div>
+  <div class="scroll-prompt-hero" id="scrollPromptHero" data-hi="↓ और देखने के लिए स्क्रॉल करें">↓ Scroll for more</div>
 </section>
 
 <section id="pathways">
   <div class="pathways-inner">
     <div class="path-card">
-      <p class="eyebrow">For Corporates</p>
-      <h3>Deploy CSR Capital</h3>
-      <p>Direct your Schedule VII funds to Nirjara — a vetted, measurable de-addiction programme with transparent reporting for your ESG and compliance teams.</p>
-      <a href="#partner" class="btn btn-gold">Explore Partnerships</a>
+      <p class="eyebrow" data-hi="कॉर्पोरेट्स के लिए">For Corporates</p>
+      <h3 data-hi="सीएसआर पूंजी लगाएँ">Deploy CSR Capital</h3>
+      <p data-hi="अपने शेड्यूल VII फंड को निर्जरा की ओर लगाएँ — एक परखा हुआ, मापने-योग्य नशामुक्ति कार्यक्रम, जिसमें आपकी ESG और अनुपालन टीमों के लिए पारदर्शी रिपोर्टिंग है।">Direct your Schedule VII funds to Nirjara — a vetted, measurable de-addiction programme with transparent reporting for your ESG and compliance teams.</p>
+      <a href="#partner" class="btn btn-gold" data-hi="साझेदारी देखें">Explore Partnerships</a>
     </div>
     <div class="path-card">
-      <p class="eyebrow">For NGOs &amp; Volunteers</p>
-      <h3>Scale Your Impact</h3>
-      <p>Join our network to connect with partners funding de-addiction, mental health, education, and environment initiatives across India.</p>
-      <a href="#act" class="btn btn-outline-light">Apply to Network</a>
+      <p class="eyebrow" data-hi="एनजीओ और स्वयंसेवकों के लिए">For NGOs &amp; Volunteers</p>
+      <h3 data-hi="अपना प्रभाव बढ़ाएँ">Scale Your Impact</h3>
+      <p data-hi="हमारे नेटवर्क से जुड़ें और भारत भर में नशामुक्ति, मानसिक स्वास्थ्य, शिक्षा तथा पर्यावरण पहलों को वित्तपोषित करने वाले साझेदारों से संपर्क करें।">Join our network to connect with partners funding de-addiction, mental health, education, and environment initiatives across India.</p>
+      <a href="#act" class="btn btn-outline-light" data-hi="नेटवर्क में आवेदन करें">Apply to Network</a>
     </div>
   </div>
 </section>
@@ -479,12 +501,12 @@ window.scrollTo(0, 0);
 <section class="section" id="mission-detail">
   <div class="wrap two-col">
     <div class="reveal">
-      <p class="eyebrow">Who we are</p>
-      <h2>A philosophy<br>you can volunteer for.</h2>
-      <p class="lede" style="margin-top:20px">Inspired by Jain philosophy's twelve Bhavnas (twelve types of intentions), we aim to design twelve social initiatives to benefit healthcare, natural disaster relief, education, etc. Starting with the ninth Bhavna, Nirjara, we are launching a withdrawal aid program for people addicted to alcohol and tobacco.</p>
+      <p class="eyebrow" data-hi="हम कौन हैं">Who we are</p>
+      <h2 data-hi="एक दर्शन<br>जिसके लिए आप सेवा कर सकें।">A philosophy<br>you can volunteer for.</h2>
+      <p class="lede" style="margin-top:20px" data-hi="जैन दर्शन की बारह भावनाओं (बारह प्रकार के संकल्पों) से प्रेरित होकर, हम स्वास्थ्य, आपदा-राहत, शिक्षा आदि के लिए बारह सामाजिक पहल बनाना चाहते हैं। नौवीं भावना — निर्जरा — से शुरुआत करते हुए, हम शराब और तंबाकू की लत से जूझ रहे लोगों के लिए एक विथड्रॉल सहायता कार्यक्रम शुरू कर रहे हैं।">Inspired by Jain philosophy's twelve Bhavnas (twelve types of intentions), we aim to design twelve social initiatives to benefit healthcare, natural disaster relief, education, etc. Starting with the ninth Bhavna, Nirjara, we are launching a withdrawal aid program for people addicted to alcohol and tobacco.</p>
       <div style="margin-top:32px" class="cta-row">
-        <a class="btn btn-outline" href="#bhavnas">The 12 Bhavnas</a>
-        <a class="btn btn-coral" href="#nirjara">Nirjara →</a>
+        <a class="btn btn-outline" href="#bhavnas" data-hi="12 भावनाएँ">The 12 Bhavnas</a>
+        <a class="btn btn-coral" href="#nirjara" data-hi="निर्जरा →">Nirjara →</a>
       </div>
     </div>
     <div class="mission-image reveal">
@@ -493,9 +515,9 @@ window.scrollTo(0, 0);
   </div>
   <div class="wrap">
     <div class="stat-strip reveal">
-      <div><b>12</b><span>Bhavnas mapped<br>to social initiatives</span></div>
-      <div><b>1</b><span>Flagship live — Nirjara,<br>de-addiction &amp; recovery</span></div>
-      <div><b>100%</b><span>Transparency in every<br>rupee of CSR deployment</span></div>
+      <div><b>12</b><span data-hi="सामाजिक पहलों से<br>जुड़ी भावनाएँ">Bhavnas mapped<br>to social initiatives</span></div>
+      <div><b>1</b><span data-hi="प्रमुख पहल सक्रिय — निर्जरा,<br>नशामुक्ति और पुनर्वास">Flagship live — Nirjara,<br>de-addiction &amp; recovery</span></div>
+      <div><b>100%</b><span data-hi="सीएसआर के हर रुपये में<br>पूर्ण पारदर्शिता">Transparency in every<br>rupee of CSR deployment</span></div>
     </div>
   </div>
 </section>
@@ -505,9 +527,9 @@ window.scrollTo(0, 0);
 <section class="section" id="bhavnas">
   <div class="wrap">
     <div style="max-width:680px;margin:0 auto 64px;text-align:center">
-      <p class="eyebrow">The Framework</p>
-      <h2>The Twelve Bhavnas</h2>
-      <p class="lede" style="margin:14px auto 0">Twelve contemplations that dissolve attachment and awaken compassion — each a design brief for social good.</p>
+      <p class="eyebrow" data-hi="रूपरेखा">The Framework</p>
+      <h2 data-hi="बारह भावनाएँ">The Twelve Bhavnas</h2>
+      <p class="lede" style="margin:14px auto 0" data-hi="बारह चिंतन जो आसक्ति को घोलते हैं और करुणा जगाते हैं — हर एक समाज-हित के लिए एक रूपरेखा।">Twelve contemplations that dissolve attachment and awaken compassion — each a design brief for social good.</p>
     </div>
     <div class="wheel-layout">
       <div class="reveal">
@@ -520,7 +542,7 @@ window.scrollTo(0, 0);
       </div>
       <div>
         <div class="bhavna-panel reveal" id="bhavnaPanel" aria-live="polite"></div>
-        <p class="swipe-hint"><span class="touch-only">Swipe ← → · </span>drag, arrows, or tap a segment</p>
+        <p class="swipe-hint" data-hi='<span class="touch-only">स्वाइप ← → · </span>खींचें, तीर दबाएँ, या किसी खंड पर टैप करें'><span class="touch-only">Swipe ← → · </span>drag, arrows, or tap a segment</p>
       </div>
     </div>
   </div>
@@ -534,47 +556,48 @@ window.scrollTo(0, 0);
     </video>
     <div class="cover-caption">
       <img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="" style="width:48px;height:48px;object-fit:contain;margin-bottom:14px;opacity:.95">
-      <p class="eyebrow">Active Initiative · 09 of 12</p>
-      <h2>Nirjara <span class="dev" style="font-size:.65em;color:#FFE2C7">निर्जरा</span></h2>
+      <p class="eyebrow" data-hi="सक्रिय पहल · 12 में से 09">Active Initiative · 09 of 12</p>
+      <h2 data-hi="निर्जरा">Nirjara <span class="dev" style="font-size:.65em;color:#FFE2C7">निर्जरा</span></h2>
     </div>
   </div>
 
   <div class="section" style="padding-top:80px">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">The shedding of what binds</p>
-        <p class="lede">In Jain thought, Nirjara is the deliberate shedding of accumulated karma. Recovery from alcohol and tobacco is exactly that — the patient, courageous release of a dependence, one day at a time, with a community that refuses to look away.</p>
+        <p class="eyebrow" data-hi="जो बाँधता है उसका त्याग">The shedding of what binds</p>
+        <p class="lede" data-hi="जैन विचार में निर्जरा संचित कर्मों का सायास त्याग है। शराब और तंबाकू से उबरना ठीक यही है — एक निर्भरता का धैर्यपूर्वक, साहसी त्याग, एक-एक दिन, ऐसे समुदाय के साथ जो मुँह नहीं मोड़ता।">In Jain thought, Nirjara is the deliberate shedding of accumulated karma. Recovery from alcohol and tobacco is exactly that — the patient, courageous release of a dependence, one day at a time, with a community that refuses to look away.</p>
       </div>
       <div class="nirjara-grid reveal">
-        <div class="n-card"><span class="ic">🪔</span><h4>Awareness &amp; Outreach</h4><p>Community camps and school or workplace sessions with local health workers — reducing stigma so people seek help before crisis.</p></div>
-        <div class="n-card"><span class="ic">🤝</span><h4>Recovery Circles</h4><p>Trained counsellors and peer-support circles — confidential, judgement-free, rooted in nonviolence toward oneself.</p></div>
-        <div class="n-card"><span class="ic">🌱</span><h4>Family Follow-through</h4><p>Support for spouses, parents and children, with structured follow-ups for a full year after the programme.</p></div>
+        <div class="n-card"><span class="ic">🪔</span><h4 data-hi="जागरूकता और पहुँच">Awareness &amp; Outreach</h4><p data-hi="स्थानीय स्वास्थ्यकर्मियों के साथ सामुदायिक शिविर तथा विद्यालय या कार्यस्थल सत्र — कलंक घटाते हुए ताकि लोग संकट से पहले मदद माँगें।">Community camps and school or workplace sessions with local health workers — reducing stigma so people seek help before crisis.</p></div>
+        <div class="n-card"><span class="ic">🤝</span><h4 data-hi="पुनर्वास मंडल">Recovery Circles</h4><p data-hi="प्रशिक्षित परामर्शदाता और सहकर्मी-सहायता मंडल — गोपनीय, निर्णय-रहित, स्वयं के प्रति अहिंसा में निहित।">Trained counsellors and peer-support circles — confidential, judgement-free, rooted in nonviolence toward oneself.</p></div>
+        <div class="n-card"><span class="ic">🌱</span><h4 data-hi="परिवार के साथ अनुवर्तन">Family Follow-through</h4><p data-hi="जीवनसाथी, माता-पिता और बच्चों के लिए सहयोग, कार्यक्रम के बाद पूरे एक वर्ष तक संरचित अनुवर्तन के साथ।">Support for spouses, parents and children, with structured follow-ups for a full year after the programme.</p></div>
       </div>
-      
+
       <div class="n-stat-row reveal">
-        <div class="n-stat"><b>~16 cr</b><span>people in India consume alcohol; ~5.7 cr affected by harmful use*</span></div>
-        <div class="n-stat"><b>~27 cr</b><span>tobacco users — among the highest burdens in the world*</span></div>
-        <div class="n-stat"><b>13 lakh+</b><span>lives lost to tobacco-related illness every year in India*</span></div>
+        <div class="n-stat"><b data-hi="~16 करोड़">~16 cr</b><span data-hi="लोग भारत में शराब का सेवन करते हैं; ~5.7 करोड़ हानिकारक उपयोग से प्रभावित*">people in India consume alcohol; ~5.7 cr affected by harmful use*</span></div>
+        <div class="n-stat"><b data-hi="~27 करोड़">~27 cr</b><span data-hi="तंबाकू उपयोगकर्ता — विश्व के सर्वाधिक बोझों में से एक*">tobacco users — among the highest burdens in the world*</span></div>
+        <div class="n-stat"><b data-hi="13 लाख+">13 lakh+</b><span data-hi="हर वर्ष भारत में तंबाकू-जनित बीमारी से होने वाली मौतें*">lives lost to tobacco-related illness every year in India*</span></div>
       </div>
-      <p class="n-foot">*Indicative — MoSJE national survey 2019, GATS-2, WHO. Verify before public launch.</p>
-      
+      <p class="n-foot" data-hi="*संकेतात्मक — MoSJE राष्ट्रीय सर्वेक्षण 2019, GATS-2, WHO। सार्वजनिक लॉन्च से पहले सत्यापित करें।">*Indicative — MoSJE national survey 2019, GATS-2, WHO. Verify before public launch.</p>
+
       <div class="app-feature reveal">
         <div class="app-text">
-          <p class="eyebrow">Digital Support</p>
-          <h3>Tracking Recovery,<br>Day by Day.</h3>
-          <p>Recovery is a daily decision. As part of the Nirjara initiative, we distribute homeopathy support kits alongside an easy-to-use mobile application.</p>
-          <p>The app allows individuals to check in daily, track their smoke-free and alcohol-free streaks, and visualize their progress to build lasting, positive momentum away from dependence.</p>
+          <p class="eyebrow" data-hi="डिजिटल सहयोग">Digital Support</p>
+          <h3 data-hi="पुनर्वास की ट्रैकिंग,<br>दिन-प्रतिदिन।">Tracking Recovery,<br>Day by Day.</h3>
+          <p data-hi="पुनर्वास एक दैनिक निर्णय है। निर्जरा पहल के अंतर्गत, हम एक सरल मोबाइल ऐप के साथ होम्योपैथी सहायता किट वितरित करते हैं।">Recovery is a daily decision. As part of the Nirjara initiative, we distribute homeopathy support kits alongside an easy-to-use mobile application.</p>
+          <p data-hi="ऐप के माध्यम से लोग रोज़ चेक-इन कर सकते हैं, अपने धूम्रपान-मुक्त और शराब-मुक्त दिनों की गिनती रख सकते हैं, और अपनी प्रगति देखकर निर्भरता से दूर सकारात्मक गति बना सकते हैं।">The app allows individuals to check in daily, track their smoke-free and alcohol-free streaks, and visualize their progress to build lasting, positive momentum away from dependence.</p>
         </div>
         <div class="app-video-wrapper">
           <video autoplay muted loop playsinline>
-            <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781514603/Screen_Recording_2026-06-15_at_2.07.13_AM_uhj0pa.mov" type="video/mp4">
+            <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781514603/Screen_Recording_2026-06-15_at_2.07.13_AM_uhj0pa.mp4" type="video/mp4">
+            <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781514603/Screen_Recording_2026-06-15_at_2.07.13_AM_uhj0pa.mov" type="video/quicktime">
           </video>
         </div>
       </div>
 
       <div class="cta-row reveal" style="margin-top:44px">
-        <a class="btn btn-gold" href="#partner">Fund Nirjara via CSR</a>
-        <a class="btn btn-outline-light" href="#act">Volunteer with Nirjara</a>
+        <a class="btn btn-gold" href="#partner" data-hi="सीएसआर से निर्जरा को सहयोग दें">Fund Nirjara via CSR</a>
+        <a class="btn btn-outline-light" href="#act" data-hi="निर्जरा में स्वयंसेवा करें">Volunteer with Nirjara</a>
       </div>
     </div>
   </div>
@@ -582,54 +605,54 @@ window.scrollTo(0, 0);
 
 <section class="section" id="gallery">
   <div class="wrap">
-    <p class="eyebrow">In the Field</p>
-    <h2>Moments from the work.</h2>
+    <p class="eyebrow" data-hi="कार्यक्षेत्र से">In the Field</p>
+    <h2 data-hi="कार्य के कुछ क्षण।">Moments from the work.</h2>
     <div class="g-rail">
       <div class="g-tile wide">
         <video class="bgvid" autoplay muted loop playsinline preload="metadata">
           <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781346284/14211520-hd_1920_1080_30fps_ckuixr.mp4" type="video/mp4">
         </video>
-        <div class="cap">Nirjara — programme film</div>
+        <div class="cap" data-hi="निर्जरा — कार्यक्रम फ़िल्म">Nirjara — programme film</div>
       </div>
-      <div class="g-tile" style="background:linear-gradient(150deg,#1e2b1f,#2e3f2e)"><div class="bg">🪔</div><div class="cap">Awareness camp</div></div>
-      <div class="g-tile" style="background:linear-gradient(150deg,#2a2418,#3d3420)"><div class="bg">🤝</div><div class="cap">Recovery circle</div></div>
-      <div class="g-tile" style="background:linear-gradient(150deg,#1a2418,#263628)"><div class="bg">🌱</div><div class="cap">Family support</div></div>
-      <div class="g-tile" style="background:linear-gradient(150deg,#28201a,#3a2e22)"><div class="bg">🏥</div><div class="cap">Health screening</div></div>
-      <div class="g-tile wide" style="background:linear-gradient(150deg,#1a1c18,#282c22)"><div class="bg">🎬</div><div class="play-btn">▶</div><div class="cap">Volunteer stories (video placeholder)</div></div>
-      <div class="g-tile" style="background:linear-gradient(150deg,#2a1e1a,#3c2c22)"><div class="bg">🌳</div><div class="cap">Community drive</div></div>
+      <div class="g-tile" style="background:linear-gradient(150deg,#1e2b1f,#2e3f2e)"><div class="bg">🪔</div><div class="cap" data-hi="जागरूकता शिविर">Awareness camp</div></div>
+      <div class="g-tile" style="background:linear-gradient(150deg,#2a2418,#3d3420)"><div class="bg">🤝</div><div class="cap" data-hi="पुनर्वास मंडल">Recovery circle</div></div>
+      <div class="g-tile" style="background:linear-gradient(150deg,#1a2418,#263628)"><div class="bg">🌱</div><div class="cap" data-hi="परिवार सहयोग">Family support</div></div>
+      <div class="g-tile" style="background:linear-gradient(150deg,#28201a,#3a2e22)"><div class="bg">🏥</div><div class="cap" data-hi="स्वास्थ्य जाँच">Health screening</div></div>
+      <div class="g-tile wide" style="background:linear-gradient(150deg,#1a1c18,#282c22)"><div class="bg">🎬</div><div class="play-btn">▶</div><div class="cap" data-hi="स्वयंसेवक कहानियाँ (वीडियो प्लेसहोल्डर)">Volunteer stories (video placeholder)</div></div>
+      <div class="g-tile" style="background:linear-gradient(150deg,#2a1e1a,#3c2c22)"><div class="bg">🌳</div><div class="cap" data-hi="सामुदायिक अभियान">Community drive</div></div>
     </div>
-    <p class="g-swipe-hint">← Scroll sideways to explore →</p>
-    <p class="g-note">Prototype placeholders — replace remaining tiles with real photography and short films as the programme grows.</p>
+    <p class="g-swipe-hint" data-hi="← अन्वेषण के लिए बग़ल में स्क्रॉल करें →">← Scroll sideways to explore →</p>
+    <p class="g-note" data-hi="प्रोटोटाइप प्लेसहोल्डर — कार्यक्रम के बढ़ने पर शेष टाइलों को वास्तविक फ़ोटोग्राफ़ी और लघु फ़िल्मों से बदलें।">Prototype placeholders — replace remaining tiles with real photography and short films as the programme grows.</p>
   </div>
 </section>
 
 <section class="section" id="partner">
   <div class="wrap">
     <div style="max-width:640px;margin-bottom:56px">
-      <p class="eyebrow">For Companies &amp; Fellow NGOs</p>
-      <h2>Partner with us.</h2>
-      <p class="lede">Nirjara is built as a credible, measurable home for CSR investment in preventive healthcare — and an open platform for NGOs in de-addiction and mental health to collaborate, not compete.</p>
+      <p class="eyebrow" data-hi="कंपनियों और साथी एनजीओ के लिए">For Companies &amp; Fellow NGOs</p>
+      <h2 data-hi="हमारे साथ जुड़ें।">Partner with us.</h2>
+      <p class="lede" data-hi="निर्जरा निवारक स्वास्थ्य में सीएसआर निवेश के लिए एक विश्वसनीय, मापने-योग्य घर है — और नशामुक्ति व मानसिक स्वास्थ्य के एनजीओ के लिए प्रतिस्पर्धा नहीं, सहयोग का खुला मंच।">Nirjara is built as a credible, measurable home for CSR investment in preventive healthcare — and an open platform for NGOs in de-addiction and mental health to collaborate, not compete.</p>
     </div>
     <div class="partner-grid">
       <div class="p-card reveal" style="--stripe:var(--primary)">
-        <h4>CSR Programme Funding</h4>
-        <p>Adopt Nirjara for a district, a year, or a cohort — with transparent unit costs and quarterly impact reporting.</p>
-        <ul><li>Named cohort or district programmes</li><li>Quarterly impact &amp; utilisation reports</li><li>Site visits &amp; employee engagement days</li></ul>
+        <h4 data-hi="सीएसआर कार्यक्रम वित्तपोषण">CSR Programme Funding</h4>
+        <p data-hi="किसी ज़िले, वर्ष या समूह के लिए निर्जरा को अपनाएँ — पारदर्शी इकाई-लागत और त्रैमासिक प्रभाव रिपोर्टिंग के साथ।">Adopt Nirjara for a district, a year, or a cohort — with transparent unit costs and quarterly impact reporting.</p>
+        <ul><li data-hi="नामित समूह या ज़िला कार्यक्रम">Named cohort or district programmes</li><li data-hi="त्रैमासिक प्रभाव और उपयोग रिपोर्ट">Quarterly impact &amp; utilisation reports</li><li data-hi="स्थल भ्रमण और कर्मचारी सहभागिता दिवस">Site visits &amp; employee engagement days</li></ul>
       </div>
       <div class="p-card reveal" style="--stripe:var(--secondary)">
-        <h4>Employee Volunteering</h4>
-        <p>Bring your teams into the work — awareness drives, mentorship, and payroll giving with corporate matching.</p>
-        <ul><li>Structured volunteering calendars</li><li>Workplace tobacco-cessation drives</li><li>Matched payroll giving</li></ul>
+        <h4 data-hi="कर्मचारी स्वयंसेवा">Employee Volunteering</h4>
+        <p data-hi="अपनी टीमों को कार्य में लाएँ — जागरूकता अभियान, मार्गदर्शन और कॉर्पोरेट मैचिंग के साथ पेरोल दान।">Bring your teams into the work — awareness drives, mentorship, and payroll giving with corporate matching.</p>
+        <ul><li data-hi="संरचित स्वयंसेवा कैलेंडर">Structured volunteering calendars</li><li data-hi="कार्यस्थल तंबाकू-त्याग अभियान">Workplace tobacco-cessation drives</li><li data-hi="मैच किया गया पेरोल दान">Matched payroll giving</li></ul>
       </div>
       <div class="p-card reveal" style="--stripe:var(--sage-deep)">
-        <h4>NGO Collaboration</h4>
-        <p>Share referral pathways, counsellor training, and community networks instead of duplicating them.</p>
-        <ul><li>Referral &amp; follow-up partnerships</li><li>Shared counsellor training</li><li>Joint grant applications</li></ul>
+        <h4 data-hi="एनजीओ सहयोग">NGO Collaboration</h4>
+        <p data-hi="रेफ़रल मार्ग, परामर्शदाता प्रशिक्षण और सामुदायिक नेटवर्क की नकल करने के बजाय उन्हें साझा करें।">Share referral pathways, counsellor training, and community networks instead of duplicating them.</p>
+        <ul><li data-hi="रेफ़रल और अनुवर्तन साझेदारियाँ">Referral &amp; follow-up partnerships</li><li data-hi="साझा परामर्शदाता प्रशिक्षण">Shared counsellor training</li><li data-hi="संयुक्त अनुदान आवेदन">Joint grant applications</li></ul>
       </div>
     </div>
     <div class="compliance-note reveal">
-      <strong>CSR eligibility:</strong> De-addiction and preventive healthcare align with Schedule VII of the Companies Act, 2013. Registration, 12A/80G and CSR-1 details will appear here on completion. Partners should verify alignment with their CSR counsel.
-      <div style="margin-top:18px"><a class="btn btn-coral" href="mailto:partnerships@bhavnafoundation.org?subject=CSR%20Partnership">Request the partnership deck →</a></div>
+      <span data-hi="<strong>सीएसआर पात्रता:</strong> नशामुक्ति और निवारक स्वास्थ्य कंपनी अधिनियम, 2013 की अनुसूची VII के अनुरूप हैं। पंजीकरण, 12A/80G और CSR-1 विवरण पूर्ण होने पर यहाँ दिखाई देंगे। साझेदार अपने सीएसआर सलाहकार से अनुरूपता सत्यापित करें।"><strong>CSR eligibility:</strong> De-addiction and preventive healthcare align with Schedule VII of the Companies Act, 2013. Registration, 12A/80G and CSR-1 details will appear here on completion. Partners should verify alignment with their CSR counsel.</span>
+      <div style="margin-top:18px"><a class="btn btn-coral" href="mailto:partnerships@bhavnafoundation.org?subject=CSR%20Partnership" data-hi="साझेदारी डेक का अनुरोध करें →">Request the partnership deck →</a></div>
     </div>
   </div>
 </section>
@@ -639,17 +662,17 @@ window.scrollTo(0, 0);
 <section class="section" id="team">
   <div class="wrap">
     <div style="text-align:center;max-width:580px;margin:0 auto">
-      <p class="eyebrow">Our Team</p>
-      <h2>Hands in the circle.</h2>
-      <p class="lede" style="margin:12px auto 0">A small founding team carrying a family's intention forward.</p>
+      <p class="eyebrow" data-hi="हमारी टीम">Our Team</p>
+      <h2 data-hi="मंडल में जुड़े हाथ।">Hands in the circle.</h2>
+      <p class="lede" style="margin:12px auto 0" data-hi="एक छोटी संस्थापक टीम जो एक परिवार के संकल्प को आगे बढ़ा रही है।">A small founding team carrying a family's intention forward.</p>
     </div>
     <div class="team-grid">
-      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--primary),var(--peach));"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781349640/IMG_0276_bsckn0.jpg" alt="Tanvi Jain" style="width:100%;height:100%;object-fit:cover;"></div><h4>Tanvi Jain</h4><span>Founder &amp; Co-Director</span></div>
-      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--secondary),var(--gold))">दि</div><h4>Divyansh Jain</h4><span>Co-Director</span></div>
-      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--sage-deep),var(--sage))">मे</div><h4>Dr. Medhavi Jain</h4><span>Co-Director &amp; Clinical Advisor</span></div>
-      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--primary),var(--peach));"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781515757/cf1fcdff-f1e5-4013-ab0b-b837cf10c5a8_tkowbm.jpg" alt="Nidhi Jain" style="width:100%;height:100%;object-fit:cover;"></div><h4>Nidhi Jain</h4><span>Partnership Advisor</span></div>
-      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--secondary),var(--gold));"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781515757/c391dfcc-1a49-4b18-b4f1-e37efc204c03_yj6qqr.jpg" alt="Babita Jain" style="width:100%;height:100%;object-fit:cover;"></div><h4>Babita Jain</h4><span>Financial Advisor</span></div>
-      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--sage-deep),var(--sage))">अ</div><h4>Ankush Jain</h4><span>Religious Advisor</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--primary),var(--peach));"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781349640/IMG_0276_bsckn0.jpg" alt="Tanvi Jain" style="width:100%;height:100%;object-fit:cover;"></div><h4 data-hi="तन्वी जैन">Tanvi Jain</h4><span data-hi="संस्थापक एवं सह-निदेशक">Founder &amp; Co-Director</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--secondary),var(--gold))">दि</div><h4 data-hi="दिव्यांश जैन">Divyansh Jain</h4><span data-hi="सह-निदेशक">Co-Director</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--sage-deep),var(--sage))">मे</div><h4 data-hi="डॉ. मेधावी जैन">Dr. Medhavi Jain</h4><span data-hi="सह-निदेशक एवं नैदानिक सलाहकार">Co-Director &amp; Clinical Advisor</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--primary),var(--peach));"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781515757/cf1fcdff-f1e5-4013-ab0b-b837cf10c5a8_tkowbm.jpg" alt="Nidhi Jain" style="width:100%;height:100%;object-fit:cover;"></div><h4 data-hi="निधि जैन">Nidhi Jain</h4><span data-hi="साझेदारी सलाहकार">Partnership Advisor</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--secondary),var(--gold));"><img src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781515757/c391dfcc-1a49-4b18-b4f1-e37efc204c03_yj6qqr.jpg" alt="Babita Jain" style="width:100%;height:100%;object-fit:cover;"></div><h4 data-hi="बबीता जैन">Babita Jain</h4><span data-hi="वित्तीय सलाहकार">Financial Advisor</span></div>
+      <div class="t-card reveal"><div class="av" style="background:linear-gradient(150deg,var(--sage-deep),var(--sage))">अ</div><h4 data-hi="अंकुश जैन">Ankush Jain</h4><span data-hi="धार्मिक सलाहकार">Religious Advisor</span></div>
     </div>
   </div>
 </section>
@@ -657,43 +680,43 @@ window.scrollTo(0, 0);
 <section class="section" id="act">
   <div class="wrap">
     <div style="max-width:600px;margin-bottom:50px">
-      <p class="eyebrow" style="color:var(--secondary)">Act Today</p>
+      <p class="eyebrow" style="color:var(--secondary)" data-hi="आज ही कार्य करें">Act Today</p>
       <h2 style="color:#fff" class="dev">भाव से बदलाव</h2>
-      <p style="color:#fff;font-family:var(--body);font-size:1.05rem;font-weight:300;margin-top:8px">From intention to change — give money, time, or skill.</p>
+      <p style="color:#fff;font-family:var(--body);font-size:1.05rem;font-weight:300;margin-top:8px" data-hi="भाव से बदलाव — धन, समय या कौशल दें।">From intention to change — give money, time, or skill.</p>
     </div>
     <div class="act-grid">
       <div class="act-card reveal">
-        <h3>Donate</h3>
-        <p class="sub-text">Funds counselling, outreach camps and family support under Nirjara. (Prototype — Razorpay &amp; 80G receipts to be connected.)</p>
+        <h3 data-hi="दान करें">Donate</h3>
+        <p class="sub-text" data-hi="निर्जरा के अंतर्गत परामर्श, पहुँच शिविर और परिवार सहयोग को वित्तपोषित करता है। (प्रोटोटाइप — Razorpay और 80G रसीदें जुड़नी बाकी हैं।)">Funds counselling, outreach camps and family support under Nirjara. (Prototype — Razorpay &amp; 80G receipts to be connected.)</p>
         <div class="tiers" id="tiers">
           <button data-amt="500">₹500</button>
           <button data-amt="1100" class="sel">₹1,100</button>
           <button data-amt="2100">₹2,100</button>
           <button data-amt="5100">₹5,100</button>
-          <button data-amt="custom">Custom</button>
+          <button data-amt="custom" data-hi="अन्य">Custom</button>
         </div>
         <p id="tier-note">₹1,100 supports one month of recovery-circle sessions for one participant.</p>
         <a class="btn btn-gold" id="donate-btn" href="#" onclick="alert('Prototype: connects to Razorpay when the foundation\'s account is live.');return false">Donate ₹1,100</a>
       </div>
       <div class="act-card reveal">
-        <h3>Volunteer</h3>
-        <p class="sub-text">Counsellors, doctors, designers, translators, mentors — every skill has a place.</p>
+        <h3 data-hi="स्वयंसेवा">Volunteer</h3>
+        <p class="sub-text" data-hi="परामर्शदाता, चिकित्सक, डिज़ाइनर, अनुवादक, मार्गदर्शक — हर कौशल की जगह है।">Counsellors, doctors, designers, translators, mentors — every skill has a place.</p>
         <form id="vol-form" novalidate>
           <div class="form-row">
-            <input type="text" name="name" placeholder="Full name" required>
-            <input type="tel" name="phone" placeholder="Phone">
+            <input type="text" name="name" placeholder="Full name" data-hi-ph="पूरा नाम" required>
+            <input type="tel" name="phone" placeholder="Phone" data-hi-ph="फ़ोन">
           </div>
-          <input type="email" name="email" placeholder="Email" required>
+          <input type="email" name="email" placeholder="Email" data-hi-ph="ईमेल" required>
           <select name="interest">
-            <option value="">Area of interest…</option>
-            <option>Nirjara — counselling &amp; peer support</option>
-            <option>Nirjara — outreach &amp; awareness camps</option>
-            <option>Healthcare camps</option>
-            <option>Design, content &amp; translation</option>
-            <option>Fundraising &amp; CSR liaison</option>
+            <option value="" data-hi="रुचि का क्षेत्र…">Area of interest…</option>
+            <option data-hi="निर्जरा — परामर्श और सहकर्मी सहायता">Nirjara — counselling &amp; peer support</option>
+            <option data-hi="निर्जरा — पहुँच और जागरूकता शिविर">Nirjara — outreach &amp; awareness camps</option>
+            <option data-hi="स्वास्थ्य शिविर">Healthcare camps</option>
+            <option data-hi="डिज़ाइन, सामग्री और अनुवाद">Design, content &amp; translation</option>
+            <option data-hi="धन-संग्रह और सीएसआर संपर्क">Fundraising &amp; CSR liaison</option>
           </select>
-          <button type="submit" class="btn btn-coral form-submit">Join as a volunteer</button>
-          <p class="form-ok" id="form-ok">🙏 Thank you — we'll be in touch. You can also write directly to volunteer@bhavnafoundation.org.</p>
+          <button type="submit" class="btn btn-coral form-submit" data-hi="स्वयंसेवक के रूप में जुड़ें">Join as a volunteer</button>
+          <p class="form-ok" id="form-ok" data-hi="🙏 धन्यवाद — हम संपर्क करेंगे। आप सीधे volunteer@bhavnafoundation.org पर भी लिख सकते हैं।">🙏 Thank you — we'll be in touch. You can also write directly to volunteer@bhavnafoundation.org.</p>
         </form>
       </div>
     </div>
@@ -702,17 +725,17 @@ window.scrollTo(0, 0);
 
 <section class="section" id="sponsors">
   <div class="wrap">
-    <p class="eyebrow">Sponsors &amp; Affiliates</p>
-    <h2>Building this circle together.</h2>
-    <p class="lede">Bhavna Foundation is at its founding stage. As CSR partners, healthcare allies, and fellow NGOs join Nirjara, their logos will appear here. The first seats are open.</p>
+    <p class="eyebrow" data-hi="प्रायोजक और सहयोगी">Sponsors &amp; Affiliates</p>
+    <h2 data-hi="यह वृत्त मिलकर बना रहे हैं।">Building this circle together.</h2>
+    <p class="lede" data-hi="भावना फ़ाउंडेशन अपने आरंभिक चरण में है। जैसे-जैसे सीएसआर साझेदार, स्वास्थ्य सहयोगी और साथी एनजीओ निर्जरा से जुड़ेंगे, उनके लोगो यहाँ दिखाई देंगे। पहली जगहें खुली हैं।">Bhavna Foundation is at its founding stage. As CSR partners, healthcare allies, and fellow NGOs join Nirjara, their logos will appear here. The first seats are open.</p>
     <div class="sponsor-grid reveal">
-      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl">Your logo here</span></div>
-      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl">CSR partner</span></div>
-      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl">NGO affiliate</span></div>
-      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl">Healthcare ally</span></div>
+      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl" data-hi="आपका लोगो यहाँ">Your logo here</span></div>
+      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl" data-hi="सीएसआर साझेदार">CSR partner</span></div>
+      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl" data-hi="एनजीओ सहयोगी">NGO affiliate</span></div>
+      <div class="sponsor-slot"><span class="plus">+</span><span class="lbl" data-hi="स्वास्थ्य सहयोगी">Healthcare ally</span></div>
     </div>
     <div class="cta-row sponsor-cta" style="justify-content:center">
-      <a class="btn btn-coral" href="mailto:partnerships@bhavnafoundation.org?subject=Becoming%20a%20Sponsor%20%2F%20Affiliate">Become a sponsor or affiliate</a>
+      <a class="btn btn-coral" href="mailto:partnerships@bhavnafoundation.org?subject=Becoming%20a%20Sponsor%20%2F%20Affiliate" data-hi="प्रायोजक या सहयोगी बनें">Become a sponsor or affiliate</a>
     </div>
   </div>
 </section>
@@ -724,55 +747,63 @@ window.scrollTo(0, 0);
     <div>
       <img class="footer-brand-logo" src="https://res.cloudinary.com/dnkxclcd8/image/upload/v1781508280/Untitled_design_1_1_jcaipz.png" alt="Bhavna Foundation">
       <div class="footer-dev">भाव से बदलाव</div>
-      <p class="footer-sub">Bhaav se badlav — intent-first change, turning reflection into action. In tribute to Shanti &amp; Pawan Jain.</p>
+      <p class="footer-sub" data-hi="भाव से बदलाव — भाव-प्रेरित परिवर्तन, चिंतन को कर्म में बदलना। शांति और पवन जैन को श्रद्धांजलि।">Bhaav se badlav — intent-first change, turning reflection into action. In tribute to Shanti &amp; Pawan Jain.</p>
     </div>
     <div class="footer-col">
-      <h5>Foundation</h5>
-      <a href="#mission-detail">Mission</a>
-      <a href="#bhavnas">12 Bhavnas</a>
-      <a href="#team">Team</a>
+      <h5 data-hi="फ़ाउंडेशन">Foundation</h5>
+      <a href="#mission-detail" data-hi="मिशन">Mission</a>
+      <a href="#bhavnas" data-hi="12 भावनाएँ">12 Bhavnas</a>
+      <a href="#team" data-hi="टीम">Team</a>
     </div>
     <div class="footer-col">
-      <h5>Work</h5>
-      <a href="#nirjara">Nirjara</a>
-      <a href="#partner">CSR Partners</a>
-      <a href="#gallery">In the Field</a>
-      <a href="#sponsors">Sponsors &amp; Affiliates</a>
+      <h5 data-hi="कार्य">Work</h5>
+      <a href="#nirjara" data-hi="निर्जरा">Nirjara</a>
+      <a href="#partner" data-hi="सीएसआर साझेदार">CSR Partners</a>
+      <a href="#gallery" data-hi="कार्यक्षेत्र से">In the Field</a>
+      <a href="#sponsors" data-hi="प्रायोजक और सहयोगी">Sponsors &amp; Affiliates</a>
     </div>
     <div class="footer-col">
-      <h5>Get involved</h5>
-      <a href="#act">Donate</a>
-      <a href="#act">Volunteer</a>
+      <h5 data-hi="जुड़ें">Get involved</h5>
+      <a href="#act" data-hi="दान करें">Donate</a>
+      <a href="#act" data-hi="स्वयंसेवा">Volunteer</a>
       <a href="mailto:hello@bhavnafoundation.org">hello@bhavnafoundation.org</a>
       <a href="mailto:partnerships@bhavnafoundation.org">partnerships@</a>
     </div>
   </div>
-  <div class="footer-base">© 2026 Shanti Pawan Bhavna Foundation · Prototype — registration no., 12A/80G &amp; CSR-1 to be added · Built with absolute nonviolence 🕊️</div>
+  <div class="footer-base" data-hi="© 2026 शांति पवन भावना फ़ाउंडेशन · प्रोटोटाइप — पंजीकरण सं., 12A/80G और CSR-1 जोड़े जाने हैं · पूर्ण अहिंसा के साथ निर्मित 🕊️">© 2026 Shanti Pawan Bhavna Foundation · Prototype — registration no., 12A/80G &amp; CSR-1 to be added · Built with absolute nonviolence 🕊️</div>
 </footer>
 
 <script>
+/* ---- Always land on the first hero view (incl. mobile bfcache) ---- */
+function forceTop(){ window.scrollTo(0,0); }
 window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-  ScrollTrigger.refresh();
+  forceTop();
+  if (window.ScrollTrigger) ScrollTrigger.refresh();
+  setTimeout(() => { forceTop(); if (window.ScrollTrigger) ScrollTrigger.refresh(); }, 140);
+});
+window.addEventListener('pageshow', (e) => {
+  forceTop();
+  if (window.ScrollTrigger) ScrollTrigger.refresh();
 });
 
 const THEMES={dusk:{vars:{'--primary':'#C8703A','--secondary':'#B8892E','--peach':'#DFA07A','--sage':'#8BBD96','--sage-deep':'#5E9070','--gold':'#A08B5A'},pal:['#C8703A','#B8892E','#DFA07A','#8BBD96','#5E9070','#A08B5A']}};
 let T=THEMES.dusk;
 const BHAVNAS=[
-  {n:'Anitya',d:'अनित्य',m:'Impermanence — everything changes; nothing material lasts.',i:'Dignified elder care & hospice support',live:false,em:'🍂'},
-  {n:'Asharana',d:'अशरण',m:'No external refuge — true shelter is found within.',i:'Crisis shelter & emergency relief',live:false,em:'🏠'},
-  {n:'Samsara',d:'संसार',m:'The endless cycle of wandering through births.',i:'Breaking poverty cycles through education',live:false,em:'🔄'},
-  {n:'Ekatva',d:'एकत्व',m:'Solitariness — each soul walks its journey alone.',i:'Mental-health companionship for the isolated',live:false,em:'🧘'},
-  {n:'Anyatva',d:'अन्यत्व',m:'Otherness — the self is distinct from the body it inhabits.',i:'Preventive health screening camps',live:false,em:'🪞'},
-  {n:'Ashuchi',d:'अशुचि',m:'Impurity of the body — care for it without attachment.',i:'Sanitation, hygiene & clean water',live:false,em:'💧'},
-  {n:'Asrava',d:'आस्रव',m:'Influx — how harmful tendencies flow into a life.',i:'School awareness & prevention education',live:false,em:'🌊'},
-  {n:'Samvara',d:'संवर',m:'Stoppage — closing channels through which harm enters.',i:'Youth tobacco & alcohol prevention',live:false,em:'🛡️'},
-  {n:'Nirjara',d:'निर्जरा',m:'Shedding — the deliberate release of what binds us.',i:'De-addiction & recovery: alcohol, tobacco, nicotine',live:true,em:'🕊️'},
-  {n:'Loka',d:'लोक',m:'Contemplation of the universe — our place in a shared world.',i:'Environment, water bodies & tree planting',live:false,em:'🌍'},
-  {n:'Bodhidurlabha',d:'बोधिदुर्लभ',m:'The rarity of right knowledge — wisdom is hard-won.',i:'Scholarships & community libraries',live:false,em:'📖'},
-  {n:'Dharma',d:'धर्म',m:'The true path — living the teaching, not merely knowing it.',i:'Volunteer corps & seva culture',live:false,em:'🪔'},
+  {n:'Anitya',d:'अनित्य',m:'Impermanence — everything changes; nothing material lasts.',mh:'अनित्यता — सब कुछ बदलता है; कोई भी भौतिक वस्तु स्थायी नहीं।',i:'Dignified elder care & hospice support',ih:'सम्मानजनक वृद्ध देखभाल और होस्पिस सहायता',live:false,em:'🍂'},
+  {n:'Asharana',d:'अशरण',m:'No external refuge — true shelter is found within.',mh:'कोई बाहरी शरण नहीं — सच्चा आश्रय भीतर ही है।',i:'Crisis shelter & emergency relief',ih:'संकट आश्रय और आपातकालीन राहत',live:false,em:'🏠'},
+  {n:'Samsara',d:'संसार',m:'The endless cycle of wandering through births.',mh:'जन्म-मरण का अनंत चक्र।',i:'Breaking poverty cycles through education',ih:'शिक्षा के माध्यम से गरीबी के चक्र तोड़ना',live:false,em:'🔄'},
+  {n:'Ekatva',d:'एकत्व',m:'Solitariness — each soul walks its journey alone.',mh:'एकाकीपन — हर आत्मा अपनी यात्रा अकेले तय करती है।',i:'Mental-health companionship for the isolated',ih:'अकेले लोगों के लिए मानसिक-स्वास्थ्य साथ',live:false,em:'🧘'},
+  {n:'Anyatva',d:'अन्यत्व',m:'Otherness — the self is distinct from the body it inhabits.',mh:'अन्यत्व — आत्मा उस देह से भिन्न है जिसमें वह बसती है।',i:'Preventive health screening camps',ih:'निवारक स्वास्थ्य जाँच शिविर',live:false,em:'🪞'},
+  {n:'Ashuchi',d:'अशुचि',m:'Impurity of the body — care for it without attachment.',mh:'देह की अशुचिता — आसक्ति के बिना उसकी देखभाल करें।',i:'Sanitation, hygiene & clean water',ih:'स्वच्छता, साफ-सफाई और स्वच्छ जल',live:false,em:'💧'},
+  {n:'Asrava',d:'आस्रव',m:'Influx — how harmful tendencies flow into a life.',mh:'आस्रव — हानिकारक प्रवृत्तियाँ जीवन में कैसे प्रवेश करती हैं।',i:'School awareness & prevention education',ih:'विद्यालय जागरूकता और रोकथाम शिक्षा',live:false,em:'🌊'},
+  {n:'Samvara',d:'संवर',m:'Stoppage — closing channels through which harm enters.',mh:'संवर — उन मार्गों को बंद करना जिनसे हानि प्रवेश करती है।',i:'Youth tobacco & alcohol prevention',ih:'युवाओं में तंबाकू और शराब रोकथाम',live:false,em:'🛡️'},
+  {n:'Nirjara',d:'निर्जरा',m:'Shedding — the deliberate release of what binds us.',mh:'निर्जरा — जो हमें बाँधता है उसका सायास त्याग।',i:'De-addiction & recovery: alcohol, tobacco, nicotine',ih:'नशामुक्ति और पुनर्वास: शराब, तंबाकू, निकोटीन',live:true,em:'🕊️'},
+  {n:'Loka',d:'लोक',m:'Contemplation of the universe — our place in a shared world.',mh:'लोक का चिंतन — साझा संसार में हमारा स्थान।',i:'Environment, water bodies & tree planting',ih:'पर्यावरण, जलस्रोत और वृक्षारोपण',live:false,em:'🌍'},
+  {n:'Bodhidurlabha',d:'बोधिदुर्लभ',m:'The rarity of right knowledge — wisdom is hard-won.',mh:'सम्यक ज्ञान की दुर्लभता — विवेक कठिनाई से मिलता है।',i:'Scholarships & community libraries',ih:'छात्रवृत्तियाँ और सामुदायिक पुस्तकालय',live:false,em:'📖'},
+  {n:'Dharma',d:'धर्म',m:'The true path — living the teaching, not merely knowing it.',mh:'सच्चा मार्ग — शिक्षा को जीना, केवल जानना नहीं।',i:'Volunteer corps & seva culture',ih:'स्वयंसेवक दल और सेवा-संस्कृति',live:false,em:'🪔'},
 ];
 const TIER_NOTES={'500':'₹500 funds one community outreach awareness session.','1100':'₹1,100 supports one month of recovery-circle sessions for one participant.','2100':'₹2,100 covers counselling + family support for a full month.','5100':'₹5,100 sponsors a participant through an entire quarter.','custom':'Every rupee turns intention into action.'};
+const TIER_NOTES_HI={'500':'₹500 एक सामुदायिक जागरूकता सत्र को वित्तपोषित करता है।','1100':'₹1,100 एक प्रतिभागी के लिए एक माह के पुनर्वास-मंडल सत्रों का सहयोग करता है।','2100':'₹2,100 एक पूरे माह के परामर्श और परिवार सहयोग को कवर करता है।','5100':'₹5,100 एक प्रतिभागी को पूरी तिमाही तक प्रायोजित करता है।','custom':'हर रुपया भाव को कर्म में बदलता है।'};
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* NAV / Mobile Menu functionality */
@@ -800,7 +831,6 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60)
 document.querySelector('.brand').addEventListener('click', (e) => {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  
   if (navLinks.classList.contains('open')) {
     navLinks.classList.remove('open');
     nav.classList.remove('menu-open');
@@ -812,7 +842,6 @@ function lerp(a,b,t){return a+(b-a)*t;}
 
 /* ── HERO — GSAP ScrollTrigger multi-phase cinematic ── */
 gsap.registerPlugin(ScrollTrigger);
-
 ScrollTrigger.config({ ignoreMobileResize: true });
 
 const HERO_IMAGES=[
@@ -849,19 +878,47 @@ for(let k=0;k<N;k++){
 const videoTile=items[0];
 const imageTiles=items.slice(1);
 
+/* animation state proxies driven by the scrubbed timeline */
+const orbit={a:0}, intro={v:1}, imagesIn={v:0};
+
 function splitWords(sel){
   const el=document.querySelector(sel);
   el.innerHTML=el.textContent.trim().split(/\s+/).map(w=>'<span class="rw">'+w+'</span>').join(' ');
   return el.querySelectorAll('.rw');
 }
-const countWords=splitWords('#hero-count .rt-count');
-const tagWordsDev=splitWords('#hero-tagline .rt-tag-dev');
-const tagWordsEn=splitWords('#hero-tagline .rt-tag-en');
-const tagWords=[...tagWordsDev,...tagWordsEn];
 
 gsap.set('#hero-logo',{xPercent:-50,yPercent:-50});
 
 const isM=()=>window.innerWidth<760;
+
+/* bilingual hero text (EN / HI) */
+const HT={
+  lead:{en:'Translating <em>intent</em> into compassionate action.', hi:'<em>भाव</em> को करुणामय कर्म में बदलना।'},
+  count:{en:'12 Intentions. 12 Initiatives.', hi:'12 भावनाएँ। 12 पहल।'},
+  guided:{en:'Guided by the Bhavnas of Jain philosophy, we turn reflection into action — easing suffering, empowering communities, and protecting the environment.', hi:'जैन दर्शन की बारह भावनाओं से प्रेरित होकर हम चिंतन को कर्म में बदलते हैं — पीड़ा घटाते हुए, समुदायों को सशक्त बनाते हुए और पर्यावरण की रक्षा करते हुए।'},
+  tagEn:{en:'Intent-first change', hi:'भाव से उपजा परिवर्तन'},
+  tagBtn:{en:'Learn more about the 12 Bhavnas', hi:'बारह भावनाओं के बारे में जानें'},
+  nEyebrow:{en:'Active Initiative · निर्जरा', hi:'सक्रिय पहल · निर्जरा'},
+  nH2:{en:'Nirjara —<br><em>shedding what binds.</em>', hi:'निर्जरा —<br><em>जो बाँधता है उसका त्याग।</em>'},
+  nSub:{en:'Recovery support for alcohol and tobacco dependence.', hi:'शराब और तंबाकू की लत से उबरने में सहयोग।'}
+};
+let LANG='en';
+let countWords, tagWordsDev, tagWordsEn, tagWords;
+
+function applyHeroText(lang){
+  document.querySelector('#hero-lead h1').innerHTML=HT.lead[lang];
+  document.querySelector('#hero-count .rt-count').textContent=HT.count[lang];
+  document.querySelector('#hero-guided p').textContent=HT.guided[lang];
+  document.querySelector('#hero-tagline .rt-tag-en').textContent=HT.tagEn[lang];
+  document.querySelector('#hero-tagline .tag-lower .btn').textContent=HT.tagBtn[lang];
+  document.querySelector('#hero-nirjara .eyebrow').textContent=HT.nEyebrow[lang];
+  document.querySelector('#hero-nirjara h2').innerHTML=HT.nH2[lang];
+  document.querySelector('#hero-nirjara .n-sub').textContent=HT.nSub[lang];
+  countWords=splitWords('#hero-count .rt-count');
+  tagWordsDev=splitWords('#hero-tagline .rt-tag-dev');
+  tagWordsEn=splitWords('#hero-tagline .rt-tag-en');
+  tagWords=[...tagWordsDev,...tagWordsEn];
+}
 
 function videoCoverScale(){
   return Math.max(window.innerWidth/1920, window.innerHeight/1080) * 1.05;
@@ -907,61 +964,95 @@ function initStates(){
   layout();
 }
 
-if(reduceMotion){
-  document.body.classList.add('rm');
-  gsap.set([countWords,tagWords],{opacity:1});
-  imagesIn.v=1; intro.v=0; layout();
-}else{
+let heroTL=null;
+function buildHero(){
   initStates();
-  ScrollTrigger.addEventListener('refreshInit',initStates);
-
-  const tl=gsap.timeline({
+  heroTL=gsap.timeline({
     defaults:{ease:'none'},
     scrollTrigger:{
-      trigger:'#hero',
-      start:'top top',
-      end:()=>'+='+(isM()?6500:8000), 
-      scrub:0.8,
-      pin:true,
-      anticipatePin:1,
-      invalidateOnRefresh:true
+      trigger:'#hero', start:'top top',
+      end:()=>'+='+(isM()?6500:8000),
+      scrub:0.8, pin:true, anticipatePin:1, invalidateOnRefresh:true
     }
   });
-  tl.eventCallback('onUpdate',layout);
+  heroTL.eventCallback('onUpdate',layout);
 
-  tl.to(intro,{v:0,duration:1,ease:'power1.inOut'},0)
+  heroTL.to(intro,{v:0,duration:1,ease:'power1.inOut'},0)
     .to(imagesIn,{v:1,duration:0.8,ease:'power1.out'},0.4)
     .to('#hero-lead',{autoAlpha:0,yPercent:-6,duration:0.4},0.25)
     .to('#scrollPromptHero',{autoAlpha:0,duration:0.2},0.1)
     .to('#hero-symbol-top',{autoAlpha:0,duration:0.2},0.05);
 
-  tl.to(orbit,{a:720,duration:6.0},1.0)
+  heroTL.to(orbit,{a:720,duration:6.0},1.0)
     .to('#hero-logo',{autoAlpha:0.4,duration:0.5},1.0)
-    .to('#hero-logo',{rotation:520,duration:11.0},1.0); 
+    .to('#hero-logo',{rotation:520,duration:11.0},1.0);
 
-  tl.to('#hero-bg',{backgroundColor:CREAM,duration:2.0},1.0);
+  heroTL.to('#hero-bg',{backgroundColor:CREAM,duration:2.0},1.0);
 
-  tl.set('#hero-count',{autoAlpha:1},2.0)
+  heroTL.set('#hero-count',{autoAlpha:1},2.0)
     .to(countWords,{opacity:1,duration:1.2,stagger:{each:0.09}},2.1)
     .fromTo('#hero-guided',{autoAlpha:0,y:14},{autoAlpha:1,y:0,duration:0.5,ease:'power1.out'},3.7)
-    .to({}, {duration: 3.0}, 4.2); 
+    .to({}, {duration: 3.0}, 4.2);
 
-  tl.to(ring,{autoAlpha:0,duration:0.55,ease:'power1.in'},7.2)
+  heroTL.to(ring,{autoAlpha:0,duration:0.55,ease:'power1.in'},7.2)
     .to(['#hero-count','#hero-guided'],{autoAlpha:0,duration:0.4},7.2)
     .set('#hero-tagline',{autoAlpha:1},7.7)
     .to(tagWordsDev,{opacity:1,duration:1.0,stagger:{each:0.16}},7.7)
     .to(tagWordsEn,{opacity:1,duration:0.5,stagger:{each:0.14}},8.7)
     .to({}, {duration: 2.5}, 9.2);
 
-  tl.to('#hero-tagline',{autoAlpha:0,duration:0.4},11.7)
+  heroTL.to('#hero-tagline',{autoAlpha:0,duration:0.4},11.7)
     .to('#hero-logo',{scale:()=>isM()?2.0:2.5,autoAlpha:0.28,duration:1.2,ease:'power1.inOut'},11.7)
     .fromTo('#hero-tribute',{autoAlpha:0,y:22},{autoAlpha:1,y:0,duration:0.7,ease:'power1.out'},12.3)
-    .to({}, {duration: 1.2}, 13.0); 
+    .to({}, {duration: 1.2}, 13.0);
 
-  tl.to('#hero-tribute',{autoAlpha:0,y:-20,duration:0.5},14.2)
+  heroTL.to('#hero-tribute',{autoAlpha:0,y:-20,duration:0.5},14.2)
     .to('#hero-logo',{y:()=>-window.innerHeight*0.95,autoAlpha:0,duration:0.9,ease:'power2.in'},14.2)
     .fromTo('#hero-nirjara',{autoAlpha:0,y:26},{autoAlpha:1,y:0,duration:0.8,ease:'power1.out'},14.9);
 }
+
+/* ---- Language toggle (EN / हिंदी) ---- */
+function setLang(lang){
+  LANG=lang;
+  document.documentElement.lang=lang;
+  document.body.classList.toggle('lang-hi', lang==='hi');
+  document.querySelectorAll('[data-hi]').forEach(el=>{
+    if(el.dataset.en===undefined) el.dataset.en=el.innerHTML;
+    el.innerHTML = (lang==='hi') ? el.dataset.hi : el.dataset.en;
+  });
+  document.querySelectorAll('[data-hi-ph]').forEach(el=>{
+    if(el.dataset.enPh===undefined) el.dataset.enPh=el.getAttribute('placeholder')||'';
+    el.setAttribute('placeholder', (lang==='hi') ? el.dataset.hiPh : el.dataset.enPh);
+  });
+  const lt=document.getElementById('langToggle');
+  if(lt) lt.textContent = (lang==='hi') ? 'English' : 'हिंदी';
+  if(typeof rebuildWheel==='function') rebuildWheel();
+  if(typeof refreshDonate==='function') refreshDonate();
+  if(reduceMotion){
+    applyHeroText(lang);
+    gsap.set([countWords,tagWords],{opacity:1});
+    imagesIn.v=1; intro.v=0; layout();
+  }else{
+    if(heroTL){ if(heroTL.scrollTrigger) heroTL.scrollTrigger.kill(); heroTL.kill(); }
+    applyHeroText(lang);
+    buildHero();
+    window.scrollTo(0,0);
+    ScrollTrigger.refresh();
+  }
+}
+
+if(reduceMotion){
+  document.body.classList.add('rm');
+  applyHeroText('en');
+  gsap.set([countWords,tagWords],{opacity:1});
+  imagesIn.v=1; intro.v=0; layout();
+}else{
+  ScrollTrigger.addEventListener('refreshInit',initStates);
+  applyHeroText('en');
+  buildHero();
+}
+const langToggleBtn=document.getElementById('langToggle');
+if(langToggleBtn) langToggleBtn.addEventListener('click',()=>setLang(LANG==='en'?'hi':'en'));
 
 /* WHEEL */
 const wheel=document.getElementById('wheel');
@@ -991,8 +1082,8 @@ function rebuildWheel(){
   c1.textContent='भावना';wheel.appendChild(c1);
   const c2=document.createElementNS('http://www.w3.org/2000/svg','text');
   c2.setAttribute('x',0);c2.setAttribute('y',18);c2.setAttribute('text-anchor','middle');
-  c2.setAttribute('style','font-size:7px;fill:#777;font-family:Inter,sans-serif;letter-spacing:.05em');
-  c2.textContent='12 BHAVNAS';wheel.appendChild(c2);
+  c2.setAttribute('style','font-size:7px;fill:#777;font-family:Manrope,sans-serif;letter-spacing:.05em');
+  c2.textContent=(LANG==='hi')?'12 भावनाएँ':'12 BHAVNAS';wheel.appendChild(c2);
   setActive(activeB);
 }
 function setActive(i,dir=0){
@@ -1000,8 +1091,13 @@ function setActive(i,dir=0){
   if(dir!==0){panel.classList.remove('anim-next','anim-prev');void panel.offsetWidth;panel.classList.add(dir>0?'anim-next':'anim-prev');}
   wheel.querySelectorAll('.seg').forEach(s=>s.classList.toggle('active',+s.dataset.i===i));
   const b=BHAVNAS[i];
-  wCur.textContent=`${String(i+1).padStart(2,'0')} · ${b.n}`;
-  panel.innerHTML=`<div class="num">${String(i+1).padStart(2,'0')} / 12</div><h3>${b.n}</h3><div class="devname">${b.d}</div><p class="meaning">${b.m}</p><div class="initiative-block"><span class="live-badge ${b.live?'live':'soon'}">${b.live?'● Active now':'In design'}</span><p class="initiative-label">${b.i}</p>${b.live?`<div style="margin-top:20px"><a class="btn btn-coral" href="#nirjara" style="font-size:.78rem;padding:10px 22px">Explore Nirjara →</a></div>`:''}</div>`;
+  const hi=(LANG==='hi');
+  wCur.textContent=`${String(i+1).padStart(2,'0')} · ${hi?b.d:b.n}`;
+  const meaning=hi?b.mh:b.m;
+  const initiative=hi?b.ih:b.i;
+  const badge=hi?(b.live?'● अभी सक्रिय':'डिज़ाइन में'):(b.live?'● Active now':'In design');
+  const btnLabel=hi?'निर्जरा देखें →':'Explore Nirjara →';
+  panel.innerHTML=`<div class="num">${String(i+1).padStart(2,'0')} / 12</div><h3>${hi?b.d:b.n}</h3><div class="devname">${hi?b.n:b.d}</div><p class="meaning">${meaning}</p><div class="initiative-block"><span class="live-badge ${b.live?'live':'soon'}">${badge}</span><p class="initiative-label">${initiative}</p>${b.live?`<div style="margin-top:20px"><a class="btn btn-coral" href="#nirjara" style="font-size:.78rem;padding:10px 22px">${btnLabel}</a></div>`:''}</div>`;
 }
 rebuildWheel();
 document.getElementById('wPrev').addEventListener('click',()=>setActive((activeB+11)%12,-1));
@@ -1027,11 +1123,22 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* DONATE + VOLUNTEER */
+function refreshDonate(){
+  const sel=document.querySelector('#tiers button.sel');
+  const amt=sel?sel.dataset.amt:'1100';
+  const notes=(LANG==='hi')?TIER_NOTES_HI:TIER_NOTES;
+  const noteEl=document.getElementById('tier-note');
+  if(noteEl) noteEl.textContent=notes[amt];
+  const dbtn=document.getElementById('donate-btn');
+  if(dbtn){
+    if(amt==='custom'){ dbtn.textContent=(LANG==='hi')?'दान करें':'Donate'; }
+    else{ const amtStr='₹'+(+amt).toLocaleString('en-IN'); dbtn.textContent=(LANG==='hi')?(amtStr+' दान करें'):('Donate '+amtStr); }
+  }
+}
 document.querySelectorAll('#tiers button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('#tiers button').forEach(x=>x.classList.remove('sel'));
   b.classList.add('sel');
-  document.getElementById('tier-note').textContent=TIER_NOTES[b.dataset.amt];
-  document.getElementById('donate-btn').textContent=b.dataset.amt==='custom'?'Donate':'Donate ₹'+(+b.dataset.amt).toLocaleString('en-IN');
+  refreshDonate();
 }));
 document.getElementById('vol-form').addEventListener('submit',e=>{
   e.preventDefault();
