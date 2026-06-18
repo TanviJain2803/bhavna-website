@@ -263,7 +263,7 @@ body.lang-hi .bhavna-panel .devname{font-family:var(--body);font-style:italic;fo
 @media(max-width:640px){#nirjara-cover .cover-caption{padding:0 24px 32px}}
 #nirjara-cover .cover-caption .eyebrow{color:#FFE2C7}
 #nirjara-cover .cover-caption h2{color:#fff;font-size:clamp(2rem,4.5vw,3.5rem);margin-top:8px;text-shadow:0 2px 30px rgba(0,0,0,.7)}
-#nirjara .section-head{max-width:700px;margin-bottom:70px}
+#nirjara .section-head{max-width:760px;margin-bottom:46px}
 #nirjara .eyebrow{color:#FFE2C7}
 #nirjara h2{color:#fff;font-size:clamp(2rem,4.5vw,3.5rem);margin:12px 0 18px}
 #nirjara .lede{color:rgba(244,244,240,.7)}
@@ -289,33 +289,51 @@ body.lang-hi .bhavna-panel .devname{font-family:var(--body);font-style:italic;fo
 .app-video-wrapper{position:relative;width:100%;max-width:280px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);border:4px solid rgba(255,255,255,.05)}
 .app-video-wrapper video{width:100%;height:auto;display:block}
 
-/* Homeopathy testimonial */
-.testimonial{display:grid;grid-template-columns:300px 1fr;gap:46px;align-items:center;background:var(--night-2);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:46px;margin-top:40px;overflow:hidden}
-@media(max-width:768px){.testimonial{grid-template-columns:1fr;gap:28px;padding:30px 24px}}
-.testimonial-video{width:100%;max-width:300px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);border:3px solid rgba(255,255,255,.06)}
-.testimonial-video video{width:100%;height:auto;display:block}
-.testimonial .t-quote{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:500;color:#fff;line-height:1.3}
-.testimonial .t-quote .dev{color:#FFE2C7}
-.testimonial p{font-size:.95rem;color:rgba(244,244,240,.62);font-weight:300;line-height:1.7;margin-top:14px}
-.testimonial .t-tag{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#FFE2C7;font-weight:600;margin-top:18px}
+/* ── NIRJARA: testimonial hero + objective + philosophy ── */
+.nirjara-objective{max-width:780px}
+.nirjara-objective .goal{display:inline-block;margin-top:20px;background:rgba(200,112,58,.16);color:#FFE2C7;border:1px solid rgba(200,112,58,.45);border-radius:40px;padding:9px 20px;font-size:.84rem;letter-spacing:.03em;font-weight:600;font-family:var(--body)}
+.testimonial-hero{position:relative;width:100%;height:clamp(420px,58vh,640px);border-radius:var(--r);overflow:hidden;margin-bottom:50px}
+.testimonial-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.testimonial-hero .th-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,16,15,.86) 0%,rgba(14,16,15,.5) 48%,rgba(14,16,15,.06) 100%);display:flex;align-items:flex-end}
+.testimonial-hero .th-inner{padding:clamp(28px,5vw,58px);max-width:640px}
+.testimonial-hero blockquote{font-family:var(--display);font-style:italic;font-weight:500;color:#fff;font-size:clamp(1.5rem,3vw,2.6rem);line-height:1.26;margin:12px 0 16px}
+body.lang-hi .testimonial-hero blockquote{font-family:'Noto Serif Devanagari',var(--display);font-style:normal}
+.testimonial-hero .th-attr{font-size:.9rem;color:rgba(244,244,240,.72);font-weight:300;line-height:1.6}
+@media(max-width:640px){.testimonial-hero{height:clamp(380px,82vw,540px)}.testimonial-hero .th-overlay{background:linear-gradient(0deg,rgba(14,16,15,.93) 12%,rgba(14,16,15,.35) 100%)}}
 
-/* ── GALLERY ── */
-#gallery{background:var(--paper);overflow:hidden}
-/* horizontal scroll rail — bigger tiles, swipe sideways */
-.g-rail{display:flex;gap:18px;margin-top:50px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:18px;scrollbar-width:thin;scrollbar-color:var(--primary) transparent}
-.g-rail::-webkit-scrollbar{height:8px}
-.g-rail::-webkit-scrollbar-track{background:rgba(18,18,18,.06);border-radius:8px}
-.g-rail::-webkit-scrollbar-thumb{background:var(--primary);border-radius:8px}
-.g-tile{flex:0 0 auto;width:440px;height:300px;border-radius:var(--r);overflow:hidden;position:relative;display:flex;align-items:flex-end;scroll-snap-align:start}
-.g-tile.wide{width:620px}
-@media(max-width:640px){.g-tile{width:300px;height:230px}.g-tile.wide{width:300px}}
-.g-tile .bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.4rem;transition:transform .5s ease}
-.g-tile video.bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.g-tile:hover .bg,.g-tile:hover video.bgvid{transform:scale(1.06)}
-.g-tile .cap{position:relative;width:100%;padding:14px 18px;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6));z-index:2}
-.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--ink);z-index:2}
-.g-note{font-size:.78rem;color:var(--ink-soft);margin-top:14px;font-weight:300}
-.g-swipe-hint{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-top:8px;font-family:var(--body)}
+.philosophy{margin-top:64px;border-top:1px solid rgba(255,255,255,.1);padding-top:50px;display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:start}
+@media(max-width:820px){.philosophy{grid-template-columns:1fr;gap:22px}}
+.philosophy .ph-mark{font-family:var(--dev);font-size:clamp(3rem,8vw,6rem);color:var(--secondary);line-height:1}
+.philosophy h3{font-family:var(--display);font-weight:500;color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:16px}
+.philosophy p{color:rgba(244,244,240,.72);font-weight:300;font-size:1.02rem;line-height:1.8}
+.philosophy .ph-dev{font-family:var(--dev);color:#FFE2C7}
+
+/* ── GALLERY — cinematic ── */
+#gallery{background:var(--night);overflow:hidden}
+.gallery-head{display:flex;align-items:baseline;gap:40px;flex-wrap:wrap;margin-bottom:42px}
+.gallery-head h2{color:#fff;margin:0}
+.gallery-head .eyebrow{color:var(--peach);margin:0}
+.gallery-head .g-swipe-hint{margin-left:auto;margin-top:0;color:rgba(244,244,240,.4)}
+@media(max-width:640px){.gallery-head{flex-direction:column;gap:10px}.gallery-head .g-swipe-hint{margin-left:0}}
+.g-rail{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:10px;align-items:stretch}
+.g-rail::-webkit-scrollbar{display:none}
+.g-tile{flex:0 0 auto;position:relative;overflow:hidden;border-radius:6px;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:flex-end}
+.g-tile .bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.g-tile .g-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem;opacity:.4}
+.g-tile:hover .bgvid{transform:scale(1.06)}
+.g-grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,8,7,.9) 0%,rgba(6,8,7,.32) 55%,transparent 100%);pointer-events:none}
+.g-info{position:relative;padding:20px 22px;z-index:2}
+.g-tag{display:inline-block;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:2px;background:rgba(184,137,46,.9);color:#fff;margin-bottom:8px;font-family:var(--body)}
+.g-title{font-family:var(--display);font-size:1.2rem;font-weight:500;color:#fff;line-height:1.25}
+body.lang-hi .g-title{font-family:'Noto Serif Devanagari',var(--display)}
+.g-sub{font-size:.74rem;color:rgba(244,244,240,.55);margin-top:5px;font-weight:300;font-family:var(--body)}
+.g-xl{width:clamp(500px,46vw,680px);height:470px}
+.g-tall{width:clamp(260px,22vw,320px);height:470px}
+.g-wide{width:clamp(440px,38vw,560px);height:300px}
+.g-std{width:clamp(280px,24vw,350px);height:300px}
+@media(max-width:640px){.g-xl{width:82vw;height:320px}.g-tall{width:72vw;height:320px}.g-wide{width:86vw;height:240px}.g-std{width:74vw;height:240px}}
+.g-note{font-size:.76rem;color:rgba(244,244,240,.35);margin-top:18px;font-weight:300}
+.g-swipe-hint{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--peach);font-weight:600;margin-top:8px;font-family:var(--body)}
 
 /* ── PARTNER ── */
 #partner{background:var(--paper-soft)}
@@ -582,16 +600,50 @@ window.scrollTo(0, 0);
 
   <div class="section" style="padding-top:80px">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow" data-hi="जो बाँधता है उसका त्याग">The shedding of what binds</p>
-        <p class="lede" data-hi="जैन विचार में निर्जरा संचित कर्मों का सायास त्याग है। शराब और तंबाकू से उबरना ठीक यही है — एक निर्भरता का धैर्यपूर्वक, साहसी त्याग, एक-एक दिन, ऐसे समुदाय के साथ जो मुँह नहीं मोड़ता।">In Jain thought, Nirjara is the deliberate shedding of accumulated karma. Recovery from alcohol and tobacco is exactly that — the patient, courageous release of a dependence, one day at a time, with a community that refuses to look away.</p>
-      </div>
-      <div class="nirjara-grid reveal">
-        <div class="n-card"><span class="ic">🪔</span><h4 data-hi="जागरूकता और पहुँच">Awareness &amp; Outreach</h4><p data-hi="स्थानीय स्वास्थ्यकर्मियों के साथ सामुदायिक शिविर तथा विद्यालय या कार्यस्थल सत्र — कलंक घटाते हुए ताकि लोग संकट से पहले मदद माँगें।">Community camps and school or workplace sessions with local health workers — reducing stigma so people seek help before crisis.</p></div>
-        <div class="n-card"><span class="ic">🤝</span><h4 data-hi="पुनर्वास मंडल">Recovery Circles</h4><p data-hi="प्रशिक्षित परामर्शदाता और सहकर्मी-सहायता मंडल — गोपनीय, निर्णय-रहित, स्वयं के प्रति अहिंसा में निहित।">Trained counsellors and peer-support circles — confidential, judgement-free, rooted in nonviolence toward oneself.</p></div>
-        <div class="n-card"><span class="ic">🌱</span><h4 data-hi="परिवार के साथ अनुवर्तन">Family Follow-through</h4><p data-hi="जीवनसाथी, माता-पिता और बच्चों के लिए सहयोग, कार्यक्रम के बाद पूरे एक वर्ष तक संरचित अनुवर्तन के साथ।">Support for spouses, parents and children, with structured follow-ups for a full year after the programme.</p></div>
+
+      <!-- TESTIMONIAL — top, autoplay, cinematic -->
+      <div class="testimonial-hero reveal">
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781599719/IMG_0325_tn4iez.mp4" type="video/mp4">
+          <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781599719/IMG_0325_tn4iez.mov" type="video/quicktime">
+        </video>
+        <div class="th-overlay">
+          <div class="th-inner">
+            <p class="eyebrow" style="color:#FFE2C7" data-hi="प्रत्यक्ष अनुभव · होम्योपैथी">In their words · Homeopathy</p>
+            <blockquote data-hi="“होम्योपैथी उपचार के बाद मेरे पति ने शराब छोड़ दी। हमारा घर फिर से शांत है।”">"After the homeopathy treatment, my husband stopped drinking. Our home is calm again."</blockquote>
+            <p class="th-attr" data-hi="हमारे पहले समूह की एक घरेलू सहायिका, जिनके पति ने निर्जरा होम्योपैथी कार्यक्रम पूरा किया।">A domestic worker from our first cohort, whose husband completed the Nirjara homeopathy programme.</p>
+          </div>
+        </div>
       </div>
 
+      <!-- OBJECTIVE / INITIATIVE INTRO -->
+      <div class="section-head nirjara-objective reveal">
+        <p class="eyebrow" data-hi="हमारी पहल">The initiative</p>
+        <h2 data-hi="कम आय वाले परिवारों के लिए बनी नशामुक्ति।">Recovery, built for low-income households.</h2>
+        <p class="lede" data-hi="निर्जरा शराब और तंबाकू से उबरने का एक कार्यक्रम है जो विशेष रूप से कम आय वाले परिवारों के लिए बनाया गया है — होम्योपैथी सहायता, परामर्श और दैनिक ट्रैकिंग को जोड़ते हुए।">Nirjara is an alcohol and tobacco recovery programme built specifically for low-income households — combining homeopathy support, counselling, and daily tracking.</p>
+        <span class="goal" data-hi="लक्ष्य: अगले 12 महीनों में कम से कम 500 लोगों की मदद।">Goal: help at least 500 people in the next 12 months.</span>
+      </div>
+
+      <!-- THREE PILLARS -->
+      <div class="nirjara-grid reveal" style="margin-top:42px">
+        <div class="n-card">
+          <span class="ic">🏠</span>
+          <h4 data-hi="घरेलू सहायता नेटवर्क आउटरीच">Household Help Network Outreach</h4>
+          <p data-hi="घरेलू सहायिकाओं के पति अक्सर शराब और निकोटीन की लत से जूझते हैं — और ये महिलाएँ अपने परिवार के लिए स्थिति बदलने के लिए दृढ़ हैं। हम इन परिवारों को धार्मिक न्यासों और सीएसआर से वित्तपोषित रियायती दर पर दवा वितरक और पैरोकार के रूप में सशक्त बनाते हैं।">Household maids' husbands are often affected by alcoholism and nicotine addiction — and the women are determined to change the situation for their families. We empower these households as medicine distributors and advocates for their families, at a subsidised rate funded by religious trusts and CSR.</p>
+        </div>
+        <div class="n-card">
+          <span class="ic">📲</span>
+          <h4 data-hi="डिजिटल ऐप ट्रैकिंग">Digital App Tracking</h4>
+          <p data-hi="हमारा मानना है कि प्रभावशीलता मापी जानी चाहिए। एक सरल डिजिटल ट्रैकिंग ऐप इस पर वास्तविक डेटा एकत्र करता है कि होम्योपैथी उपचार कैसा काम करता है — हर रिकवरी को साक्ष्य में बदलते हुए।">We believe in tracking efficacy by enabling a digital app that collects real data on how the homeopathy treatment performs — turning each recovery into measurable evidence.</p>
+        </div>
+        <div class="n-card">
+          <span class="ic">🤝</span>
+          <h4 data-hi="रणनीतिक एनजीओ सहयोग">Strategic NGO Collaboration</h4>
+          <p data-hi="हम एनजीओ साझेदारों के एक उद्घाटन समूह की तलाश में हैं ताकि मिलकर सीएसआर और सरकारी अनुदान जुटाए जाएँ — और उसे उनके स्थापित नेटवर्क समूहों में लगाया जाए।">We are seeking an inaugural collaboration cohort of NGO partners to jointly raise CSR and government grant funding — and channel it into their established network cohorts.</p>
+        </div>
+      </div>
+
+      <!-- STATS -->
       <div class="n-stat-row reveal">
         <div class="n-stat"><b data-hi="~16 करोड़">~16 cr</b><span data-hi="लोग भारत में शराब का सेवन करते हैं; ~5.7 करोड़ हानिकारक उपयोग से प्रभावित*">people in India consume alcohol; ~5.7 cr affected by harmful use*</span></div>
         <div class="n-stat"><b data-hi="~27 करोड़">~27 cr</b><span data-hi="तंबाकू उपयोगकर्ता — विश्व के सर्वाधिक बोझों में से एक*">tobacco users — among the highest burdens in the world*</span></div>
@@ -599,6 +651,7 @@ window.scrollTo(0, 0);
       </div>
       <p class="n-foot" data-hi="*संकेतात्मक — MoSJE राष्ट्रीय सर्वेक्षण 2019, GATS-2, WHO। सार्वजनिक लॉन्च से पहले सत्यापित करें।">*Indicative — MoSJE national survey 2019, GATS-2, WHO. Verify before public launch.</p>
 
+      <!-- DIGITAL APP FEATURE -->
       <div class="app-feature reveal">
         <div class="app-text">
           <p class="eyebrow" data-hi="डिजिटल सहयोग">Digital Support</p>
@@ -614,18 +667,13 @@ window.scrollTo(0, 0);
         </div>
       </div>
 
-      <div class="testimonial reveal">
-        <div class="testimonial-video">
-          <video controls muted loop playsinline preload="metadata">
-            <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781599719/IMG_0325_tn4iez.mp4" type="video/mp4">
-            <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781599719/IMG_0325_tn4iez.mov" type="video/quicktime">
-          </video>
-        </div>
+      <!-- PHILOSOPHY (Jain bhavna) -->
+      <div class="philosophy reveal">
+        <div class="ph-mark dev">निर्जरा</div>
         <div>
-          <p class="eyebrow" style="color:#FFE2C7" data-hi="प्रत्यक्ष अनुभव">In their words</p>
-          <p class="t-quote" data-hi="“होम्योपैथी सहायता ने मुझे लालसा के सबसे कठिन दिनों से निकलने में मदद की।”">"The homeopathy support helped me through the hardest days of craving."</p>
-          <p data-hi="निर्जरा परीक्षण के एक प्रारंभिक प्रतिभागी ने हमारी होम्योपैथी सहायता किट के साथ अपना अनुभव साझा किया — जो परामर्श और दैनिक ऐप-ट्रैकिंग के साथ-साथ दी जाती है।">An early Nirjara participant shares their experience with our homeopathy support kit — given alongside counselling and daily app-based tracking.</p>
-          <p class="t-tag" data-hi="निर्जरा परीक्षण · प्रतिभागी प्रशंसापत्र">Nirjara pilot · participant testimonial</p>
+          <p class="eyebrow" data-hi="दर्शन">The philosophy</p>
+          <h3 data-hi="‘निर्जरा’ क्यों?">Why “Nirjara”?</h3>
+          <p data-hi="जैन विचार में निर्जरा संचित कर्मों का सायास त्याग है — आत्मा को बाँधने वाली वस्तुओं का धैर्यपूर्ण, स्वैच्छिक विसर्जन। शराब और तंबाकू से उबरना ठीक यही है: एक निर्भरता का साहसी त्याग, एक-एक दिन। बारह भावनाओं में से नौवीं इस कार्यक्रम को इसका नाम और इसकी आत्मा देती है — भाव से उपजा परिवर्तन, भाव से बदलाव।">In Jain thought, <span class="ph-dev dev">Nirjara</span> is the deliberate shedding of accumulated karma — the patient, willing release of what binds the soul. Recovery from alcohol and tobacco is exactly that: the courageous letting-go of a dependence, one day at a time. The ninth of the twelve Bhavnas gives this programme its name and its spirit — change that begins from intention, <span class="ph-dev dev">भाव से बदलाव</span>.</p>
         </div>
       </div>
 
@@ -639,24 +687,50 @@ window.scrollTo(0, 0);
 
 <section class="section" id="gallery">
   <div class="wrap">
-    <p class="eyebrow" data-hi="कार्यक्षेत्र से">In the Field</p>
-    <h2 data-hi="कार्य के कुछ क्षण।">Moments from the work.</h2>
+    <div class="gallery-head">
+      <div>
+        <p class="eyebrow" data-hi="कार्यक्षेत्र से">In the Field</p>
+        <h2 data-hi="कार्य के कुछ क्षण।">Moments from the work.</h2>
+      </div>
+      <p class="g-swipe-hint" data-hi="← स्वाइप करें →">← swipe to explore →</p>
+    </div>
     <div class="g-rail">
-      <div class="g-tile wide">
+      <div class="g-tile g-xl">
         <video class="bgvid" autoplay muted loop playsinline preload="metadata">
           <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781346284/14211520-hd_1920_1080_30fps_ckuixr.mp4" type="video/mp4">
         </video>
-        <div class="cap" data-hi="निर्जरा — कार्यक्रम फ़िल्म">Nirjara — programme film</div>
+        <div class="g-grad"></div>
+        <div class="g-info"><span class="g-tag" data-hi="कार्यक्रम फ़िल्म">Programme film</span><div class="g-title" data-hi="निर्जरा — नशामुक्ति पहल">Nirjara — de-addiction initiative</div></div>
       </div>
-      <div class="g-tile" style="background:linear-gradient(150deg,#1e2b1f,#2e3f2e)"><div class="bg">🪔</div><div class="cap" data-hi="जागरूकता शिविर">Awareness camp</div></div>
-      <div class="g-tile" style="background:linear-gradient(150deg,#2a2418,#3d3420)"><div class="bg">🤝</div><div class="cap" data-hi="पुनर्वास मंडल">Recovery circle</div></div>
-      <div class="g-tile" style="background:linear-gradient(150deg,#1a2418,#263628)"><div class="bg">🌱</div><div class="cap" data-hi="परिवार सहयोग">Family support</div></div>
-      <div class="g-tile" style="background:linear-gradient(150deg,#28201a,#3a2e22)"><div class="bg">🏥</div><div class="cap" data-hi="स्वास्थ्य जाँच">Health screening</div></div>
-      <div class="g-tile wide" style="background:linear-gradient(150deg,#1a1c18,#282c22)"><div class="bg">🎬</div><div class="play-btn">▶</div><div class="cap" data-hi="स्वयंसेवक कहानियाँ (वीडियो प्लेसहोल्डर)">Volunteer stories (video placeholder)</div></div>
-      <div class="g-tile" style="background:linear-gradient(150deg,#2a1e1a,#3c2c22)"><div class="bg">🌳</div><div class="cap" data-hi="सामुदायिक अभियान">Community drive</div></div>
+      <div class="g-tile g-tall">
+        <video class="bgvid" autoplay muted loop playsinline preload="auto">
+          <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781599719/IMG_0325_tn4iez.mp4" type="video/mp4">
+          <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781599719/IMG_0325_tn4iez.mov" type="video/quicktime">
+        </video>
+        <div class="g-grad"></div>
+        <div class="g-info"><span class="g-tag" style="background:rgba(200,112,58,.92)" data-hi="प्रशंसापत्र">Testimonial</span><div class="g-title" data-hi="“उन्होंने शराब छोड़ दी।”">“He stopped drinking.”</div><div class="g-sub" data-hi="पहले समूह की घरेलू सहायिका">Domestic worker, first cohort</div></div>
+      </div>
+      <div class="g-tile g-std" style="background:linear-gradient(160deg,#1a1e2a,#0e1018)">
+        <video class="bgvid" autoplay muted loop playsinline preload="metadata">
+          <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781514603/Screen_Recording_2026-06-15_at_2.07.13_AM_uhj0pa.mp4" type="video/mp4">
+        </video>
+        <div class="g-grad"></div>
+        <div class="g-info"><span class="g-tag" data-hi="डिजिटल">Digital</span><div class="g-title" data-hi="ऐप ट्रैकिंग — दैनिक चेक-इन">App tracking — daily check-in</div></div>
+      </div>
+      <div class="g-tile g-wide" style="background:linear-gradient(160deg,#221a10,#3a2a18)">
+        <div class="g-icon">🏠</div><div class="g-grad"></div>
+        <div class="g-info"><span class="g-tag" data-hi="आउटरीच">Outreach</span><div class="g-title" data-hi="घरेलू नेटवर्क पैरोकार">Household network advocates</div></div>
+      </div>
+      <div class="g-tile g-std" style="background:linear-gradient(160deg,#1a2820,#0e1a10)">
+        <div class="g-icon">🪔</div><div class="g-grad"></div>
+        <div class="g-info"><span class="g-tag" data-hi="जागरूकता">Awareness</span><div class="g-title" data-hi="जागरूकता शिविर">Awareness camp</div></div>
+      </div>
+      <div class="g-tile g-std" style="background:linear-gradient(160deg,#1e2818,#2c3820)">
+        <div class="g-icon">🌱</div><div class="g-grad"></div>
+        <div class="g-info"><span class="g-tag" data-hi="परिवार">Family</span><div class="g-title" data-hi="परिवार सहयोग">Family support</div></div>
+      </div>
     </div>
-    <p class="g-swipe-hint" data-hi="← अन्वेषण के लिए बग़ल में स्क्रॉल करें →">← Scroll sideways to explore →</p>
-    <p class="g-note" data-hi="प्रोटोटाइप प्लेसहोल्डर — कार्यक्रम के बढ़ने पर शेष टाइलों को वास्तविक फ़ोटोग्राफ़ी और लघु फ़िल्मों से बदलें।">Prototype placeholders — replace remaining tiles with real photography and short films as the programme grows.</p>
+    <p class="g-note" data-hi="प्रोटोटाइप — कार्यक्रम के बढ़ने पर प्लेसहोल्डर टाइलों को वास्तविक फ़ोटोग्राफ़ी और फ़िल्मों से बदलें।">Prototype — replace placeholder tiles with real photography and films as the programme grows.</p>
   </div>
 </section>
 
