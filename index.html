@@ -428,6 +428,86 @@ footer{background:#090B0A;color:rgba(244,244,240,.55);padding:70px 0 36px;font-s
   .reveal{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
 }
+
+/* ── NAV DROPDOWNS ── */
+.nav-item{position:relative;display:flex;align-items:center}
+.dd-toggle{background:none;border:none;cursor:pointer;font-family:var(--body);font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);transition:color .25s;display:inline-flex;align-items:center;gap:5px;padding:0;line-height:1}
+.dd-toggle:hover{color:var(--primary)}
+.dd-caret{font-size:.66em;transition:transform .25s;opacity:.7}
+.nav-item.open .dd-caret{transform:rotate(180deg)}
+.dd-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(10px);background:var(--paper);border:1px solid rgba(18,18,18,.08);border-radius:var(--r);box-shadow:0 18px 50px rgba(0,0,0,.16);padding:8px;min-width:236px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s;z-index:120}
+.nav-item:hover .dd-menu,.nav-item.open .dd-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(7px)}
+.links .dd-menu a,.links .dd-menu .dd-item{display:block;text-align:left;padding:10px 14px;border-radius:3px;font-size:.82rem;letter-spacing:.02em;text-transform:none;color:var(--ink);text-decoration:none;font-weight:500;white-space:nowrap;transition:background .2s,color .2s}
+.links .dd-menu a:hover{background:var(--paper-soft);color:var(--primary)}
+.links .dd-menu .dd-item.disabled{color:rgba(18,18,18,.32);cursor:not-allowed;font-weight:400}
+
+/* ── HERO SECTION DOTS ── */
+.hero-dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:14px;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.hero-dots.show{opacity:1;visibility:visible}
+.hero-dot{width:11px;height:11px;border-radius:50%;border:1.5px solid rgba(18,18,18,.5);background:transparent;cursor:pointer;padding:0;transition:transform .3s,background .3s,border-color .3s}
+.hero-dot:hover{border-color:var(--primary)}
+.hero-dot.active{background:var(--primary);border-color:var(--primary);transform:scale(1.35)}
+@media(max-width:760px){.hero-dots{right:14px;gap:11px}.hero-dot{width:9px;height:9px}}
+body.rm .hero-dots{display:none}
+
+/* ── BHAVNA: side arrows + dots ── */
+.panel-row{display:flex;align-items:center;gap:12px}
+.panel-row .bhavna-panel{flex:1 1 auto;margin:0}
+.panel-arrow{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:1px solid rgba(18,18,18,.18);background:var(--paper);font-size:1rem;cursor:pointer;color:var(--ink);transition:all .22s;font-family:var(--body);display:flex;align-items:center;justify-content:center}
+.panel-arrow:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.bhavna-dots{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px}
+.bhavna-dot{width:9px;height:9px;border-radius:50%;background:rgba(18,18,18,.16);border:none;cursor:pointer;padding:0;transition:transform .25s,background .25s}
+.bhavna-dot:hover{background:rgba(18,18,18,.4)}
+.bhavna-dot.active{background:var(--primary);transform:scale(1.35)}
+@media(max-width:640px){.panel-arrow{width:38px;height:38px;font-size:.95rem}.panel-row{gap:8px}}
+
+/* ── NIRJARA: goal row + whatsapp ── */
+.goal-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.nirjara-objective .goal-row .goal{margin-top:0}
+.goal-phase{background:rgba(139,189,150,.16);border-color:rgba(139,189,150,.5);color:#c2e6cb}
+.nirjara-cta{margin-top:26px;flex-wrap:wrap}
+.btn-whatsapp{background:#25D366;color:#0a3a22;display:inline-flex;align-items:center;gap:9px;border:1px solid transparent}
+.btn-whatsapp:hover{background:#1ebe5b;color:#0a3a22}
+.btn-whatsapp svg{width:18px;height:18px;flex:0 0 auto}
+.wa-note{font-size:.84rem;color:rgba(244,244,240,.62);font-weight:300;margin-top:16px;max-width:62ch;line-height:1.65}
+
+/* ── Prominent animated scroll prompt ── */
+.scroll-prompt-hero{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--primary);font-size:.9rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
+.scroll-prompt-hero .sp-arrow{font-size:1.7rem;line-height:1;animation:promptArrow 1.5s ease-in-out infinite}
+@keyframes promptArrow{0%,100%{transform:translateY(0);opacity:.7}50%{transform:translateY(9px);opacity:1}}
+@media(max-width:760px){.scroll-prompt-hero{font-size:.78rem}.scroll-prompt-hero .sp-arrow{font-size:1.45rem}}
+
+/* ── Hero Nirjara: bold recovery line + subtext width ── */
+#hero-nirjara h2 strong{font-weight:600;color:var(--secondary);font-style:normal}
+#hero-nirjara .n-sub{max-width:50ch;margin-left:auto;margin-right:auto}
+
+/* ── Testimonial unmute button ── */
+.th-sound{position:absolute;top:16px;right:16px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(14,16,15,.45);color:#fff;cursor:pointer;font-size:1.05rem;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:background .2s,transform .2s}
+.th-sound:hover{background:rgba(14,16,15,.72);transform:scale(1.06)}
+
+/* ── Smaller, less bulky headings ── */
+#hero-nirjara h2{font-size:clamp(1.8rem,4vw,3.2rem);line-height:1.12}
+#hero-nirjara h2 strong{font-size:.82em}
+#nirjara .nirjara-objective h2{font-size:clamp(1.45rem,2.8vw,2.3rem);line-height:1.22}
+
+/* ── Hero language toggle (near scroll prompt) ── */
+.hero-lang{position:fixed;left:26px;bottom:30px;z-index:40;background:rgba(255,255,255,.62);border:1px solid rgba(18,18,18,.3);color:var(--ink);font-family:var(--body);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:7px 15px;border-radius:40px;cursor:pointer;backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s,background .25s,color .25s}
+.hero-lang.show{opacity:1;visibility:visible}
+.hero-lang:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media(max-width:760px){.hero-lang{left:14px;bottom:24px;font-size:.66rem;padding:6px 12px}}
+body.rm .hero-lang{display:none}
+
+/* ── NAV DROPDOWNS — mobile overlay ── */
+@media(max-width:840px){
+  nav .links{justify-content:flex-start;padding:92px 24px 50px;gap:22px;overflow-y:auto}
+  .nav-item{flex-direction:column;align-items:center;width:100%;gap:0}
+  .dd-toggle{font-size:1.8rem;color:#fff;font-family:var(--display);text-transform:none;letter-spacing:0;font-weight:400}
+  .dd-toggle .dd-caret{font-size:.5em}
+  .dd-menu{position:static;transform:none;background:transparent;border:none;box-shadow:none;padding:0;min-width:0;opacity:1;visibility:visible;pointer-events:auto;max-height:0;overflow:hidden;transition:max-height .35s ease;gap:0}
+  .nav-item.open .dd-menu{transform:none;max-height:420px;margin-top:12px}
+  .links .dd-menu a,.links .dd-menu .dd-item{color:rgba(255,255,255,.82) !important;font-size:1.05rem !important;font-family:var(--body) !important;text-transform:none;letter-spacing:.02em;text-align:center;padding:9px 0;white-space:normal}
+  .links .dd-menu .dd-item.disabled{color:rgba(255,255,255,.34) !important}
+}
 </style>
 <script>
 // Force page to start at the top on load, clear hash links, and prevent scroll restoration
@@ -454,7 +534,25 @@ window.scrollTo(0, 0);
       <div class="links" id="navLinks">
         <a href="#mission-detail" data-hi="मिशन">Mission</a>
         <a href="#bhavnas" data-hi="12 भावनाएँ">12 Bhavnas</a>
-        <a href="#nirjara" data-hi="निर्जरा">Nirjara</a>
+        <div class="nav-item has-dd">
+          <button class="dd-toggle" data-hi="उद्देश्य">Objectives <span class="dd-caret">&#9662;</span></button>
+          <div class="dd-menu">
+            <a href="#nirjara" data-hi="शराब और तंबाकू रिकवरी">Alcohol &amp; Tobacco Recovery</a>
+            <span class="dd-item disabled" data-hi="वृद्ध देखभाल · जल्द">Elder Care · soon</span>
+            <span class="dd-item disabled" data-hi="मानसिक स्वास्थ्य · जल्द">Mental Health · soon</span>
+            <span class="dd-item disabled" data-hi="शिक्षा · जल्द">Education · soon</span>
+            <span class="dd-item disabled" data-hi="पर्यावरण · जल्द">Environment · soon</span>
+          </div>
+        </div>
+        <div class="nav-item has-dd">
+          <button class="dd-toggle" data-hi="निर्जरा">Nirjara <span class="dd-caret">&#9662;</span></button>
+          <div class="dd-menu">
+            <a href="#nirjara" data-hi="मिशन">Mission</a>
+            <a href="#act" data-hi="दान करें">Donate</a>
+            <a href="#act" data-hi="स्वयंसेवा">Volunteer</a>
+            <a href="https://wa.me/910000000000?text=Hi%20Bhavna%20Foundation%2C%20I%27d%20like%20to%20enroll%20someone%20in%20the%20Nirjara%20Phase%201%20recovery%20trial." target="_blank" rel="noopener" data-hi="किसी को नामांकित करें">Enroll someone</a>
+          </div>
+        </div>
         <a href="#partner" data-hi="सीएसआर">CSR</a>
       </div>
       <button class="lang-toggle" id="langToggle" aria-label="Switch language">हिंदी</button>
@@ -503,17 +601,30 @@ window.scrollTo(0, 0);
 
   <div class="hero-layer" id="hero-nirjara">
     <p class="eyebrow">Active Initiative · निर्जरा</p>
-    <h2>Nirjara —<br><em>shedding what binds.</em></h2>
-    <p class="n-sub">Recovery support for alcohol and tobacco dependence.</p>
+    <h2>Nirjara —<br><strong>Recovery program for alcohol &amp; tobacco addiction.</strong></h2>
+    <p class="n-sub">Our first initiative for alcohol &amp; tobacco addiction recovery — via homeopathy and app tracking, using the Nirjara bhav: shedding what binds.</p>
     <p class="n-dev dev">भाव से बदलाव</p>
     <div class="cta-row">
       <a class="btn btn-coral" href="#act" data-hi="दान करें">Donate</a>
-      <a class="btn btn-gold" href="#partner" data-hi="सीएसआर से साझेदारी">Partner via CSR</a>
+      <a class="btn btn-whatsapp" href="https://wa.me/910000000000?text=Hi%20Bhavna%20Foundation%2C%20I%27d%20like%20to%20get%20in%20touch%20about%20Nirjara." target="_blank" rel="noopener" data-hi="संपर्क करें"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.6.2-.2.3-.7.9-.8 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path fill="currentColor" d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.9.9-2.8-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg> Contact</a>
       <a class="btn btn-outline" href="#nirjara" data-hi="निर्जरा देखें">Explore Nirjara</a>
     </div>
   </div>
 
-  <div class="scroll-prompt-hero" id="scrollPromptHero" data-hi="↓ और देखने के लिए स्क्रॉल करें">↓ Scroll for more</div>
+  <button class="hero-lang" id="heroLangToggle" type="button" aria-label="Switch language">English</button>
+
+  <div class="scroll-prompt-hero" id="scrollPromptHero">
+    <span class="sp-text" data-hi="और देखने के लिए स्क्रॉल करें">Scroll for more</span>
+    <span class="sp-arrow" aria-hidden="true">↓</span>
+  </div>
+
+  <div class="hero-dots" id="heroDots" aria-label="Hero sections">
+    <button class="hero-dot" type="button" aria-label="Section 1"></button>
+    <button class="hero-dot" type="button" aria-label="Section 2"></button>
+    <button class="hero-dot" type="button" aria-label="Section 3"></button>
+    <button class="hero-dot" type="button" aria-label="Section 4"></button>
+    <button class="hero-dot" type="button" aria-label="Section 5"></button>
+  </div>
 </section>
 
 <section id="pathways">
@@ -572,14 +683,17 @@ window.scrollTo(0, 0);
       <div class="reveal">
         <svg id="wheel" viewBox="-115 -115 230 230" role="listbox" aria-label="12 Bhavnas" tabindex="0"></svg>
         <div class="wheel-nav">
-          <button id="wPrev">←</button>
           <div class="cur-label" id="wCur">09 · Nirjara</div>
-          <button id="wNext">→</button>
         </div>
       </div>
       <div>
-        <div class="bhavna-panel reveal" id="bhavnaPanel" aria-live="polite"></div>
-        <p class="swipe-hint" data-hi='<span class="touch-only">स्वाइप ← → · </span>खींचें, तीर दबाएँ, या किसी खंड पर टैप करें'><span class="touch-only">Swipe ← → · </span>drag, arrows, or tap a segment</p>
+        <div class="panel-row">
+          <button class="panel-arrow" id="wPrev" aria-label="Previous bhavna">←</button>
+          <div class="bhavna-panel reveal" id="bhavnaPanel" aria-live="polite"></div>
+          <button class="panel-arrow" id="wNext" aria-label="Next bhavna">→</button>
+        </div>
+        <div class="bhavna-dots" id="bhavnaDots"></div>
+        <p class="swipe-hint" data-hi='<span class="touch-only">स्वाइप ← → · </span>तीर, बिंदु या किसी खंड पर टैप करें'><span class="touch-only">Swipe ← → · </span>arrows, dots, or tap a segment</p>
       </div>
     </div>
   </div>
@@ -603,10 +717,11 @@ window.scrollTo(0, 0);
 
       <!-- TESTIMONIAL — top, autoplay, cinematic -->
       <div class="testimonial-hero reveal">
-        <video autoplay muted loop playsinline preload="auto">
+        <video id="testimonialVideo" autoplay muted loop playsinline preload="auto">
           <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781599719/IMG_0325_tn4iez.mp4" type="video/mp4">
           <source src="https://res.cloudinary.com/dnkxclcd8/video/upload/v1781599719/IMG_0325_tn4iez.mov" type="video/quicktime">
         </video>
+        <button class="th-sound" id="thSound" type="button" aria-label="Unmute testimonial">🔇</button>
         <div class="th-overlay">
           <div class="th-inner">
             <p class="eyebrow" style="color:#FFE2C7" data-hi="प्रत्यक्ष अनुभव · होम्योपैथी">In their words · Homeopathy</p>
@@ -619,9 +734,18 @@ window.scrollTo(0, 0);
       <!-- OBJECTIVE / INITIATIVE INTRO -->
       <div class="section-head nirjara-objective reveal">
         <p class="eyebrow" data-hi="हमारी पहल">The initiative</p>
-        <h2 data-hi="कम आय वाले परिवारों के लिए बनी नशामुक्ति।">Recovery, built for low-income households.</h2>
-        <p class="lede" data-hi="निर्जरा शराब और तंबाकू से उबरने का एक कार्यक्रम है जो विशेष रूप से कम आय वाले परिवारों के लिए बनाया गया है — होम्योपैथी सहायता, परामर्श और दैनिक ट्रैकिंग को जोड़ते हुए।">Nirjara is an alcohol and tobacco recovery programme built specifically for low-income households — combining homeopathy support, counselling, and daily tracking.</p>
-        <span class="goal" data-hi="लक्ष्य: अगले 12 महीनों में कम से कम 500 लोगों की मदद।">Goal: help at least 500 people in the next 12 months.</span>
+        <h2 data-hi="होम्योपैथी से कम आय वाले परिवारों में शराब और तंबाकू रिकवरी का वित्तपोषण।">Funding Alcohol &amp; Tobacco Recovery in Low Income Households using Homeopathy.</h2>
+        <p class="lede" data-hi="निर्जरा शराब और तंबाकू से उबरने का एक कार्यक्रम है जो विशेष रूप से कम आय वाले परिवारों के लिए बनाया गया है — होम्योपैथी सहायता, परामर्श और दैनिक ट्रैकिंग को जोड़ते हुए, और जैन धार्मिक न्यासों तथा सीएसआर द्वारा समर्थित।">Nirjara is an alcohol and tobacco recovery programme built specifically for low-income households — combining homeopathy support, counselling, and daily tracking, supported by Jain religious trusts and CSR.</p>
+        <div class="goal-row">
+          <span class="goal" data-hi="लक्ष्य: अगले 12 महीनों में कम से कम 10,000 लोगों की मदद।">Goal: help at least 10,000 people in the next 12 months.</span>
+          <span class="goal goal-phase" data-hi="चरण 1: ऐप के माध्यम से रिकवरी हेतु 50 प्रतिभागियों का नामांकन।">Phase 1: enrolling 50 participants via the app for recovery.</span>
+        </div>
+        <div class="cta-row nirjara-cta">
+          <a class="btn btn-coral" href="#act" data-hi="निर्जरा को सहयोग दें">Fund Nirjara</a>
+          <a class="btn btn-outline-light" href="#act" data-hi="निर्जरा में स्वयंसेवा करें">Volunteer with Nirjara</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/910000000000?text=Hi%20Bhavna%20Foundation%2C%20I%27d%20like%20to%20know%20about%20the%20Nirjara%20Phase%201%20recovery%20trial%20%2F%20enrolling%20someone." target="_blank" rel="noopener" data-hi="व्हाट्सऐप पर संपर्क करें"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.6.2-.2.3-.7.9-.8 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path fill="currentColor" d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.9.9-2.8-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg> WhatsApp us</a>
+        </div>
+        <p class="wa-note" data-hi="क्या आपकी घरेलू सहायिका का जीवनसाथी शराब से जूझ रहा है — या आप किसी को हमारे चरण 1 परीक्षण में नामांकित कराना चाहते हैं? व्हाट्सऐप पर हमें संदेश भेजें।">Is your household help's spouse struggling with alcohol — or would you like to enroll someone in our Phase 1 trial? Message us on WhatsApp.</p>
       </div>
 
       <!-- THREE PILLARS -->
@@ -678,7 +802,7 @@ window.scrollTo(0, 0);
       </div>
 
       <div class="cta-row reveal" style="margin-top:44px">
-        <a class="btn btn-gold" href="#partner" data-hi="सीएसआर से निर्जरा को सहयोग दें">Fund Nirjara via CSR</a>
+        <a class="btn btn-gold" href="#act" data-hi="निर्जरा को सहयोग दें">Fund Nirjara</a>
         <a class="btn btn-outline-light" href="#act" data-hi="निर्जरा में स्वयंसेवा करें">Volunteer with Nirjara</a>
       </div>
     </div>
@@ -940,7 +1064,22 @@ navLinks.querySelectorAll('a').forEach(a => {
     navLinks.classList.remove('open');
     nav.classList.remove('menu-open');
     menuBtn.innerHTML = '☰';
+    document.querySelectorAll('.nav-item.open').forEach(o=>o.classList.remove('open'));
   });
+});
+
+/* Dropdown toggles (Objectives / Nirjara) — click works on desktop + mobile */
+document.querySelectorAll('.dd-toggle').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    const item = btn.closest('.nav-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.nav-item.open').forEach(o => { if(o!==item) o.classList.remove('open'); });
+    item.classList.toggle('open', !isOpen);
+  });
+});
+document.addEventListener('click', e => {
+  if(!e.target.closest('.nav-item')) document.querySelectorAll('.nav-item.open').forEach(o=>o.classList.remove('open'));
 });
 
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
@@ -1017,8 +1156,8 @@ const HT={
   tagEn:{en:'Intent-first change', hi:'भाव से उपजा परिवर्तन'},
   tagBtn:{en:'Learn more about the 12 Bhavnas', hi:'बारह भावनाओं के बारे में जानें'},
   nEyebrow:{en:'Active Initiative · निर्जरा', hi:'सक्रिय पहल · निर्जरा'},
-  nH2:{en:'Nirjara —<br><em>shedding what binds.</em>', hi:'निर्जरा —<br><em>जो बाँधता है उसका त्याग।</em>'},
-  nSub:{en:'Recovery support for alcohol and tobacco dependence.', hi:'शराब और तंबाकू की लत से उबरने में सहयोग।'}
+  nH2:{en:'Nirjara —<br><strong>Recovery program for alcohol &amp; tobacco addiction.</strong>', hi:'निर्जरा —<br><strong>शराब और तंबाकू की लत से रिकवरी कार्यक्रम।</strong>'},
+  nSub:{en:'Our first initiative for alcohol & tobacco addiction recovery — via homeopathy and app tracking, using the Nirjara bhav: shedding what binds.', hi:'शराब और तंबाकू की लत से उबरने की हमारी पहली पहल — होम्योपैथी और ऐप ट्रैकिंग के माध्यम से, निर्जरा भाव का अनुसरण करते हुए: जो बाँधता है उसका त्याग।'}
 };
 let LANG='en';
 let countWords, tagWordsDev, tagWordsEn, tagWords;
@@ -1082,17 +1221,19 @@ function initStates(){
   layout();
 }
 
-let heroTL=null;
+let heroTL=null, heroST=null, heroSnap=[];
+const HERO_REST=[0.0, 5.0, 9.5, 13.0, 15.4]; /* lead · 12 intentions · tagline · tribute · nirjara */
+
+function heroDotsActive(p){
+  if(!heroSnap.length) return;
+  let bi=0,bd=2;
+  heroSnap.forEach((s,i)=>{const d=Math.abs(s-p); if(d<bd){bd=d;bi=i;}});
+  document.querySelectorAll('.hero-dot').forEach((d,i)=>d.classList.toggle('active',i===bi));
+}
+
 function buildHero(){
   initStates();
-  heroTL=gsap.timeline({
-    defaults:{ease:'none'},
-    scrollTrigger:{
-      trigger:'#hero', start:'top top',
-      end:()=>'+='+(isM()?6500:8000),
-      scrub:0.8, pin:true, anticipatePin:1, invalidateOnRefresh:true
-    }
-  });
+  heroTL=gsap.timeline({defaults:{ease:'none'}, paused:true});
   heroTL.eventCallback('onUpdate',layout);
 
   heroTL.to(intro,{v:0,duration:1,ease:'power1.inOut'},0)
@@ -1127,7 +1268,57 @@ function buildHero(){
   heroTL.to('#hero-tribute',{autoAlpha:0,y:-20,duration:0.5},14.2)
     .to('#hero-logo',{y:()=>-window.innerHeight*0.95,autoAlpha:0,duration:0.9,ease:'power2.in'},14.2)
     .fromTo('#hero-nirjara',{autoAlpha:0,y:26},{autoAlpha:1,y:0,duration:0.8,ease:'power1.out'},14.9);
+
+  const D=heroTL.duration()||15.7;
+  heroSnap=HERO_REST.map(t=>Math.min(1,Math.max(0,t/D)));
+
+  heroST=ScrollTrigger.create({
+    animation:heroTL,
+    trigger:'#hero', start:'top top',
+    end:()=>'+='+(isM()?6500:8000),
+    scrub:0.8, pin:true, anticipatePin:1, invalidateOnRefresh:true,
+    snap:{ snapTo:heroSnap, duration:{min:0.25,max:0.6}, delay:0.02, ease:'power2.inOut', directional:true },
+    onUpdate:(self)=>{ heroDotsActive(self.progress); },
+    onToggle:(self)=>{
+      const hd=document.getElementById('heroDots'); if(hd) hd.classList.toggle('show', self.isActive);
+      const hl=document.getElementById('heroLangToggle'); if(hl) hl.classList.toggle('show', self.isActive);
+      if(self.isActive) resetHeroIdle(); else clearTimeout(heroIdle);
+    }
+  });
+  resetHeroIdle();
 }
+
+/* current hero section index (nearest snap) */
+function currentHeroIndex(){
+  if(!heroSnap.length||!heroST) return 0;
+  const p=heroST.progress; let bi=0,bd=2;
+  heroSnap.forEach((s,i)=>{const d=Math.abs(s-p); if(d<bd){bd=d;bi=i;}});
+  return bi;
+}
+function goToHeroIndex(i){
+  if(!heroST||!heroSnap.length) return;
+  i=Math.max(0,Math.min(heroSnap.length-1,i));
+  const y=heroST.start + heroSnap[i]*(heroST.end-heroST.start);
+  window.scrollTo({top:y, behavior:'smooth'});
+}
+
+/* auto-advance to the next hero section after 20s of inactivity */
+let heroIdle=null;
+function resetHeroIdle(){
+  clearTimeout(heroIdle);
+  if(reduceMotion||!heroST||!heroST.isActive) return;
+  heroIdle=setTimeout(()=>{
+    if(!heroST||!heroST.isActive) return;
+    const ci=currentHeroIndex();
+    if(ci < heroSnap.length-1) goToHeroIndex(ci+1);
+  }, 20000);
+}
+window.addEventListener('scroll', resetHeroIdle, {passive:true});
+
+/* hero dot navigation — jump to a section's snap point */
+document.querySelectorAll('.hero-dot').forEach((d,i)=>{
+  d.addEventListener('click',()=>{ goToHeroIndex(i); });
+});
 
 /* ---- Language toggle (EN / हिंदी) ---- */
 function setLang(lang){
@@ -1144,6 +1335,8 @@ function setLang(lang){
   });
   const lt=document.getElementById('langToggle');
   if(lt) lt.textContent = (lang==='hi') ? 'English' : 'हिंदी';
+  const hlt=document.getElementById('heroLangToggle');
+  if(hlt) hlt.textContent = (lang==='hi') ? 'English' : 'हिंदी';
   if(typeof rebuildWheel==='function') rebuildWheel();
   if(typeof refreshDonate==='function') refreshDonate();
   if(reduceMotion){
@@ -1151,7 +1344,8 @@ function setLang(lang){
     gsap.set([countWords,tagWords],{opacity:1});
     imagesIn.v=1; intro.v=0; layout();
   }else{
-    if(heroTL){ if(heroTL.scrollTrigger) heroTL.scrollTrigger.kill(); heroTL.kill(); }
+    if(heroST){ heroST.kill(); heroST=null; }
+    if(heroTL){ heroTL.kill(); heroTL=null; }
     applyHeroText(lang);
     buildHero();
     window.scrollTo(0,0);
@@ -1171,11 +1365,14 @@ if(reduceMotion){
 }
 const langToggleBtn=document.getElementById('langToggle');
 if(langToggleBtn) langToggleBtn.addEventListener('click',()=>setLang(LANG==='en'?'hi':'en'));
+const heroLangBtn=document.getElementById('heroLangToggle');
+if(heroLangBtn) heroLangBtn.addEventListener('click',()=>setLang(LANG==='en'?'hi':'en'));
 
 /* WHEEL */
 const wheel=document.getElementById('wheel');
 const panel=document.getElementById('bhavnaPanel');
 const wCur=document.getElementById('wCur');
+const bhavnaDots=document.getElementById('bhavnaDots');
 let activeB=8;
 function rebuildWheel(){
   wheel.innerHTML='';
@@ -1208,6 +1405,7 @@ function setActive(i,dir=0){
   activeB=i;
   if(dir!==0){panel.classList.remove('anim-next','anim-prev');void panel.offsetWidth;panel.classList.add(dir>0?'anim-next':'anim-prev');}
   wheel.querySelectorAll('.seg').forEach(s=>s.classList.toggle('active',+s.dataset.i===i));
+  if(bhavnaDots) bhavnaDots.querySelectorAll('.bhavna-dot').forEach(d=>d.classList.toggle('active',+d.dataset.i===i));
   const b=BHAVNAS[i];
   const hi=(LANG==='hi');
   wCur.textContent=`${String(i+1).padStart(2,'0')} · ${hi?b.d:b.n}`;
@@ -1217,6 +1415,17 @@ function setActive(i,dir=0){
   const btnLabel=hi?'निर्जरा देखें →':'Explore Nirjara →';
   panel.innerHTML=`<div class="num">${String(i+1).padStart(2,'0')} / 12</div><h3>${hi?b.d:b.n}</h3><div class="devname">${hi?b.n:b.d}</div><p class="meaning">${meaning}</p><div class="initiative-block"><span class="live-badge ${b.live?'live':'soon'}">${badge}</span><p class="initiative-label">${initiative}</p>${b.live?`<div style="margin-top:20px"><a class="btn btn-coral" href="#nirjara" style="font-size:.78rem;padding:10px 22px">${btnLabel}</a></div>`:''}</div>`;
 }
+function buildBhavnaDots(){
+  if(!bhavnaDots) return;
+  bhavnaDots.innerHTML='';
+  for(let i=0;i<12;i++){
+    const d=document.createElement('button');
+    d.className='bhavna-dot'; d.dataset.i=i; d.type='button'; d.setAttribute('aria-label','Bhavna '+(i+1));
+    d.addEventListener('click',()=>setActive(i, i>activeB?1:(i<activeB?-1:0)));
+    bhavnaDots.appendChild(d);
+  }
+}
+buildBhavnaDots();
 rebuildWheel();
 document.getElementById('wPrev').addEventListener('click',()=>setActive((activeB+11)%12,-1));
 document.getElementById('wNext').addEventListener('click',()=>setActive((activeB+1)%12,1));
@@ -1265,5 +1474,31 @@ document.getElementById('vol-form').addEventListener('submit',e=>{
   document.getElementById('form-ok').style.display='block';
   f.querySelector('.form-submit').disabled=true;
 });
+
+/* TESTIMONIAL — sound on while in view (browsers block autoplay-with-sound off-screen) */
+(function(){
+  const tv=document.getElementById('testimonialVideo');
+  const ts=document.getElementById('thSound');
+  if(!tv||!ts) return;
+  let userMuted=false; /* set true only if the viewer chooses mute */
+  function icon(){ ts.textContent = tv.muted ? '🔇' : '🔊'; ts.setAttribute('aria-label', tv.muted ? 'Unmute' : 'Mute'); }
+  function playSafely(){ const p=tv.play(); if(p&&p.catch) p.catch(()=>{ tv.muted=true; tv.play().catch(()=>{}); icon(); }); }
+  const io2=new IntersectionObserver((ents)=>ents.forEach(en=>{
+    if(en.isIntersecting){ if(!userMuted){ tv.muted=false; tv.volume=1; } playSafely(); }
+    else { tv.muted=true; }
+    icon();
+  }),{threshold:0.55});
+  io2.observe(tv);
+  ts.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    tv.muted=!tv.muted; userMuted=tv.muted;
+    if(!tv.muted){ tv.volume=1; playSafely(); }
+    icon();
+  });
+  icon();
+})();
+
+/* Default the site to Hindi on load */
+setLang('hi');
 </script>
 </body></html>
